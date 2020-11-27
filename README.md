@@ -1,3 +1,3 @@
 # HoI4ModdingManager
 ## 使用ライブラリ
-* `Json.NET`
+* [Json.NET](https://www.newtonsoft.com/json)
