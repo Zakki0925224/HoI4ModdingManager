@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HoI4ModdingManager.Workers;
 
-namespace HoI4ModdingManager.Forms
+namespace HoI4ModdingManager.UserControls
 {
-    public partial class StartWindow : Form
+    public partial class StartWindowControl : UserControl
     {
-        public StartWindow()
+        public StartWindowControl()
         {
             InitializeComponent();
+            AssemblyResponder ar = new AssemblyResponder();
+            titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + ar.RespondAssembryVersion();
         }
     }
 }
