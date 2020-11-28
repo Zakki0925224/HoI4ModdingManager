@@ -19,5 +19,39 @@ namespace HoI4ModdingManager.UserControls
             AssemblyResponder ar = new AssemblyResponder();
             titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + ar.RespondAssembryVersion();
         }
+
+        /// <summary>
+        /// プロジェクトを開く
+        /// </summary>
+        private void openProject()
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "プロジェクトを開く...";
+                ofd.Filter = "HoI4 Modding Project (*.hmp)|*.hmp";
+
+                DialogResult dr = ofd.ShowDialog();
+            }
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void openProjectButton_Click(object sender, EventArgs e)
+        {
+            openProject();
+        }
+
+        private void referenceButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createProjectButton_Click(object sender, EventArgs e)
+        {
+            createProjectSettingsPanel.Visible = true;
+        }
     }
 }
