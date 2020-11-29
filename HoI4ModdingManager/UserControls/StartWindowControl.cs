@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HoI4ModdingManager.Workers;
+using HoI4ModdingManager.Forms;
+using HoI4ModdingManager.Managers.ModdingProjectManager.Forms;
 
 namespace HoI4ModdingManager.UserControls
 {
@@ -35,11 +37,6 @@ namespace HoI4ModdingManager.UserControls
             }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void openProjectButton_Click(object sender, EventArgs e)
         {
             openProject();
@@ -53,6 +50,18 @@ namespace HoI4ModdingManager.UserControls
         private void createProjectButton_Click(object sender, EventArgs e)
         {
             createProjectSettingsPanel.Visible = true;
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            AppSettings apps = new AppSettings();
+            apps.ShowDialog();
+        }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            ProjectEditor pe = new ProjectEditor();
+            pe.Show();
         }
     }
 }

@@ -49,11 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AppSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppSettings.Designer.cs">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\StartWindow.Designer.cs">
       <DependentUpon>StartWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ModdingProjectManager\Forms\ProjectEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Managers\ModdingProjectManager\Forms\ProjectEditor.Designer.cs">
+      <DependentUpon>ProjectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\ModdingProjectManager\UserControls\ProjectEditorNavigationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Managers\ModdingProjectManager\UserControls\ProjectEditorNavigationControl.Designer.cs">
+      <DependentUpon>ProjectEditorNavigationControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +84,17 @@
     </Compile>
     <Compile Include="Workers\AppVersionResponder.cs" />
     <Compile Include="Workers\AssemblyResponder.cs" />
+    <EmbeddedResource Include="Forms\AppSettings.resx">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Managers\ModdingProjectManager\Forms\ProjectEditor.resx">
+      <DependentUpon>ProjectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Managers\ModdingProjectManager\UserControls\ProjectEditorNavigationControl.resx">
+      <DependentUpon>ProjectEditorNavigationControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,8 +122,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="JsonTypeDefinitions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

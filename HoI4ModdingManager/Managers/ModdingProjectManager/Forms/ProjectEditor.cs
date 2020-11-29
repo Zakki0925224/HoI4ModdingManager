@@ -7,20 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoI4ModdingManager.Workers;
 
-namespace HoI4ModdingManager.Forms
+namespace HoI4ModdingManager.Managers.ModdingProjectManager.Forms
 {
-    public partial class StartWindow : Form
+    public partial class ProjectEditor : Form
     {
-        public StartWindow()
+        public ProjectEditor()
         {
             InitializeComponent();
-        }
-
-        private void StartWindow_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

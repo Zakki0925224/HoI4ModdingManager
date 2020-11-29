@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoI4ModdingManager.Forms;
+using HoI4ModdingManager.Managers.ModdingProjectManager.Forms;
 
 namespace HoI4ModdingManager
 {
@@ -18,7 +18,7 @@ namespace HoI4ModdingManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartWindow());
+            Application.Run(new ProjectEditor());
         }
     }
 }

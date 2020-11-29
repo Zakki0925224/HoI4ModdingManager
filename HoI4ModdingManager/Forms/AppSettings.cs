@@ -7,20 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoI4ModdingManager.Workers;
 
 namespace HoI4ModdingManager.Forms
 {
-    public partial class StartWindow : Form
+    public partial class AppSettings : Form
     {
-        public StartWindow()
+        public AppSettings()
         {
             InitializeComponent();
-        }
-
-        private void StartWindow_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

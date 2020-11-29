@@ -33,7 +33,6 @@ namespace HoI4ModdingManager.UserControls
             this.createProjectButton = new System.Windows.Forms.Button();
             this.openProjectButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.projectNameLabel = new System.Windows.Forms.Label();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.referenceButton = new System.Windows.Forms.Button();
@@ -97,21 +96,7 @@ namespace HoI4ModdingManager.UserControls
             this.settingsButton.TabIndex = 3;
             this.settingsButton.Text = "アプリケーション設定";
             this.settingsButton.UseVisualStyleBackColor = false;
-            // 
-            // exitButton
-            // 
-            this.exitButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.exitButton.ForeColor = System.Drawing.Color.Black;
-            this.exitButton.Location = new System.Drawing.Point(19, 279);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(179, 67);
-            this.exitButton.TabIndex = 4;
-            this.exitButton.Text = "終了";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // projectNameLabel
             // 
@@ -181,6 +166,7 @@ namespace HoI4ModdingManager.UserControls
             this.createButton.TabIndex = 9;
             this.createButton.Text = "作成";
             this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // createProjectSettingsPanel
             // 
@@ -201,7 +187,6 @@ namespace HoI4ModdingManager.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.createProjectSettingsPanel);
-            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.openProjectButton);
             this.Controls.Add(this.createProjectButton);
@@ -223,7 +208,6 @@ namespace HoI4ModdingManager.UserControls
         private System.Windows.Forms.Button createProjectButton;
         private System.Windows.Forms.Button openProjectButton;
         private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label projectNameLabel;
         private System.Windows.Forms.TextBox projectNameTextBox;
         private System.Windows.Forms.Button referenceButton;

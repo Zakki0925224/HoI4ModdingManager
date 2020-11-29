@@ -54,6 +54,7 @@ namespace HoI4ModdingManager.Forms
             this.MinimizeBox = false;
             this.Name = "StartWindow";
             this.Text = "StartWindow";
+            this.Load += new System.EventHandler(this.StartWindow_Load);
             this.ResumeLayout(false);
 
         }
