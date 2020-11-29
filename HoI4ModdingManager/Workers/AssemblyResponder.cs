@@ -33,7 +33,7 @@ namespace HoI4ModdingManager.Workers
         }
 
         /// <summary>
-        /// AssembryVersionを返す
+        /// AssembryVersionを返す（string）
         /// </summary>
         /// <returns></returns>
         public string RespondAssembryVersion()
@@ -41,6 +41,16 @@ namespace HoI4ModdingManager.Workers
             AssemblyName assemblyName = Assembly.GetExecutingAssembly().GetName();
             Version version = assemblyName.Version;
             return version.ToString();
+        }
+
+        /// <summary>
+        /// AssembryVersionを返す（Versionクラス）
+        /// </summary>
+        /// <returns></returns>
+        public Version RespondAssembryVersionRaw()
+        {
+            AssemblyName assemblyName = Assembly.GetExecutingAssembly().GetName();
+            return assemblyName.Version;
         }
     }
 }

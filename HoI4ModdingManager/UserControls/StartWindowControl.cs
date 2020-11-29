@@ -17,7 +17,8 @@ namespace HoI4ModdingManager.UserControls
         {
             InitializeComponent();
             AssemblyResponder ar = new AssemblyResponder();
-            titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + ar.RespondAssembryVersion();
+            AppVersionResponder avr = new AppVersionResponder();
+            titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + avr.RespondAliasVersion() + avr.RespondVersionType();
         }
 
         /// <summary>
