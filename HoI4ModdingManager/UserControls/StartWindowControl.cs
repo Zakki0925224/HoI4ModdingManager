@@ -63,5 +63,21 @@ namespace HoI4ModdingManager.UserControls
             ProjectEditor pe = new ProjectEditor();
             pe.Show();
         }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox.Checked)
+            {
+                modDescriptionLabel.Visible = true;
+                modDescriptionTextBox.Visible = true;
+                modDescriptionButton.Visible = true;
+            }
+            else
+            {
+                modDescriptionLabel.Visible = false;
+                modDescriptionTextBox.Visible = false;
+                modDescriptionButton.Visible = false;
+            }
+        }
     }
 }

@@ -40,6 +40,10 @@ namespace HoI4ModdingManager.UserControls
             this.projectPlaceTextBox = new System.Windows.Forms.TextBox();
             this.createButton = new System.Windows.Forms.Button();
             this.createProjectSettingsPanel = new System.Windows.Forms.Panel();
+            this.checkBox = new System.Windows.Forms.CheckBox();
+            this.modDescriptionButton = new System.Windows.Forms.Button();
+            this.modDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.modDescriptionLabel = new System.Windows.Forms.Label();
             this.createProjectSettingsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,7 +164,7 @@ namespace HoI4ModdingManager.UserControls
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.createButton.ForeColor = System.Drawing.Color.Black;
-            this.createButton.Location = new System.Drawing.Point(272, 258);
+            this.createButton.Location = new System.Drawing.Point(272, 215);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(75, 25);
             this.createButton.TabIndex = 9;
@@ -170,6 +174,10 @@ namespace HoI4ModdingManager.UserControls
             // 
             // createProjectSettingsPanel
             // 
+            this.createProjectSettingsPanel.Controls.Add(this.modDescriptionButton);
+            this.createProjectSettingsPanel.Controls.Add(this.modDescriptionTextBox);
+            this.createProjectSettingsPanel.Controls.Add(this.modDescriptionLabel);
+            this.createProjectSettingsPanel.Controls.Add(this.checkBox);
             this.createProjectSettingsPanel.Controls.Add(this.projectNameLabel);
             this.createProjectSettingsPanel.Controls.Add(this.createButton);
             this.createProjectSettingsPanel.Controls.Add(this.projectNameTextBox);
@@ -178,9 +186,58 @@ namespace HoI4ModdingManager.UserControls
             this.createProjectSettingsPanel.Controls.Add(this.projectPlaceLabel);
             this.createProjectSettingsPanel.Location = new System.Drawing.Point(207, 60);
             this.createProjectSettingsPanel.Name = "createProjectSettingsPanel";
-            this.createProjectSettingsPanel.Size = new System.Drawing.Size(350, 286);
+            this.createProjectSettingsPanel.Size = new System.Drawing.Size(350, 250);
             this.createProjectSettingsPanel.TabIndex = 11;
             this.createProjectSettingsPanel.Visible = false;
+            // 
+            // checkBox
+            // 
+            this.checkBox.AutoSize = true;
+            this.checkBox.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBox.Location = new System.Drawing.Point(6, 110);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(194, 21);
+            this.checkBox.TabIndex = 10;
+            this.checkBox.Text = "既存Modからプロジェクトを作成";
+            this.checkBox.UseVisualStyleBackColor = true;
+            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // modDescriptionButton
+            // 
+            this.modDescriptionButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.modDescriptionButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.modDescriptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.modDescriptionButton.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.modDescriptionButton.ForeColor = System.Drawing.Color.Black;
+            this.modDescriptionButton.Location = new System.Drawing.Point(272, 154);
+            this.modDescriptionButton.Name = "modDescriptionButton";
+            this.modDescriptionButton.Size = new System.Drawing.Size(75, 25);
+            this.modDescriptionButton.TabIndex = 13;
+            this.modDescriptionButton.Text = "参照";
+            this.modDescriptionButton.UseVisualStyleBackColor = false;
+            this.modDescriptionButton.Visible = false;
+            // 
+            // modDescriptionTextBox
+            // 
+            this.modDescriptionTextBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.modDescriptionTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.modDescriptionTextBox.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.modDescriptionTextBox.Location = new System.Drawing.Point(6, 154);
+            this.modDescriptionTextBox.Name = "modDescriptionTextBox";
+            this.modDescriptionTextBox.Size = new System.Drawing.Size(260, 25);
+            this.modDescriptionTextBox.TabIndex = 12;
+            this.modDescriptionTextBox.Visible = false;
+            // 
+            // modDescriptionLabel
+            // 
+            this.modDescriptionLabel.AutoSize = true;
+            this.modDescriptionLabel.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.modDescriptionLabel.Location = new System.Drawing.Point(3, 134);
+            this.modDescriptionLabel.Name = "modDescriptionLabel";
+            this.modDescriptionLabel.Size = new System.Drawing.Size(112, 17);
+            this.modDescriptionLabel.TabIndex = 14;
+            this.modDescriptionLabel.Text = "Mod定義ファイル：";
+            this.modDescriptionLabel.Visible = false;
             // 
             // StartWindowControl
             // 
@@ -194,7 +251,7 @@ namespace HoI4ModdingManager.UserControls
             this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "StartWindowControl";
-            this.Size = new System.Drawing.Size(560, 349);
+            this.Size = new System.Drawing.Size(560, 321);
             this.createProjectSettingsPanel.ResumeLayout(false);
             this.createProjectSettingsPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -215,5 +272,9 @@ namespace HoI4ModdingManager.UserControls
         private System.Windows.Forms.TextBox projectPlaceTextBox;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Panel createProjectSettingsPanel;
+        private System.Windows.Forms.Button modDescriptionButton;
+        private System.Windows.Forms.TextBox modDescriptionTextBox;
+        private System.Windows.Forms.Label modDescriptionLabel;
+        private System.Windows.Forms.CheckBox checkBox;
     }
 }

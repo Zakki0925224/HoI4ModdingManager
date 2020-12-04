@@ -38,14 +38,14 @@ namespace HoI4ModdingManager.Forms
             this.startWindowControl.Location = new System.Drawing.Point(12, 13);
             this.startWindowControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startWindowControl.Name = "startWindowControl";
-            this.startWindowControl.Size = new System.Drawing.Size(560, 349);
+            this.startWindowControl.Size = new System.Drawing.Size(560, 363);
             this.startWindowControl.TabIndex = 0;
             // 
             // StartWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 375);
+            this.ClientSize = new System.Drawing.Size(584, 337);
             this.Controls.Add(this.startWindowControl);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
