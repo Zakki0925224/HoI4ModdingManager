@@ -1,5 +1,5 @@
 ﻿
-namespace HoI4ModdingManager.Managers.ModdingProjectManager.UserControls
+namespace HoI4ModdingManager.ModdingProjectManager.UserControls
 {
     partial class ProjectEditorNavigationControl
     {
@@ -31,12 +31,12 @@ namespace HoI4ModdingManager.Managers.ModdingProjectManager.UserControls
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,8 +53,8 @@ namespace HoI4ModdingManager.Managers.ModdingProjectManager.UserControls
             this.HelpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(667, 24);
-            this.menuStrip.TabIndex = 0;
+            this.menuStrip.Size = new System.Drawing.Size(554, 24);
+            this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
             // FileToolStripMenuItem
@@ -64,6 +64,13 @@ namespace HoI4ModdingManager.Managers.ModdingProjectManager.UserControls
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.FileToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // StartToolStripMenuItem
+            // 
+            this.StartToolStripMenuItem.Name = "StartToolStripMenuItem";
+            this.StartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.StartToolStripMenuItem.Text = "スタート(&S)";
+            this.StartToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
@@ -95,22 +102,13 @@ namespace HoI4ModdingManager.Managers.ModdingProjectManager.UserControls
             this.HelpToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.HelpToolStripMenuItem.Text = "ヘルプ(&H)";
             // 
-            // StartToolStripMenuItem
-            // 
-            this.StartToolStripMenuItem.Name = "StartToolStripMenuItem";
-            this.StartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.StartToolStripMenuItem.Text = "スタート(&S)";
-            this.StartToolStripMenuItem.Click += new System.EventHandler(this.スタートSToolStripMenuItem_Click);
-            // 
             // ProjectEditorNavigationControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.menuStrip);
-            this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProjectEditorNavigationControl";
-            this.Size = new System.Drawing.Size(667, 188);
+            this.Size = new System.Drawing.Size(554, 150);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -122,11 +120,11 @@ namespace HoI4ModdingManager.Managers.ModdingProjectManager.UserControls
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem StartToolStripMenuItem;
     }
 }

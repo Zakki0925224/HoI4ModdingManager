@@ -1,5 +1,5 @@
 ﻿
-namespace HoI4ModdingManager.Forms
+namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     partial class StartWindow
     {
@@ -29,38 +29,35 @@ namespace HoI4ModdingManager.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.startWindowControl = new HoI4ModdingManager.UserControls.StartWindowControl();
+            this.startWindowControl1 = new HoI4ModdingManager.UserControls.StartWindowControl();
             this.SuspendLayout();
             // 
-            // startWindowControl
+            // startWindowControl1
             // 
-            this.startWindowControl.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.startWindowControl.Location = new System.Drawing.Point(12, 13);
-            this.startWindowControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.startWindowControl.Name = "startWindowControl";
-            this.startWindowControl.Size = new System.Drawing.Size(560, 363);
-            this.startWindowControl.TabIndex = 0;
+            this.startWindowControl1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.startWindowControl1.Location = new System.Drawing.Point(12, 13);
+            this.startWindowControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.startWindowControl1.Name = "startWindowControl1";
+            this.startWindowControl1.Size = new System.Drawing.Size(560, 321);
+            this.startWindowControl1.TabIndex = 0;
             // 
             // StartWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 337);
-            this.Controls.Add(this.startWindowControl);
-            this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Controls.Add(this.startWindowControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StartWindow";
             this.Text = "StartWindow";
-            this.Load += new System.EventHandler(this.StartWindow_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UserControls.StartWindowControl startWindowControl;
+        private HoI4ModdingManager.UserControls.StartWindowControl startWindowControl1;
     }
 }

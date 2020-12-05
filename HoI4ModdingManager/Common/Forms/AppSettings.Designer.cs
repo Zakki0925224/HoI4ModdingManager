@@ -1,5 +1,5 @@
 ﻿
-namespace HoI4ModdingManager.Forms
+namespace HoI4ModdingManager.Common.Forms
 {
     partial class AppSettings
     {
@@ -35,8 +35,7 @@ namespace HoI4ModdingManager.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 344);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(594, 328);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AppSettings";

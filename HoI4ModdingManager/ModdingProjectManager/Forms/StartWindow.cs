@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HoI4ModdingManager.Managers.ModdingProjectManager.Forms
+namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
-    public partial class ProjectEditor : Form
+    public partial class StartWindow : Form
     {
-        public ProjectEditor()
+        public StartWindow()
         {
             InitializeComponent();
         }

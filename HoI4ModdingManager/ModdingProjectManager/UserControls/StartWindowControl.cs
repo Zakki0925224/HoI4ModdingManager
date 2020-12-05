@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HoI4ModdingManager.Common.Forms;
+using HoI4ModdingManager.Common.Workers;
+using HoI4ModdingManager.ModdingProjectManager.Forms;
+using System;
 using System.Windows.Forms;
-using HoI4ModdingManager.Workers;
-using HoI4ModdingManager.Forms;
-using HoI4ModdingManager.Managers.ModdingProjectManager.Forms;
 
 namespace HoI4ModdingManager.UserControls
 {

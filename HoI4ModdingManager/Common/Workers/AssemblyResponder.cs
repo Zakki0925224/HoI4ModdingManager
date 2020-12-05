@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HoI4ModdingManager.Workers
+namespace HoI4ModdingManager.Common.Workers
 {
     /// <summary>
     /// アプリケーションのアセンブリ情報を返す

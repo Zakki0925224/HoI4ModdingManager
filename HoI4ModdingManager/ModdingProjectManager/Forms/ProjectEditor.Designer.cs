@@ -1,5 +1,5 @@
 ﻿
-namespace HoI4ModdingManager.Managers.ModdingProjectManager.Forms
+namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     partial class ProjectEditor
     {
@@ -29,15 +29,13 @@ namespace HoI4ModdingManager.Managers.ModdingProjectManager.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.projectEditorNavigationControl1 = new HoI4ModdingManager.Managers.ModdingProjectManager.UserControls.ProjectEditorNavigationControl();
+            this.projectEditorNavigationControl1 = new HoI4ModdingManager.ModdingProjectManager.UserControls.ProjectEditorNavigationControl();
             this.SuspendLayout();
             // 
             // projectEditorNavigationControl1
             // 
             this.projectEditorNavigationControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectEditorNavigationControl1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.projectEditorNavigationControl1.Location = new System.Drawing.Point(0, 0);
-            this.projectEditorNavigationControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.projectEditorNavigationControl1.Name = "projectEditorNavigationControl1";
             this.projectEditorNavigationControl1.Size = new System.Drawing.Size(800, 450);
             this.projectEditorNavigationControl1.TabIndex = 0;
