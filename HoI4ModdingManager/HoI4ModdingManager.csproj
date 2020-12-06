@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Common\Workers\AppVersionResponder.cs" />
     <Compile Include="Common\Workers\AssemblyResponder.cs" />
+    <Compile Include="Common\Workers\MessageBoxShower.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +82,7 @@
     <Compile Include="ModdingProjectManager\UserControls\StartWindowControl.Designer.cs">
       <DependentUpon>StartWindowControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModdingProjectManager\Workers\ProjectImporter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Common\Forms\AppSettings.resx">
@@ -121,8 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModdingProjectManager\Workers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
