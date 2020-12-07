@@ -11,10 +11,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
     class ProjectImporter
     {
         /// <summary>
-        /// プロジェクトのインポート
+        /// 国家データのインポート
         /// </summary>
-        /// <param name="filePath"></param>
-        public void Import(string filePath)
+        /// <param name="filePath">dbファイルの絶対パス</param>
+        public void CountriesDataImport(string filePath)
         {
             MessageBoxShower mbs = new MessageBoxShower();
 
