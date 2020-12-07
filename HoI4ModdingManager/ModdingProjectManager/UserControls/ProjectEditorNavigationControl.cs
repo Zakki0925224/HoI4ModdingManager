@@ -1,6 +1,7 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.Forms;
 using System;
 using System.Windows.Forms;
+using HoI4ModdingManager.ModdingProjectManager.Workers;
 
 namespace HoI4ModdingManager.ModdingProjectManager.UserControls
 {
