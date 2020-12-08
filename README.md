@@ -1,3 +1,3 @@
 # HoI4ModdingManager
 ## 使用ライブラリ
-* [Json.NET](https://www.newtonsoft.com/json)
+* [System.Data.SQLite.Core](https://www.nuget.org/packages/System.Data.SQLite.Core/)
