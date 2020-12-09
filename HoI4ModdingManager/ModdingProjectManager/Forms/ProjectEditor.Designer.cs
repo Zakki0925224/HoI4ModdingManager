@@ -68,7 +68,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // StartToolStripMenuItem
             // 
             this.StartToolStripMenuItem.Name = "StartToolStripMenuItem";
-            this.StartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.StartToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.StartToolStripMenuItem.Text = "スタート(&S)";
             this.StartToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
@@ -110,6 +110,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.Controls.Add(this.menuStrip);
             this.Name = "ProjectEditor";
             this.Text = "ProjectEditor";
+            this.Load += new System.EventHandler(this.ProjectEditor_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);

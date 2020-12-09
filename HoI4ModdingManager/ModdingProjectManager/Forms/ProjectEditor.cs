@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HoI4ModdingManager.Test;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -21,6 +22,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             StartWindow sw = new StartWindow();
             sw.ShowDialog();
+        }
+
+        private void ProjectEditor_Load(object sender, EventArgs e)
+        {
+            // テストコード
+
+            Tests t = new Tests();
+            t.StartTest();
         }
     }
 }
