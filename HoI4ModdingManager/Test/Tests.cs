@@ -17,7 +17,7 @@ namespace HoI4ModdingManager.Test
             // 1国家1インスタンスとして保持
             CountriesData cd = new CountriesData();
 
-            pi.GetCountriesData(@"C:\Users\miyaz\Documents\Visual Studio 2019\Projects\C#\HoI4ModdingManager\HoI4ModdingManager\ModdingProjectManager\Data\ExampleDataBase\countries_data.db",
+            pi.GetCountriesData(@"ExampleDataBase\countries_data.db",
                                 "countries_data",
                                 0,
                                 cd);
