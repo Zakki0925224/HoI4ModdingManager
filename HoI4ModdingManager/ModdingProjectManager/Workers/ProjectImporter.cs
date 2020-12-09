@@ -67,7 +67,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
                     reader.Read();
-                    cd.DataReset();
+                    cd.Initialize();
 
                     // 変数に値を保存
                     cd.id = (int?)reader.GetValue(0);
@@ -119,9 +119,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="cd">クラスインスタンス</param>
         public void GetCountriesData(string dbFile, string tableName, int colmn, CountriesData cd)
         {
-            // 変数をnullで初期化
-            cd.DataReset();
-
             ConnectionDataBase(dbFile);
             GetData(tableName, colmn, cd);
             DisconnectionDataBase();

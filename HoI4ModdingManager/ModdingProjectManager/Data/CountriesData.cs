@@ -42,9 +42,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public bool? is_no_election;
 
         /// <summary>
-        /// データをすべてnullに置き換え
+        /// データをすべて初期化
         /// </summary>
-        public void DataReset()
+        public void Initialize()
         {
             id = null;
             created_at = null;
