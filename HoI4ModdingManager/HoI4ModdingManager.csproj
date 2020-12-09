@@ -76,18 +76,6 @@
     <Compile Include="ModdingProjectManager\Forms\StartWindow.Designer.cs">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModdingProjectManager\UserControls\ProjectEditorNavigationControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ModdingProjectManager\UserControls\ProjectEditorNavigationControl.Designer.cs">
-      <DependentUpon>ProjectEditorNavigationControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModdingProjectManager\UserControls\StartWindowControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ModdingProjectManager\UserControls\StartWindowControl.Designer.cs">
-      <DependentUpon>StartWindowControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModdingProjectManager\Workers\ProjectImporter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,12 +87,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModdingProjectManager\Forms\StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModdingProjectManager\UserControls\ProjectEditorNavigationControl.resx">
-      <DependentUpon>ProjectEditorNavigationControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModdingProjectManager\UserControls\StartWindowControl.resx">
-      <DependentUpon>StartWindowControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

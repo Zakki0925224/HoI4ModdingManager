@@ -16,5 +16,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             InitializeComponent();
         }
+
+        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartWindow sw = new StartWindow();
+            sw.ShowDialog();
+        }
     }
 }
