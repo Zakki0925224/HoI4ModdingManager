@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoI4ModdingManager.Test;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -26,10 +25,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectEditor_Load(object sender, EventArgs e)
         {
-            // テストコード
-
-            Tests t = new Tests();
-            t.StartTest();
+            var ver_pi = new Verification.VER_ProjectImporter();
+            ver_pi.Verification_GetCountriesData();
         }
     }
 }

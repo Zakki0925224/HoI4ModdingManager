@@ -5,8 +5,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
     class CountriesData
     {
         public int id;
-        public string created_at;
-        public string updated_at;
+        public DateTime created_at;
+        public DateTime updated_at;
         public string country_tag;
         public string country_name;
         public string country_name_neutrality;
@@ -37,7 +37,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public int initial_transport;
         public string graphic_culture;
         public string initial_ideology;
-        public string last_election_at;
+        public DateTime last_election_at;
         public int election_interval;
         public bool is_no_election;
         public int color_r;
@@ -62,8 +62,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public void Initialize()
         {
             id = 0;
-            created_at = null;
-            updated_at = null;
+            created_at = DateTime.MinValue;
+            updated_at = DateTime.MinValue;
             country_tag = null;
             country_name = null;
             country_name_neutrality = null;
@@ -94,7 +94,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
             initial_transport = 0;
             graphic_culture = null;
             initial_ideology = null;
-            last_election_at = null;
+            last_election_at = DateTime.MinValue;
             election_interval = 0;
             is_no_election = false;
             color_r = 0;
