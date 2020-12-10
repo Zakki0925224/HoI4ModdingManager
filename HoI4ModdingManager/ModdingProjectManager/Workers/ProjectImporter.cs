@@ -105,6 +105,22 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                     cd.is_no_election = true;
                 else
                     cd.is_no_election = false;
+
+                cd.color_r = int.Parse(reader.GetValue(35).ToString());
+                cd.color_g = int.Parse(reader.GetValue(36).ToString());
+                cd.color_b = int.Parse(reader.GetValue(37).ToString());
+                cd.country_flag_path_neutrality = reader.GetValue(38).ToString();
+                cd.country_flag_path_neutrality_medium = reader.GetValue(39).ToString();
+                cd.country_flag_path_neutrality_small = reader.GetValue(40).ToString();
+                cd.country_flag_path_democratic = reader.GetValue(41).ToString();
+                cd.country_flag_path_democratic_medium = reader.GetValue(42).ToString();
+                cd.country_flag_path_democratic_small = reader.GetValue(43).ToString();
+                cd.country_flag_path_fascism = reader.GetValue(44).ToString();
+                cd.country_flag_path_fascism_medium = reader.GetValue(45).ToString();
+                cd.country_flag_path_fascism_small = reader.GetValue(46).ToString();
+                cd.country_flag_path_communism = reader.GetValue(47).ToString();
+                cd.country_flag_path_communism_medium = reader.GetValue(48).ToString();
+                cd.country_flag_path_communism_small = reader.GetValue(49).ToString();
             }
         }
 

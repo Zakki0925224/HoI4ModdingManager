@@ -40,6 +40,21 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public string last_election_at;
         public int election_interval;
         public bool is_no_election;
+        public int color_r;
+        public int color_g;
+        public int color_b;
+        public string country_flag_path_neutrality;
+        public string country_flag_path_neutrality_medium;
+        public string country_flag_path_neutrality_small;
+        public string country_flag_path_democratic;
+        public string country_flag_path_democratic_medium;
+        public string country_flag_path_democratic_small;
+        public string country_flag_path_fascism;
+        public string country_flag_path_fascism_medium;
+        public string country_flag_path_fascism_small;
+        public string country_flag_path_communism;
+        public string country_flag_path_communism_medium;
+        public string country_flag_path_communism_small;
 
         /// <summary>
         /// データをすべて初期化
@@ -82,6 +97,21 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
             last_election_at = null;
             election_interval = 0;
             is_no_election = false;
+            color_r = 0;
+            color_g = 0;
+            color_b = 0;
+            country_flag_path_neutrality = null;
+            country_flag_path_neutrality_medium = null;
+            country_flag_path_neutrality_small = null;
+            country_flag_path_democratic = null;
+            country_flag_path_democratic_medium = null;
+            country_flag_path_democratic_small = null;
+            country_flag_path_fascism = null;
+            country_flag_path_fascism_medium = null;
+            country_flag_path_fascism_small = null;
+            country_flag_path_communism = null;
+            country_flag_path_communism_medium = null;
+            country_flag_path_communism_small = null;
         }
     }
 }
