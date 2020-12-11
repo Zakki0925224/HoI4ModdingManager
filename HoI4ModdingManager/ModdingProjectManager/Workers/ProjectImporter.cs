@@ -100,8 +100,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                 cd.initial_ideology = reader.GetString(32);
                 cd.last_election_at = reader.GetDateTime(33);
                 cd.election_interval = reader.GetInt32(34);
-                //cd.is_no_election = reader.GetBoolean(35);
-                // TODO: How to get boolean
+
+                if (reader.GetInt32(35) == 0)
+                    cd.is_no_election = false;
+                else
+                    cd.is_no_election = true;
+
                 cd.color_r = reader.GetInt32(36);
                 cd.color_g = reader.GetInt32(37);
                 cd.color_b = reader.GetInt32(38);
