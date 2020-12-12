@@ -5,8 +5,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
     class CountriesData
     {
         public int id;
-        public DateTime created_at;
-        public DateTime updated_at;
         public string country_tag;
         public string country_name;
         public string country_name_neutrality;
@@ -62,8 +60,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public void Initialize()
         {
             id = 0;
-            created_at = DateTime.MinValue;
-            updated_at = DateTime.MinValue;
             country_tag = null;
             country_name = null;
             country_name_neutrality = null;

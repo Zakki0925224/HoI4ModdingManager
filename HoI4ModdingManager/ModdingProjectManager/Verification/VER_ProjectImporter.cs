@@ -27,8 +27,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
 
             // ログ出力
             Console.WriteLine("id: " + cData.id);
-            Console.WriteLine("created_at: " + cData.created_at);
-            Console.WriteLine("updated_at: " + cData.updated_at);
             Console.WriteLine("country_tag: " + cData.country_tag);
             Console.WriteLine("country_name: " + cData.country_name);
             Console.WriteLine("country_name_neutrality: " + cData.country_name_neutrality);
