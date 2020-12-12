@@ -23,9 +23,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
 
             // 1国家1インスタンスとして保持
             var cData = new CountriesData();
-            pi.GetCountriesData(dbFilePath, "countries_data", 0, cData);
+            pi.ImportCountriesData(dbFilePath, "countries_data", 0, cData);
+
+            var pData = new ProjectData();
+            pi.ImportProjectData(dbFilePath, "project_data", pData);
 
             // ログ出力
+            Console.WriteLine("---country data---");
             Console.WriteLine("id: " + cData.id);
             Console.WriteLine("country_tag: " + cData.country_tag);
             Console.WriteLine("country_name: " + cData.country_name);
@@ -63,6 +67,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
             Console.WriteLine("country_flag_path_communism: " + cData.country_flag_path_communism);
             Console.WriteLine("country_flag_path_communism_medium: " + cData.country_flag_path_communism_medium);
             Console.WriteLine("country_flag_path_communism_small: " + cData.country_flag_path_communism_small);
+
+            Console.WriteLine("---project data---");
+            Console.WriteLine("project_name: " + pData.project_name);
+            Console.WriteLine("created_at: " + pData.created_at);
+            Console.WriteLine("updated_at: " + pData.updated_at);
         }
     }
 }

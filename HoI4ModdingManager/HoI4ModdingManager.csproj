@@ -61,6 +61,7 @@
     <Compile Include="Common\Workers\AssemblyResponder.cs" />
     <Compile Include="Common\Workers\MessageBoxShower.cs" />
     <Compile Include="ModdingProjectManager\Data\CountriesData.cs" />
+    <Compile Include="ModdingProjectManager\Data\ProjectData.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectEditor.cs">
       <SubType>Form</SubType>
     </Compile>

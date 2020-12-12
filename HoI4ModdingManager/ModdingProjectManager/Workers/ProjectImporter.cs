@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using HoI4ModdingManager.Common.Workers;
 using HoI4ModdingManager.ModdingProjectManager.Data;
 using System.Data.SQLite;
 
@@ -46,12 +40,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         }
 
         /// <summary>
-        /// データを取得（一列のみ）
+        /// 国家データを取得（一列のみ）
         /// </summary>
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        private void GetData(string tableName, int colmn, CountriesData cd)
+        private void GetCountryData(string tableName, int colmn, CountriesData cd)
         {
             if (sqlc == null)
                 return;
@@ -64,7 +58,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                 reader.Read();
                 cd.Initialize();
 
-                // 変数に値を保存
                 cd.id = reader.GetInt32(0);
                 cd.country_tag = reader.GetString(1);
                 cd.country_name = reader.GetString(2);
@@ -123,16 +116,53 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         }
 
         /// <summary>
+        /// プロジェクトデータを取得
+        /// </summary>
+        /// <param name="tableName">テーブル名</param>
+        /// <param name="pd">クラスインスタンス</param>
+        private void GetProjectData(string tableName, ProjectData pd)
+        {
+            if (sqlc == null)
+                return;
+
+            SQLiteCommand cmd = sqlc.CreateCommand();
+            cmd.CommandText = "SELECT * FROM " + tableName;
+
+            using (SQLiteDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+
+                pd.Initialize();
+                pd.project_name = reader.GetString(0);
+                pd.created_at = reader.GetDateTime(1);
+                pd.updated_at = reader.GetDateTime(2);
+            }
+        }
+
+        /// <summary>
         /// データベースから国家データを取得
         /// </summary>
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        public void GetCountriesData(string dbFile, string tableName, int colmn, CountriesData cd)
+        public void ImportCountriesData(string dbFile, string tableName, int colmn, CountriesData cd)
         {
             ConnectionDataBase(dbFile);
-            GetData(tableName, colmn, cd);
+            GetCountryData(tableName, colmn, cd);
+            DisconnectionDataBase();
+        }
+
+        /// <summary>
+        /// データベースからプロジェクトデータを取得
+        /// </summary>
+        /// <param name="dbFile">ファイルパス</param>
+        /// <param name="tableName">テーブル名</param>
+        /// <param name="pd">クラスインスタンス</param>
+        public void ImportProjectData(string dbFile, string tableName, ProjectData pd)
+        {
+            ConnectionDataBase(dbFile);
+            GetProjectData(tableName, pd);
             DisconnectionDataBase();
         }
     }
