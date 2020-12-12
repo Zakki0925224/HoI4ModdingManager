@@ -18,7 +18,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
             var pi = new ProjectImporter();
 
             // dbファイルのパスを取得
-            string dbFilePath = Path.GetFullPath(@"..\..\ModdingProjectManager\Verification\countries_data.db");
+            string dbFilePath = Path.GetFullPath(@"..\..\ModdingProjectManager\Verification\test-mod.hmp");
             
 
             // 1国家1インスタンスとして保持
