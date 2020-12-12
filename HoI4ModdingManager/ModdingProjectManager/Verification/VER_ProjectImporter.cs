@@ -67,6 +67,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
             Console.WriteLine("country_flag_path_communism: " + cData.country_flag_path_communism);
             Console.WriteLine("country_flag_path_communism_medium: " + cData.country_flag_path_communism_medium);
             Console.WriteLine("country_flag_path_communism_small: " + cData.country_flag_path_communism_small);
+            Console.WriteLine("party_support_neutrality: " + cData.party_support_neutrality);
+            Console.WriteLine("party_support_democratic: " + cData.party_support_democratic);
+            Console.WriteLine("party_support_fascism: " + cData.party_support_fascism);
+            Console.WriteLine("party_support_communism: " + cData.party_support_communism);
 
             Console.WriteLine("---project data---");
             Console.WriteLine("project_name: " + pData.project_name);

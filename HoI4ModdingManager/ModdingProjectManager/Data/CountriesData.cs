@@ -53,6 +53,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public string country_flag_path_communism;
         public string country_flag_path_communism_medium;
         public string country_flag_path_communism_small;
+        public int party_support_neutrality;
+        public int party_support_democratic;
+        public int party_support_fascism;
+        public int party_support_communism;
 
         /// <summary>
         /// データをすべて初期化
@@ -108,6 +112,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
             country_flag_path_communism = null;
             country_flag_path_communism_medium = null;
             country_flag_path_communism_small = null;
+            party_support_neutrality = 0;
+            party_support_democratic = 0;
+            party_support_fascism = 0;
+            party_support_communism = 0;
         }
     }
 }

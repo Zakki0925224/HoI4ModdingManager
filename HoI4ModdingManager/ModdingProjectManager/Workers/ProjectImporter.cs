@@ -112,6 +112,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                 cd.country_flag_path_communism = reader.GetString(46);
                 cd.country_flag_path_communism_medium = reader.GetString(47);
                 cd.country_flag_path_communism_small = reader.GetString(48);
+                cd.party_support_neutrality = reader.GetInt32(49);
+                cd.party_support_democratic = reader.GetInt32(50);
+                cd.party_support_fascism = reader.GetInt32(51);
+                cd.party_support_communism = reader.GetInt32(52);
             }
         }
 
