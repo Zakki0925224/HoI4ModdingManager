@@ -16,6 +16,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     public partial class ProjectEditor : Form
     {
+
         // 引数（ファイルパス）
         private string[] filePathArgument;
 
@@ -33,9 +34,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             InitializeComponent();
             SetWindowTitle();
-
-            if (filePathArgument.Length == 1)
-                LoadData();
+            LoadData();
         }
 
         private void SetWindowTitle()
@@ -52,8 +51,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             }
         }
 
+        /// <summary>
+        /// データを取得
+        /// </summary>
         private void LoadData()
         {
+            if (filePathArgument.Length != 1)
+                return;
+
             var pi = new ProjectImporter();
             var pData = new ProjectData();
 
@@ -76,7 +81,21 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // UI更新
             foreach (CountriesData country in countryList)
             {
-                mainTab.TabPages.Add(country.country_name);
+                TabPage tabPage = new TabPage()
+                {
+                    Text = country.country_name,
+                    BackColor = Color.White
+                };
+
+                // こんな感じで追加していく
+                //　Label label = new Label()
+                //　{
+                //　    Text = country.country_name
+                //　};
+
+                //tabPage.Controls.Add(label);
+
+                mainTab.TabPages.Add(tabPage);
             }
         }
 
