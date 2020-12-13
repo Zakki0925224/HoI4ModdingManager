@@ -23,7 +23,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + avr.RespondAliasVersion() + avr.RespondVersionType();
         }
 
-        private void openProject()
+        private void OpenProject()
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
@@ -34,30 +34,30 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             }
         }
 
-        private void openProjectButton_Click(object sender, EventArgs e)
+        private void OpenProjectButton_Click(object sender, EventArgs e)
         {
-            openProject();
+            OpenProject();
         }
 
-        private void createProjectButton_Click(object sender, EventArgs e)
+        private void CreateProjectButton_Click(object sender, EventArgs e)
         {
             createProjectSettingsPanel.Visible = true;
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
             AppSettings apps = new AppSettings();
             apps.ShowDialog();
         }
 
-        private void createButton_Click(object sender, EventArgs e)
+        private void CreateButton_Click(object sender, EventArgs e)
         {
             ProjectEditor pe = new ProjectEditor();
             pe.Show();
             this.Close();
         }
 
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox.Checked)
             {

@@ -60,7 +60,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.settingsButton.TabIndex = 15;
             this.settingsButton.Text = "アプリケーション設定";
             this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // openProjectButton
             // 
@@ -75,7 +75,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.openProjectButton.TabIndex = 14;
             this.openProjectButton.Text = "プロジェクトを開く...";
             this.openProjectButton.UseVisualStyleBackColor = false;
-            this.openProjectButton.Click += new System.EventHandler(this.openProjectButton_Click);
+            this.openProjectButton.Click += new System.EventHandler(this.OpenProjectButton_Click);
             // 
             // createProjectButton
             // 
@@ -90,7 +90,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.createProjectButton.TabIndex = 13;
             this.createProjectButton.Text = "プロジェクトの新規作成";
             this.createProjectButton.UseVisualStyleBackColor = false;
-            this.createProjectButton.Click += new System.EventHandler(this.createProjectButton_Click);
+            this.createProjectButton.Click += new System.EventHandler(this.CreateProjectButton_Click);
             // 
             // titleLabel
             // 
@@ -125,7 +125,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.createButton.TabIndex = 9;
             this.createButton.Text = "作成";
             this.createButton.UseVisualStyleBackColor = false;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            this.createButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // projectNameTextBox
             // 
@@ -236,7 +236,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.checkBox.TabIndex = 10;
             this.checkBox.Text = "既存Modからプロジェクトを作成";
             this.checkBox.UseVisualStyleBackColor = true;
-            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            this.checkBox.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // StartWindow
             // 
