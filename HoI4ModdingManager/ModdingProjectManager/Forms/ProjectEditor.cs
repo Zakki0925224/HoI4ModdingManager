@@ -33,6 +33,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             InitializeComponent();
             SetWindowTitle();
+
+            if (filePathArgument.Length == 1)
+                LoadData();
         }
 
         private void SetWindowTitle()
@@ -69,6 +72,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             // フラグ更新
             projectOpening = true;
+
+            // UI更新
+            foreach (CountriesData country in countryList)
+            {
+                mainTab.TabPages.Add(country.country_name);
+            }
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
