@@ -1,5 +1,7 @@
 ﻿using HoI4ModdingManager.Common.Workers;
 using HoI4ModdingManager.Common.Forms;
+using HoI4ModdingManager.ModdingProjectManager.Workers;
+using HoI4ModdingManager.ModdingProjectManager.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +18,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     {
         // 引数（ファイルパス）
         private string[] filePathArgument;
+
         // フラグ
         private bool editingFlag;
         private bool projectOpening;
+
+        // 変数
+        private List<CountriesData> countryList = new List<CountriesData>();
 
         public ProjectEditor(params string[] filePathArgument)
         {
@@ -41,6 +47,28 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 this.Text = filePathArgument[0] + " - HoI4ModdingManager";
                 projectOpening = true;
             }
+        }
+
+        private void LoadData()
+        {
+            var pi = new ProjectImporter();
+            var pData = new ProjectData();
+
+            // リストのクリア
+            countryList.Clear();
+
+            // データ取得
+            pi.ImportProjectData(filePathArgument[0], "project_data", pData);
+
+            for (int i = 0; i < pData.number_of_countries; i++ )
+            {
+                var cData = new CountriesData();
+                pi.ImportCountriesData(filePathArgument[0], "countries_data", i, cData);
+                countryList.Add(cData);
+            }
+
+            // フラグ更新
+            projectOpening = true;
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)

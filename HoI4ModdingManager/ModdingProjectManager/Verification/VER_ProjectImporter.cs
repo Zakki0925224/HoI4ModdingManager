@@ -76,6 +76,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
             Console.WriteLine("project_name: " + pData.project_name);
             Console.WriteLine("created_at: " + pData.created_at);
             Console.WriteLine("updated_at: " + pData.updated_at);
+            Console.WriteLine("number_of_countries: " + pData.number_of_countries);
         }
     }
 }

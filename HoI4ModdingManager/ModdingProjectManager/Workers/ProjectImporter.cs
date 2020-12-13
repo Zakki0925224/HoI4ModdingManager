@@ -140,6 +140,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                 pd.project_name = reader.GetString(0);
                 pd.created_at = reader.GetDateTime(1);
                 pd.updated_at = reader.GetDateTime(2);
+                pd.number_of_countries = reader.GetInt32(3);
             }
         }
 

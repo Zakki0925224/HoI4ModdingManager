@@ -7,6 +7,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
         public string project_name;
         public DateTime created_at;
         public DateTime updated_at;
+        public int number_of_countries;
 
         /// <summary>
         /// データをすべて初期化
@@ -16,6 +17,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Data
             project_name = null;
             created_at = DateTime.MinValue;
             updated_at = DateTime.MinValue;
+            number_of_countries = 0;
         }
     }
 }
