@@ -60,7 +60,7 @@
     <Compile Include="Common\Workers\AppVersionResponder.cs" />
     <Compile Include="Common\Workers\AssemblyResponder.cs" />
     <Compile Include="Common\Workers\MessageBoxShower.cs" />
-    <Compile Include="Common\Workers\OpenDialogShower.cs" />
+    <Compile Include="Common\Workers\DialogShower.cs" />
     <Compile Include="Common\Workers\ProcessCreater.cs" />
     <Compile Include="ModdingProjectManager\Data\CountriesData.cs" />
     <Compile Include="ModdingProjectManager\Data\ProjectData.cs" />

@@ -150,6 +150,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.referenceButton.TabIndex = 8;
             this.referenceButton.Text = "参照";
             this.referenceButton.UseVisualStyleBackColor = false;
+            this.referenceButton.Click += new System.EventHandler(this.referenceButton_Click);
             // 
             // projectPlaceTextBox
             // 

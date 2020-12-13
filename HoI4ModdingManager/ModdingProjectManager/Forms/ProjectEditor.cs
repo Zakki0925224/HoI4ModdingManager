@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HoI4ModdingManager.Common.Workers;
+using HoI4ModdingManager.Common.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +16,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     {
         // 引数（ファイルパス）
         private string[] filePathArgument;
+        // フラグ
+        private bool editingFlag;
+        private bool projectOpening;
 
         public ProjectEditor(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
+            this.editingFlag = false;
 
             InitializeComponent();
             SetWindowTitle();
@@ -26,9 +32,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void SetWindowTitle()
         {
             if (filePathArgument.Length != 1)
+            {
                 this.Text = "HoI4ModdingManager";
+                projectOpening = false;
+            }
             else
+            {
                 this.Text = filePathArgument[0] + " - HoI4ModdingManager";
+                projectOpening = true;
+            }
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +80,35 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             Brush foreBrush = new SolidBrush(page.ForeColor);
             e.Graphics.DrawString(title, page.Font, foreBrush, e.Bounds, sf);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var ods = new DialogShower();
+            string filePath = ods.OpenFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
+
+            if (filePath != null)
+            {
+                var pc = new ProcessCreater();
+                pc.CreateNewProcess(filePath);
+            }
+        }
+
+        private void createProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var sw = new StartWindow();
+            sw.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppSettings apps = new AppSettings();
+            apps.ShowDialog();
         }
     }
 }
