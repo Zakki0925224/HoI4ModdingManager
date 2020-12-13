@@ -12,9 +12,23 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     public partial class ProjectEditor : Form
     {
-        public ProjectEditor()
+        // 引数（ファイルパス）
+        private string[] filePathArgument;
+
+        public ProjectEditor(params string[] filePathArgument)
         {
+            this.filePathArgument = filePathArgument;
+
             InitializeComponent();
+            SetWindowTitle();
+        }
+
+        private void SetWindowTitle()
+        {
+            if (filePathArgument.Length != 1)
+                this.Text = "HoI4ModdingManager";
+            else
+                this.Text = filePathArgument[0] + " - HoI4ModdingManager";
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)

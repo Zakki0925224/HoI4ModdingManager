@@ -9,12 +9,17 @@ namespace HoI4ModdingManager
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
+        /// <param name="args">ファイルパス引数</param>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProjectEditor());
+
+            if (args.Length == 0)
+                Application.Run(new ProjectEditor());
+            else
+                Application.Run(new ProjectEditor(args[0]));
         }
     }
 }

@@ -1,13 +1,7 @@
 ﻿using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Workers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
@@ -23,20 +17,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + avr.RespondAliasVersion() + avr.RespondVersionType();
         }
 
-        private void OpenProject()
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Title = "プロジェクトを開く...";
-                ofd.Filter = "HoI4 Modding Project (*.hmp)|*.hmp";
-
-                DialogResult dr = ofd.ShowDialog();
-            }
-        }
-
         private void OpenProjectButton_Click(object sender, EventArgs e)
         {
-            OpenProject();
+            // 新しいプロセスで開始
+            var ods = new OpenDialogShower();
+            var pc = new ProcessCreater();
+            pc.CreateNewProcess(ods.OpenFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true));
+
+            this.Close();
         }
 
         private void CreateProjectButton_Click(object sender, EventArgs e)
@@ -52,9 +40,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            ProjectEditor pe = new ProjectEditor();
-            pe.Show();
-            this.Close();
+            
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
