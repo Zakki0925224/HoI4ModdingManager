@@ -1,7 +1,7 @@
 ﻿
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
-    partial class ProjectEditor
+    partial class ProjectDashBoard
     {
         /// <summary>
         /// Required designer variable.
@@ -41,13 +41,21 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTab = new System.Windows.Forms.TabControl();
             this.testTab1 = new System.Windows.Forms.TabPage();
             this.testTab2 = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.countryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ideologyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.focusManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
             this.SuspendLayout();
@@ -141,9 +149,28 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // 
             // projectToolStripMenuItem
             // 
+            this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectSettingsToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.countryManagerToolStripMenuItem,
+            this.ideologyManagerToolStripMenuItem,
+            this.mapManagerToolStripMenuItem,
+            this.focusManagerToolStripMenuItem,
+            this.eventManagerToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
             this.projectToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.projectToolStripMenuItem.Text = "プロジェクト(&P)";
+            // 
+            // projectSettingsToolStripMenuItem
+            // 
+            this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
+            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.projectSettingsToolStripMenuItem.Text = "プロジェクト設定(&P)...";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(184, 6);
             // 
             // toolToolStripMenuItem
             // 
@@ -162,9 +189,17 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.helpToolStripMenuItem.Text = "ヘルプ(&H)";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "バージョン情報(&A)";
             // 
             // mainTab
             // 
@@ -214,7 +249,37 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // ProjectEditor
+            // countryManagerToolStripMenuItem
+            // 
+            this.countryManagerToolStripMenuItem.Name = "countryManagerToolStripMenuItem";
+            this.countryManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.countryManagerToolStripMenuItem.Text = "CountryManager(&C)...";
+            // 
+            // ideologyManagerToolStripMenuItem
+            // 
+            this.ideologyManagerToolStripMenuItem.Name = "ideologyManagerToolStripMenuItem";
+            this.ideologyManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.ideologyManagerToolStripMenuItem.Text = "IdeologyManager(&I)...";
+            // 
+            // mapManagerToolStripMenuItem
+            // 
+            this.mapManagerToolStripMenuItem.Name = "mapManagerToolStripMenuItem";
+            this.mapManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.mapManagerToolStripMenuItem.Text = "MapManager(&M)...";
+            // 
+            // focusManagerToolStripMenuItem
+            // 
+            this.focusManagerToolStripMenuItem.Name = "focusManagerToolStripMenuItem";
+            this.focusManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.focusManagerToolStripMenuItem.Text = "FocusManager(&F)...";
+            // 
+            // eventManagerToolStripMenuItem
+            // 
+            this.eventManagerToolStripMenuItem.Name = "eventManagerToolStripMenuItem";
+            this.eventManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.eventManagerToolStripMenuItem.Text = "EventManager(&E)...";
+            // 
+            // ProjectDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -225,7 +290,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(720, 480);
-            this.Name = "ProjectEditor";
+            this.Name = "ProjectDashBoard";
             this.Text = "ProjectEditor";
             this.Load += new System.EventHandler(this.ProjectEditor_Load);
             this.menuStrip.ResumeLayout(false);
@@ -257,5 +322,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem projectSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem countryManagerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ideologyManagerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapManagerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem focusManagerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventManagerToolStripMenuItem;
     }
 }

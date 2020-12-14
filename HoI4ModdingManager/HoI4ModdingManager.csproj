@@ -64,11 +64,11 @@
     <Compile Include="Common\Workers\ProcessCreater.cs" />
     <Compile Include="ModdingProjectManager\Data\CountriesData.cs" />
     <Compile Include="ModdingProjectManager\Data\ProjectData.cs" />
-    <Compile Include="ModdingProjectManager\Forms\ProjectEditor.cs">
+    <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModdingProjectManager\Forms\ProjectEditor.Designer.cs">
-      <DependentUpon>ProjectEditor.cs</DependentUpon>
+    <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.Designer.cs">
+      <DependentUpon>ProjectDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="ModdingProjectManager\Forms\StartWindow.cs">
       <SubType>Form</SubType>
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="Common\Forms\AppSettings.resx">
       <DependentUpon>AppSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModdingProjectManager\Forms\ProjectEditor.resx">
-      <DependentUpon>ProjectEditor.cs</DependentUpon>
+    <EmbeddedResource Include="ModdingProjectManager\Forms\ProjectDashboard.resx">
+      <DependentUpon>ProjectDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModdingProjectManager\Forms\StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>

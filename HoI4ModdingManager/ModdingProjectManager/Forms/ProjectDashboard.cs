@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
-    public partial class ProjectEditor : Form
+    public partial class ProjectDashBoard : Form
     {
 
         // 引数（ファイルパス）
@@ -27,7 +27,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         // 変数
         private List<CountriesData> countryList = new List<CountriesData>();
 
-        public ProjectEditor(params string[] filePathArgument)
+        public ProjectDashBoard(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
             this.editingFlag = false;

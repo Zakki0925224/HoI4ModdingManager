@@ -17,9 +17,9 @@ namespace HoI4ModdingManager
             Application.SetCompatibleTextRenderingDefault(false);
 
             if (args.Length == 0)
-                Application.Run(new ProjectEditor());
+                Application.Run(new ProjectDashBoard());
             else
-                Application.Run(new ProjectEditor(args[0]));
+                Application.Run(new ProjectDashBoard(args[0]));
         }
     }
 }
