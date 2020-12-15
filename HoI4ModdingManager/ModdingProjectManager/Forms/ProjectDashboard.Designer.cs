@@ -291,7 +291,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "ProjectDashBoard";
-            this.Text = "ProjectEditor";
+            this.Text = "ProjectDashboard";
             this.Load += new System.EventHandler(this.ProjectEditor_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
