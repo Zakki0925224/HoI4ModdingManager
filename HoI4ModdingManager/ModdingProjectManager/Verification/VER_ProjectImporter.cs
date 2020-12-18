@@ -11,9 +11,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
     class VER_ProjectImporter
     {
         /// <summary>
-        /// GetCountriesData()を検証
+        /// データ取得の検証
         /// </summary>
-        public void Verification_GetCountriesData()
+        public void Verification_GetData()
         {
             var pi = new ProjectImporter();
 

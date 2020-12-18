@@ -108,7 +108,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void ProjectEditor_Load(object sender, EventArgs e)
         {
             //var ver_pi = new Verification.VER_ProjectImporter();
-            //ver_pi.Verification_GetCountriesData();
+            //ver_pi.Verification_GetData();
         }
 
         /// <summary>
