@@ -7,7 +7,7 @@
 
 カラム|データ型（SQLite3）|説明|記述例
 ---|---|---|---
-**project_name**|TEXT|プロジェクト名|*Kaiserreich*
+**project_name**|TEXT|プロジェクト名|*RomaMod*
 **created_at**|-|プロジェクトが作成された日付|*2020-12-12*
 **updated_at**|-|プロジェクトが更新された日付|*2020-12-12*
 **number_of_countries**|INTGER|プロジェクトに含まれている国の数|*3*
