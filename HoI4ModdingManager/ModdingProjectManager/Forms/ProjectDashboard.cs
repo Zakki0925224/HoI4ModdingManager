@@ -71,7 +71,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             for (int i = 0; i < pData.number_of_countries; i++ )
             {
                 var cData = new CountriesData();
-                pi.ImportCountriesData(filePathArgument[0], "countries_data", i, cData);
+                pi.ImportCountryData(filePathArgument[0], "countries_data", i, cData);
                 countryList.Add(cData);
             }
 

@@ -23,7 +23,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Verification
 
             // 1国家1インスタンスとして保持
             var cData = new CountriesData();
-            pi.ImportCountriesData(dbFilePath, "countries_data", 0, cData);
+            pi.ImportCountryData(dbFilePath, "countries_data", 0, cData);
 
             var pData = new ProjectData();
             pi.ImportProjectData(dbFilePath, "project_data", pData);

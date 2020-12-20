@@ -50,10 +50,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
             if (sqlc == null)
                 return;
 
-            SQLiteCommand cmd = sqlc.CreateCommand();
+            var cmd = sqlc.CreateCommand();
             cmd.CommandText = "SELECT * FROM " + tableName + " LIMIT " + colmn + ", 1";
 
-            using (SQLiteDataReader reader = cmd.ExecuteReader())
+            using (var reader = cmd.ExecuteReader())
             {
                 reader.Read();
                 cd.Initialize();
@@ -129,10 +129,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
             if (sqlc == null)
                 return;
 
-            SQLiteCommand cmd = sqlc.CreateCommand();
+            var cmd = sqlc.CreateCommand();
             cmd.CommandText = "SELECT * FROM " + tableName;
 
-            using (SQLiteDataReader reader = cmd.ExecuteReader())
+            using (var reader = cmd.ExecuteReader())
             {
                 reader.Read();
 
@@ -141,6 +141,97 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
                 pd.created_at = reader.GetDateTime(1);
                 pd.updated_at = reader.GetDateTime(2);
                 pd.number_of_countries = reader.GetInt32(3);
+                pd.number_of_ideologies = reader.GetInt32(4);
+            }
+        }
+
+        /// <summary>
+        /// イデオロギーデータを取得
+        /// </summary>
+        /// <param name="tableName">テーブル名</param>
+        /// <param name="id">クラスインスタンス</param>
+        private void GetIdeologiesData(string tableName, IdeologiesData id)
+        {
+            if (sqlc == null)
+                return;
+
+            var cmd = sqlc.CreateCommand();
+            cmd.CommandText = "SELECT * FROM " + tableName;
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+
+                id.Initialize();
+                id.ideology_name = reader.GetString(0);
+                // コンマで区切る（スペースは含めない）
+                id.small_ideologies = reader.GetString(1).Split(',');
+                id.color_r = reader.GetInt32(2);
+                id.color_g = reader.GetInt32(3);
+                id.color_b = reader.GetInt32(4);
+
+                if (reader.GetInt32(5) == 0)
+                    id.rule_can_force_government = false;
+                else
+                    id.rule_can_force_government = true;
+
+                if (reader.GetInt32(6) == 0)
+                    id.rule_can_puppet = false;
+                else
+                    id.rule_can_puppet = true;
+
+                if (reader.GetInt32(7) == 0)
+                    id.rule_can_join_factions = false;
+                else
+                    id.rule_can_join_factions = true;
+
+                if (reader.GetInt32(8) == 0)
+                    id.rule_can_create_factions = false;
+                else
+                    id.rule_can_create_factions = true;
+
+                if (reader.GetInt32(9) == 0)
+                    id.rule_can_send_volunteers = false;
+                else
+                    id.rule_can_send_volunteers = true;
+
+                if (reader.GetInt32(10) == 0)
+                    id.rule_can_lower_tension = false;
+                else
+                    id.rule_can_lower_tension = true;
+
+                id.modifier_generate_wargoal_tension = reader.GetInt32(11);
+                id.modifier_guarantee_tension = reader.GetInt32(12);
+                id.modifier_civilian_intel_to_others = reader.GetInt32(13);
+                id.modifier_army_intel_to_others = reader.GetInt32(14);
+                id.modifier_navy_intel_to_others = reader.GetInt32(15);
+                id.modifier_airforce_intel_to_others = reader.GetInt32(16);
+                id.modifier_justify_war_goal_when_in_major_war_time = reader.GetInt32(17);
+                id.modifier_join_faction_tension = reader.GetInt32(18);
+                id.modifier_lend_lease_tension = reader.GetInt32(19);
+                id.modifier_annex_cost_factor = reader.GetInt32(20);
+
+                if (reader.GetInt32(21) == 0)
+                    id.ai_uses_this_ideology = false;
+                else
+                    id.ai_uses_this_ideology = true;
+
+                if (reader.GetInt32(22) == 0)
+                    id.can_be_boosted = false;
+                else
+                    id.can_be_boosted = true;
+
+                id.war_impact_on_world_tension = reader.GetInt32(23);
+
+                if (reader.GetInt32(23) == 0)
+                    id.can_collaborate = false;
+                else
+                    id.can_collaborate = true;
+
+                if (reader.GetInt32(24) == 0)
+                    id.can_host_government_in_exile = false;
+                else
+                    id.can_host_government_in_exile = true;
             }
         }
 
@@ -151,7 +242,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        public void ImportCountriesData(string dbFile, string tableName, int colmn, CountriesData cd)
+        public void ImportCountryData(string dbFile, string tableName, int colmn, CountriesData cd)
         {
             ConnectionDataBase(dbFile);
             GetCountryData(tableName, colmn, cd);
@@ -168,6 +259,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         {
             ConnectionDataBase(dbFile);
             GetProjectData(tableName, pd);
+            DisconnectionDataBase();
+        }
+
+        /// <summary>
+        /// データベースからイデオロギーデータを取得
+        /// </summary>
+        /// <param name="dbFile">ファイルパス</param>
+        /// <param name="tableName">テーブル名</param>
+        /// <param name="id">クラスインスタンス</param>
+        public void ImportIdeologyData(string dbFile, string tableName, IdeologiesData id)
+        {
+            ConnectionDataBase(dbFile);
+            GetIdeologiesData(tableName, id);
             DisconnectionDataBase();
         }
     }

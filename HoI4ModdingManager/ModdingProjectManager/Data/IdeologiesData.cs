@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HoI4ModdingManager.ModdingProjectManager.Data
+﻿namespace HoI4ModdingManager.ModdingProjectManager.Data
 {
     class IdeologiesData
     {
