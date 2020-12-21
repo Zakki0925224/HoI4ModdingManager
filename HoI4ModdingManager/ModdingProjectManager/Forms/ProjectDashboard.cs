@@ -16,7 +16,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     public partial class ProjectDashBoard : Form
     {
-
         // 引数（ファイルパス）
         private string[] filePathArgument;
 
@@ -34,7 +33,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             InitializeComponent();
             SetWindowTitle();
-            LoadData();
+            SetData();
         }
 
         private void SetWindowTitle()
@@ -54,7 +53,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <summary>
         /// データを取得
         /// </summary>
-        private void LoadData()
+        private void SetData()
         {
             if (filePathArgument.Length != 1)
                 return;
@@ -81,7 +80,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // UI更新
             foreach (CountryDataHanger country in countryList)
             {
-                TabPage tabPage = new TabPage()
+                var tabPage = new TabPage()
                 {
                     Text = country.country_name,
                     BackColor = Color.White
@@ -101,14 +100,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StartWindow sw = new StartWindow();
+            var sw = new StartWindow();
             sw.ShowDialog();
         }
 
         private void ProjectEditor_Load(object sender, EventArgs e)
         {
-            //var ver_pi = new Verification.VER_ProjectImporter();
-            //ver_pi.Verification_GetData();
+            
         }
 
         /// <summary>
@@ -118,11 +116,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <param name="e"></param>
         private void MainTab_DrawItem(object sender, DrawItemEventArgs e)
         {
-            TabControl tab = (TabControl)sender;
-            TabPage page = tab.TabPages[e.Index];
+            var tab = (TabControl)sender;
+            var page = tab.TabPages[e.Index];
 
             string title = page.Text;
-            StringFormat sf = new StringFormat()
+            var sf = new StringFormat()
             {
                 LineAlignment = StringAlignment.Center,
                 Alignment = StringAlignment.Center,
@@ -130,11 +128,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             };
             sf.FormatFlags |= StringFormatFlags.LineLimit;
             
-            Brush backBrush = new SolidBrush(page.BackColor);
+            var backBrush = new SolidBrush(page.BackColor);
             e.Graphics.FillRectangle(backBrush, e.Bounds);
             backBrush.Dispose();
 
-            Brush foreBrush = new SolidBrush(page.ForeColor);
+            var foreBrush = new SolidBrush(page.ForeColor);
             e.Graphics.DrawString(title, page.Font, foreBrush, e.Bounds, sf);
         }
 
@@ -163,7 +161,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AppSettings apps = new AppSettings();
+            var apps = new AppSettings();
             apps.ShowDialog();
         }
     }

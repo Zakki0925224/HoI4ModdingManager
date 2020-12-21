@@ -13,7 +13,7 @@ namespace HoI4ModdingManager.Common.Workers
         /// <returns></returns>
         private Version GetAssembryVersion()
         {
-            AssemblyResponder ar = new AssemblyResponder();
+            var ar = new AssemblyResponder();
             return ar.RespondAssembryVersionRaw();
         }
 

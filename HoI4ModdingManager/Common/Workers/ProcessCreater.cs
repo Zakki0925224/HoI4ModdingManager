@@ -11,7 +11,7 @@ namespace HoI4ModdingManager.Common.Workers
         /// <param name="filePath">開きたいファイルパス</param>
         public void CreateNewProcess(string filePath)
         {
-            ProcessStartInfo psi = new ProcessStartInfo()
+            var psi = new ProcessStartInfo()
             {
                 FileName = Application.ExecutablePath,
                 Arguments = "\"" + filePath + "\""

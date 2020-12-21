@@ -14,7 +14,7 @@ namespace HoI4ModdingManager.Common.Workers
         /// <returns></returns>
         public string RespondAssemblyTitle()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetExecutingAssembly();
             return assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
         }
 
@@ -24,7 +24,7 @@ namespace HoI4ModdingManager.Common.Workers
         /// <returns></returns>
         public string RespondAssemblyCopyright()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetExecutingAssembly();
             return assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
         }
 
@@ -34,8 +34,8 @@ namespace HoI4ModdingManager.Common.Workers
         /// <returns></returns>
         public string RespondAssembryVersion()
         {
-            AssemblyName assemblyName = Assembly.GetExecutingAssembly().GetName();
-            Version version = assemblyName.Version;
+            var assemblyName = Assembly.GetExecutingAssembly().GetName();
+            var version = assemblyName.Version;
             return version.ToString();
         }
 
@@ -45,7 +45,7 @@ namespace HoI4ModdingManager.Common.Workers
         /// <returns></returns>
         public Version RespondAssembryVersionRaw()
         {
-            AssemblyName assemblyName = Assembly.GetExecutingAssembly().GetName();
+            var assemblyName = Assembly.GetExecutingAssembly().GetName();
             return assemblyName.Version;
         }
     }

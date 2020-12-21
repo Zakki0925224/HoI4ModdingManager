@@ -12,8 +12,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             InitializeComponent();
 
-            AssemblyResponder ar = new AssemblyResponder();
-            AppVersionResponder avr = new AppVersionResponder();
+            var ar = new AssemblyResponder();
+            var avr = new AppVersionResponder();
             titleLabel.Text = ar.RespondAssemblyTitle() + " - v" + avr.RespondAliasVersion() + avr.RespondVersionType();
         }
 
@@ -34,7 +34,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            AppSettings apps = new AppSettings();
+            var apps = new AppSettings();
             apps.ShowDialog();
         }
 
