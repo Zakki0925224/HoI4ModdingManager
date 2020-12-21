@@ -1,7 +1,7 @@
 ﻿using HoI4ModdingManager.Common.Workers;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.ModdingProjectManager.Workers;
-using HoI4ModdingManager.ModdingProjectManager.Data;
+using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,4 +1,4 @@
-﻿namespace HoI4ModdingManager.ModdingProjectManager.Data
+﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
     class IdeologyDataHanger
     {

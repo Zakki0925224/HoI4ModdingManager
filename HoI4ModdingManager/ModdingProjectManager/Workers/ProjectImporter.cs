@@ -1,5 +1,5 @@
 ﻿using System;
-using HoI4ModdingManager.ModdingProjectManager.Data;
+using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System.Data.SQLite;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Workers
