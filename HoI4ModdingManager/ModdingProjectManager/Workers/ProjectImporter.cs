@@ -14,7 +14,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="dbFile">ファイルパス</param>
         private void ConnectionDataBase(string dbFile)
         {
-            sqlc = new SQLiteConnection("Data Source=" + dbFile);
+            var sqlc = new SQLiteConnection("Data Source=" + dbFile);
             
             try
             {
@@ -45,7 +45,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        private void GetCountryData(string tableName, int colmn, CountryDataHanger cd)
+        private void ReadCountryData(string tableName, int colmn, CountryDataHanger cd)
         {
             if (sqlc == null)
                 return;
@@ -124,7 +124,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// </summary>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        private void GetProjectData(string tableName, ProjectDataHanger pd)
+        private void ReadProjectData(string tableName, ProjectDataHanger pd)
         {
             if (sqlc == null)
                 return;
@@ -149,14 +149,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// イデオロギーデータを取得
         /// </summary>
         /// <param name="tableName">テーブル名</param>
+        /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="id">クラスインスタンス</param>
-        private void GetIdeologiesData(string tableName, IdeologyDataHanger id)
+        private void ReadIdeologyData(string tableName, int colmn, IdeologyDataHanger id)
         {
             if (sqlc == null)
                 return;
 
             var cmd = sqlc.CreateCommand();
-            cmd.CommandText = "SELECT * FROM " + tableName;
+            cmd.CommandText = "SELECT * FROM " + tableName + " LIMIT " + colmn + ", 1";
 
             using (var reader = cmd.ExecuteReader())
             {
@@ -245,7 +246,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd)
         {
             ConnectionDataBase(dbFile);
-            GetCountryData(tableName, colmn, cd);
+            ReadCountryData(tableName, colmn, cd);
             DisconnectionDataBase();
         }
 
@@ -258,7 +259,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd)
         {
             ConnectionDataBase(dbFile);
-            GetProjectData(tableName, pd);
+            ReadProjectData(tableName, pd);
             DisconnectionDataBase();
         }
 
@@ -267,11 +268,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// </summary>
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
+        /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="id">クラスインスタンス</param>
-        public void ImportIdeologyData(string dbFile, string tableName, IdeologyDataHanger id)
+        public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id)
         {
             ConnectionDataBase(dbFile);
-            GetIdeologiesData(tableName, id);
+            ReadIdeologyData(tableName, colmn, id);
             DisconnectionDataBase();
         }
     }
