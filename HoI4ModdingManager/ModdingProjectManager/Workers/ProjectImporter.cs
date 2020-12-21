@@ -45,7 +45,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        private void GetCountryData(string tableName, int colmn, CountriesData cd)
+        private void GetCountryData(string tableName, int colmn, CountryDataHanger cd)
         {
             if (sqlc == null)
                 return;
@@ -124,7 +124,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// </summary>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        private void GetProjectData(string tableName, ProjectData pd)
+        private void GetProjectData(string tableName, ProjectDataHanger pd)
         {
             if (sqlc == null)
                 return;
@@ -150,7 +150,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// </summary>
         /// <param name="tableName">テーブル名</param>
         /// <param name="id">クラスインスタンス</param>
-        private void GetIdeologiesData(string tableName, IdeologiesData id)
+        private void GetIdeologiesData(string tableName, IdeologyDataHanger id)
         {
             if (sqlc == null)
                 return;
@@ -242,7 +242,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        public void ImportCountryData(string dbFile, string tableName, int colmn, CountriesData cd)
+        public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd)
         {
             ConnectionDataBase(dbFile);
             GetCountryData(tableName, colmn, cd);
@@ -255,7 +255,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        public void ImportProjectData(string dbFile, string tableName, ProjectData pd)
+        public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd)
         {
             ConnectionDataBase(dbFile);
             GetProjectData(tableName, pd);
@@ -268,7 +268,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Workers
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
         /// <param name="id">クラスインスタンス</param>
-        public void ImportIdeologyData(string dbFile, string tableName, IdeologiesData id)
+        public void ImportIdeologyData(string dbFile, string tableName, IdeologyDataHanger id)
         {
             ConnectionDataBase(dbFile);
             GetIdeologiesData(tableName, id);

@@ -2,7 +2,7 @@
 
 namespace HoI4ModdingManager.ModdingProjectManager.Data
 {
-    class ProjectData
+    class ProjectDataHanger
     {
         public string project_name;
         public DateTime created_at;

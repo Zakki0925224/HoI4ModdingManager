@@ -25,7 +25,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private bool projectOpening;
 
         // 変数
-        private List<CountriesData> countryList = new List<CountriesData>();
+        private List<CountryDataHanger> countryList = new List<CountryDataHanger>();
 
         public ProjectDashBoard(params string[] filePathArgument)
         {
@@ -60,7 +60,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
 
             var pi = new ProjectImporter();
-            var pData = new ProjectData();
+            var pData = new ProjectDataHanger();
 
             // リストのクリア
             countryList.Clear();
@@ -70,7 +70,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             for (int i = 0; i < pData.number_of_countries; i++ )
             {
-                var cData = new CountriesData();
+                var cData = new CountryDataHanger();
                 pi.ImportCountryData(filePathArgument[0], "countries_data", i, cData);
                 countryList.Add(cData);
             }
@@ -79,7 +79,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             projectOpening = true;
 
             // UI更新
-            foreach (CountriesData country in countryList)
+            foreach (CountryDataHanger country in countryList)
             {
                 TabPage tabPage = new TabPage()
                 {

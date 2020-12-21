@@ -1,6 +1,6 @@
 ﻿namespace HoI4ModdingManager.ModdingProjectManager.Data
 {
-    class IdeologiesData
+    class IdeologyDataHanger
     {
         public string ideology_name;
         public string[] small_ideologies;

@@ -2,7 +2,7 @@
 
 namespace HoI4ModdingManager.ModdingProjectManager.Data
 {
-    class CountriesData
+    class CountryDataHanger
     {
         public int id;
         public string country_tag;
