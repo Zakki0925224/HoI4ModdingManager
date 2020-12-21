@@ -77,7 +77,6 @@
     <Compile Include="ModdingProjectManager\Forms\StartWindow.Designer.cs">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModdingProjectManager\Verification\VER_ProjectImporter.cs" />
     <Compile Include="ModdingProjectManager\Workers\ProjectImporter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
