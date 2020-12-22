@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HoI4ModdingManager.Common;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -58,7 +59,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (filePathArgument.Length != 1)
                 return;
 
-            var pi = new SQLiteImporter();
+            var pi = new StoreData();
             var pData = new ProjectDataHanger();
 
             // リストのクリア

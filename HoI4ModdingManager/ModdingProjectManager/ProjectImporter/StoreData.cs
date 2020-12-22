@@ -1,54 +1,22 @@
-﻿using System;
-using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+using HoI4ModdingManager.ModdingProjectManager.SQLite;
 using System.Data.SQLite;
 
 namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 {
-    class SQLiteImporter
+    class StoreData
     {
-        SQLiteConnection sqlc = null;
-        
-        /// <summary>
-        /// データベース接続
-        /// </summary>
-        /// <param name="dbFile">ファイルパス</param>
-        private void ConnectionDataBase(string dbFile)
-        {
-            var sqlc = new SQLiteConnection("Data Source=" + dbFile);
-            
-            try
-            {
-                sqlc.Open();
-                // debug log
-                Console.WriteLine("[SQLite]: Connenction successfull.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("[SQLite]: " + e.Message);
-            }
-        }
-
-        /// <summary>
-        /// データベース切断
-        /// </summary>
-        private void DisconnectionDataBase()
-        {
-            if (sqlc == null)
-                return;
-
-            sqlc.Close();
-        }
-
         /// <summary>
         /// 国家データを取得（一列のみ）
         /// </summary>
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        private void ReadCountryData(string tableName, int colmn, CountryDataHanger cd)
+        /// <param name="sqlc">SQLiteConnection</param>
+        private void ReadCountryData(string tableName, int colmn, CountryDataHanger cd, SQLiteConnection sqlc)
         {
             if (sqlc == null)
-                return;
+                throw new NotConnectingException();
 
             var cmd = sqlc.CreateCommand();
             cmd.CommandText = "SELECT * FROM " + tableName + " LIMIT " + colmn + ", 1";
@@ -124,10 +92,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// </summary>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        private void ReadProjectData(string tableName, ProjectDataHanger pd)
+        /// <param name="sqlc">SQLiteConnection</param>
+        private void ReadProjectData(string tableName, ProjectDataHanger pd, SQLiteConnection sqlc)
         {
             if (sqlc == null)
-                return;
+                throw new NotConnectingException();
 
             var cmd = sqlc.CreateCommand();
             cmd.CommandText = "SELECT * FROM " + tableName;
@@ -151,10 +120,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="id">クラスインスタンス</param>
-        private void ReadIdeologyData(string tableName, int colmn, IdeologyDataHanger id)
+        /// <param name="sqlc">SQLiteConnection</param>
+        private void ReadIdeologyData(string tableName, int colmn, IdeologyDataHanger id, SQLiteConnection sqlc)
         {
             if (sqlc == null)
-                return;
+                throw new NotConnectingException();
 
             var cmd = sqlc.CreateCommand();
             cmd.CommandText = "SELECT * FROM " + tableName + " LIMIT " + colmn + ", 1";
@@ -245,9 +215,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="cd">クラスインスタンス</param>
         public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd)
         {
-            ConnectionDataBase(dbFile);
-            ReadCountryData(tableName, colmn, cd);
-            DisconnectionDataBase();
+            using (DataBaseConnector dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile);
+                ReadCountryData(tableName, colmn, cd, dbc.sqlc);
+            }
         }
 
         /// <summary>
@@ -258,9 +230,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="pd">クラスインスタンス</param>
         public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd)
         {
-            ConnectionDataBase(dbFile);
-            ReadProjectData(tableName, pd);
-            DisconnectionDataBase();
+            using (DataBaseConnector dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile);
+                ReadProjectData(tableName, pd, dbc.sqlc);
+            }
         }
 
         /// <summary>
@@ -272,9 +246,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="id">クラスインスタンス</param>
         public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id)
         {
-            ConnectionDataBase(dbFile);
-            ReadIdeologyData(tableName, colmn, id);
-            DisconnectionDataBase();
+            using (DataBaseConnector dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile);
+                ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
+            }
         }
     }
 }

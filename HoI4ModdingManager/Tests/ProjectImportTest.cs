@@ -12,7 +12,7 @@ namespace HoI4ModdingManager.Tests
     {
         public void StartProjectImportTest(string filePath)
         {
-            var pi = new SQLiteImporter();
+            var pi = new StoreData();
 
             var pdh = new ProjectDataHanger();
             var cdh = new CountryDataHanger();

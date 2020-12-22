@@ -1,5 +1,7 @@
-﻿using HoI4ModdingManager.Common.Forms;
+﻿using HoI4ModdingManager.Common;
+using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.Common.Responders;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
