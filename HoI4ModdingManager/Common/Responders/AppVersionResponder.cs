@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HoI4ModdingManager.Common.Workers
+namespace HoI4ModdingManager.Common.Responders
 {
     /// <summary>
     /// ソフトのバージョン情報を返す

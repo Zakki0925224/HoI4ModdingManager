@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace HoI4ModdingManager.Common.Workers
+namespace HoI4ModdingManager.Common.Responders
 {
     /// <summary>
     /// アプリケーションのアセンブリ情報を返す

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HoI4ModdingManager.ModdingProjectManager.Workers;
+using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 
 namespace HoI4ModdingManager.Tests
@@ -12,7 +12,7 @@ namespace HoI4ModdingManager.Tests
     {
         public void StartProjectImportTest(string filePath)
         {
-            var pi = new ProjectImporter();
+            var pi = new SQLiteImporter();
 
             var pdh = new ProjectDataHanger();
             var cdh = new CountryDataHanger();

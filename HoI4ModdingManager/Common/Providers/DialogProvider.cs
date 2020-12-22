@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
 
-namespace HoI4ModdingManager.Common.Workers
+namespace HoI4ModdingManager.Common.Providers
 {
     /// <summary>
     /// ダイアログを表示
     /// </summary>
-    class DialogShower
+    class DialogProvider
     {
         /// <summary>
         /// ファイルを開く

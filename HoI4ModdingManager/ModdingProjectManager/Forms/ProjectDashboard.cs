@@ -1,6 +1,6 @@
-﻿using HoI4ModdingManager.Common.Workers;
+﻿using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Forms;
-using HoI4ModdingManager.ModdingProjectManager.Workers;
+using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System;
 using System.Collections.Generic;
@@ -58,7 +58,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (filePathArgument.Length != 1)
                 return;
 
-            var pi = new ProjectImporter();
+            var pi = new SQLiteImporter();
             var pData = new ProjectDataHanger();
 
             // リストのクリア
@@ -138,7 +138,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ods = new DialogShower();
+            var ods = new DialogProvider();
             string filePath = ods.OpenFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
 
             if (filePath != null)

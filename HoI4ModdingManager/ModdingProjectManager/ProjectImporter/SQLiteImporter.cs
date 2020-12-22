@@ -2,9 +2,9 @@
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System.Data.SQLite;
 
-namespace HoI4ModdingManager.ModdingProjectManager.Workers
+namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 {
-    class ProjectImporter
+    class SQLiteImporter
     {
         SQLiteConnection sqlc = null;
         

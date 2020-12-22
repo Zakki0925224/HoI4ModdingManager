@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace HoI4ModdingManager.Common.Workers
+namespace HoI4ModdingManager.Common
 {
     class ProcessCreater
     {
@@ -16,7 +16,7 @@ namespace HoI4ModdingManager.Common.Workers
                 FileName = Application.ExecutablePath,
                 Arguments = "\"" + filePath + "\""
             };
-            System.Diagnostics.Process.Start(psi);
+            Process.Start(psi);
         }
     }
 }

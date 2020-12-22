@@ -1,11 +1,11 @@
 ﻿using System.Windows.Forms;
 
-namespace HoI4ModdingManager.Common.Workers
+namespace HoI4ModdingManager.Common.Providers
 {
     /// <summary>
     /// メッセージボックス関連の処理
     /// </summary>
-    class MessageBoxShower
+    class MessageBoxProvider
     {
         /// <summary>
         /// エラーメッセージ

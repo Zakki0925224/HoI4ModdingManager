@@ -1,5 +1,5 @@
 ﻿using HoI4ModdingManager.Common.Forms;
-using HoI4ModdingManager.Common.Workers;
+using HoI4ModdingManager.Common.Providers;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -20,7 +20,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void OpenProjectButton_Click(object sender, EventArgs e)
         {
             // 新しいプロセスで開始
-            var ds = new DialogShower();
+            var ds = new DialogProvider();
             var pc = new ProcessCreater();
             pc.CreateNewProcess(ds.OpenFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true));
 
@@ -61,7 +61,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void referenceButton_Click(object sender, EventArgs e)
         {
-            var ds = new DialogShower();
+            var ds = new DialogProvider();
             projectPlaceTextBox.Text = ds.SaveFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを保存", true);
         }
     }
