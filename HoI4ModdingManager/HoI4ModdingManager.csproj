@@ -62,6 +62,9 @@
     <Compile Include="Common\Providers\MessageBoxProvider.cs" />
     <Compile Include="Common\Providers\DialogProvider.cs" />
     <Compile Include="Common\ProcessCreater.cs" />
+    <Compile Include="ModdingProjectManager\DataContainer\CountryDataContainer.cs" />
+    <Compile Include="ModdingProjectManager\DataContainer\IdeologyDataContainer.cs" />
+    <Compile Include="ModdingProjectManager\DataContainer\ProjectDataContainer.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\CountryDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />

@@ -1,16 +1,10 @@
-﻿using HoI4ModdingManager.Common.Providers;
+﻿using HoI4ModdingManager.Common;
 using HoI4ModdingManager.Common.Forms;
-using HoI4ModdingManager.ModdingProjectManager;
+using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.ModdingProjectManager.DataContainer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using HoI4ModdingManager.Common;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -23,6 +17,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private bool editingFlag;
         private bool projectOpening;
 
+        // データコンテナ
+        private CountryDataContainer cdc = new CountryDataContainer();
+        private IdeologyDataContainer idc = new IdeologyDataContainer();
+        private ProjectDataContainer pdc = new ProjectDataContainer();
+
         public ProjectDashBoard(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
@@ -30,7 +29,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             InitializeComponent();
             SetWindowTitle();
-            SetData();
+            SetProjectData();
         }
 
         private void SetWindowTitle()
@@ -50,13 +49,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <summary>
         /// データを取得して反映
         /// </summary>
-        private void SetData()
+        private void SetProjectData()
         {
             if (filePathArgument.Length != 1)
                 return;
 
             EXIM exim = new EXIM();
-            exim.ImportProject(filePathArgument[0]);
+            exim.ImportProject(filePathArgument[0], pdc, cdc, idc);
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
