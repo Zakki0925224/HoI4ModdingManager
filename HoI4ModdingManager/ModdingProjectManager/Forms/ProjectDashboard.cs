@@ -1,7 +1,6 @@
 ﻿using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Forms;
-using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
-using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+using HoI4ModdingManager.ModdingProjectManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,9 +22,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         // フラグ
         private bool editingFlag;
         private bool projectOpening;
-
-        // 変数
-        private List<CountryDataHanger> countryList = new List<CountryDataHanger>();
 
         public ProjectDashBoard(params string[] filePathArgument)
         {
@@ -52,51 +48,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         }
 
         /// <summary>
-        /// データを取得
+        /// データを取得して反映
         /// </summary>
         private void SetData()
         {
             if (filePathArgument.Length != 1)
                 return;
 
-            var pi = new StoreData();
-            var pData = new ProjectDataHanger();
-
-            // リストのクリア
-            countryList.Clear();
-
-            // データ取得
-            pi.ImportProjectData(filePathArgument[0], "project_data", pData);
-
-            for (int i = 0; i < pData.number_of_countries; i++ )
-            {
-                var cData = new CountryDataHanger();
-                pi.ImportCountryData(filePathArgument[0], "countries_data", i, cData);
-                countryList.Add(cData);
-            }
-
-            // フラグ更新
-            projectOpening = true;
-
-            // UI更新
-            foreach (CountryDataHanger country in countryList)
-            {
-                var tabPage = new TabPage()
-                {
-                    Text = country.country_name,
-                    BackColor = Color.White
-                };
-
-                // こんな感じで追加していく
-                //　Label label = new Label()
-                //　{
-                //　    Text = country.country_name
-                //　};
-
-                //tabPage.Controls.Add(label);
-
-                mainTab.TabPages.Add(tabPage);
-            }
+            EXIM exim = new EXIM();
+            exim.ImportProject(filePathArgument[0]);
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)

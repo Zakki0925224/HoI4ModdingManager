@@ -65,6 +65,7 @@
     <Compile Include="ModdingProjectManager\DataHangers\CountryDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
+    <Compile Include="ModdingProjectManager\EXIM.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NotConnectingException.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.cs">
       <SubType>Form</SubType>
