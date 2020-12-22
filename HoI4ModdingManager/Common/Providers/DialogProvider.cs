@@ -15,7 +15,7 @@ namespace HoI4ModdingManager.Common.Providers
         /// <param name="restoreDirectory"></param>
         /// <param name="filterIndex"></param>
         /// <returns>ファイルパスを返す</returns>
-        public string OpenFile(string filter, string title, bool restoreDirectory, int filterIndex = 0)
+        public string ShowOpenFileDialog(string filter, string title, bool restoreDirectory, int filterIndex = 0)
         {
             using (var ofd = new OpenFileDialog())
             {
@@ -39,7 +39,7 @@ namespace HoI4ModdingManager.Common.Providers
         /// <param name="restoreDirectory"></param>
         /// <param name="filterIndex"></param>
         /// <returns>ファイルパスを返す</returns>
-        public string SaveFile(string filter, string title, bool restoreDirectory, int filterIndex = 0)
+        public string ShowSaveFileDialog(string filter, string title, bool restoreDirectory, int filterIndex = 0)
         {
             using (var sfd = new SaveFileDialog())
             {

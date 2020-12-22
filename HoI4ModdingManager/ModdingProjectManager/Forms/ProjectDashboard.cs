@@ -139,7 +139,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var ods = new DialogProvider();
-            string filePath = ods.OpenFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
+            string filePath = ods.ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
 
             if (filePath != null)
             {

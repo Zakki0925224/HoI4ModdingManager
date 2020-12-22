@@ -22,7 +22,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // 新しいプロセスで開始
             var ds = new DialogProvider();
             var pc = new ProcessCreater();
-            pc.CreateNewProcess(ds.OpenFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true));
+            pc.CreateNewProcess(ds.ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true));
 
             this.Close();
         }
@@ -62,7 +62,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void referenceButton_Click(object sender, EventArgs e)
         {
             var ds = new DialogProvider();
-            projectPlaceTextBox.Text = ds.SaveFile("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを保存", true);
+            projectPlaceTextBox.Text = ds.ShowSaveFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを保存", true);
         }
     }
 }
