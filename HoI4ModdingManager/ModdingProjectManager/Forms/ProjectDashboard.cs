@@ -1,7 +1,6 @@
 ﻿using HoI4ModdingManager.Common;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Providers;
-using HoI4ModdingManager.ModdingProjectManager.DataContainer;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -18,9 +17,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private bool projectOpening;
 
         // データコンテナ
-        private CountryDataContainer cdc = new CountryDataContainer();
-        private IdeologyDataContainer idc = new IdeologyDataContainer();
-        private ProjectDataContainer pdc = new ProjectDataContainer();
+        private DataContainer projectData = new DataContainer();
 
         public ProjectDashBoard(params string[] filePathArgument)
         {
@@ -55,7 +52,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
 
             EXIM exim = new EXIM();
-            exim.ImportProject(filePathArgument[0], pdc, cdc, idc);
+            exim.ImportProject(filePathArgument[0], projectData);
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
