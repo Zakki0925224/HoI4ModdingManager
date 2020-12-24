@@ -1,6 +1,5 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
-using System.Collections.Generic;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {
