@@ -15,7 +15,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
 
             // プロジェクトデータの取得
             sd.ImportProjectData(dbFile, "project_data", projectData);
-            dc.projectDataList.Add(projectData);
+            dc.ProjectDataList.Add(projectData);
 
             // 国家データの取得
             for (int colmn = 0; colmn < projectData.number_of_countries; colmn++)
@@ -23,7 +23,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
                 // 取得した列ごとにリストに格納
                 var countryData = new CountryDataHanger();
                 sd.ImportCountryData(dbFile, "countries_data", colmn, countryData);
-                dc.countryDataList.Add(countryData);
+                dc.CountryDataList.Add(countryData);
             }
 
             // イデオロギーデータの取得
@@ -31,7 +31,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             {
                 var ideologyData = new IdeologyDataHanger();
                 sd.ImportIdeologyData(dbFile, "ideologies_data", colmn, ideologyData);
-                dc.ideologyDataList.Add(ideologyData);
+                dc.IdeologyDataList.Add(ideologyData);
             }
         }
     }

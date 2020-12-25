@@ -1,6 +1,7 @@
 ﻿using HoI4ModdingManager.Common;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.Tests;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -63,7 +64,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectEditor_Load(object sender, EventArgs e)
         {
-            
+            var test = new ProjectImportTest();
+            test.ImportProject();
         }
 
         /// <summary>

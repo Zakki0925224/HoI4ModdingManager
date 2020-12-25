@@ -1,26 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
-using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+﻿using HoI4ModdingManager.ModdingProjectManager;
+using System;
 
 namespace HoI4ModdingManager.Tests
 {
     class ProjectImportTest
     {
-        public void StartProjectImportTest(string filePath)
+        public void ImportProject()
         {
-            var pi = new StoreData();
+            string filePath = @"C:\Users\miyaz\Documents\Visual Studio 2019\Projects\C#\HoI4ModdingManager\HoI4ModdingManager\Tests\test-mod.hmp"; 
 
-            var pdh = new ProjectDataHanger();
-            var cdh = new CountryDataHanger();
-            var idh = new IdeologyDataHanger();
+            var exim = new EXIM();
+            var data = new DataContainer();
 
-            pi.ImportProjectData(filePath, "project_data", pdh);
-            pi.ImportCountryData(filePath, "countries_data", 0, cdh);
-            pi.ImportIdeologyData(filePath, "ideologies_data", 0, idh);
+            exim.ImportProject(filePath, data);
+
+            var projectData = data.ProjectDataList;
+            var countryData = data.CountryDataList;
+            var ideologyData = data.IdeologyDataList;
+
+            Console.WriteLine(projectData[0].project_name);
+            Console.WriteLine(projectData[0].created_at);
+            Console.WriteLine(projectData[0].updated_at);
+            Console.WriteLine(projectData[0].number_of_countries);
+            Console.WriteLine(projectData[0].number_of_ideologies);
         }
     }
 }

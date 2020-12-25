@@ -9,10 +9,28 @@ namespace HoI4ModdingManager.ModdingProjectManager
     /// </summary>
     class DataContainer
     {
-        public List<CountryDataHanger> countryDataList { get; set; }
+        private static List<CountryDataHanger> countryDataList = new List<CountryDataHanger>();
 
-        public List<IdeologyDataHanger> ideologyDataList { get; set; }
+        public List<CountryDataHanger> CountryDataList
+        {
+            set { countryDataList = value; }
+            get { return countryDataList; }
+        }
 
-        public List<ProjectDataHanger> projectDataList { get; set; }
+        private static List<IdeologyDataHanger> ideologyDataList = new List<IdeologyDataHanger>();
+
+        public List<IdeologyDataHanger> IdeologyDataList
+        {
+            set { ideologyDataList = value; }
+            get { return ideologyDataList; }
+        }
+
+        private static List<ProjectDataHanger> projectDataList = new List<ProjectDataHanger>();
+
+        public List<ProjectDataHanger> ProjectDataList
+        {
+            set { projectDataList = value; }
+            get { return projectDataList; }
+        }
     }
 }
