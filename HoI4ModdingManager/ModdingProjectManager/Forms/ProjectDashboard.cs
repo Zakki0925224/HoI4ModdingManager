@@ -1,8 +1,10 @@
 ﻿using HoI4ModdingManager.Common;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.Tests;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,17 +15,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         // 引数（ファイルパス）
         private string[] filePathArgument;
 
-        // フラグ
-        private bool editingFlag;
-        private bool projectOpening;
-
         // データコンテナ
-        private DataContainer projectData = new DataContainer();
+        private DataContainer mainContainer = new DataContainer();
+        private List<ProjectDataHanger> projectData;
+        private List<CountryDataHanger> countryData;
+        private List<IdeologyDataHanger> ideologyData;
 
         public ProjectDashBoard(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
-            this.editingFlag = false;
 
             InitializeComponent();
             SetWindowTitle();
@@ -35,12 +35,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (filePathArgument.Length != 1)
             {
                 this.Text = "HoI4ModdingManager";
-                projectOpening = false;
             }
             else
             {
                 this.Text = filePathArgument[0] + " - HoI4ModdingManager";
-                projectOpening = true;
             }
         }
 
@@ -53,7 +51,30 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
 
             EXIM exim = new EXIM();
-            exim.ImportProject(filePathArgument[0], projectData);
+            exim.ImportProject(filePathArgument[0], mainContainer);
+            projectData = mainContainer.ProjectDataList;
+            countryData = mainContainer.CountryDataList;
+            ideologyData = mainContainer.IdeologyDataList;
+
+            // UI更新
+            foreach (CountryDataHanger data in countryData)
+            {
+                var tabPage = new TabPage()
+                {
+                    Name = data.country_name + "-Tab",
+                    Text = data.country_name
+                };
+
+                var label = new Label()
+                {
+                    Text = data.country_name,
+                    Width = 500
+                };
+
+                tabPage.Controls.Add(label);
+
+                mainTab.TabPages.Add(tabPage);
+            }
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,8 +85,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectEditor_Load(object sender, EventArgs e)
         {
-            var test = new ProjectImportTest();
-            test.ImportProject();
+            // デバッグ用
+            //var test = new ProjectImportTest();
+            //test.ImportProject();
         }
 
         /// <summary>
