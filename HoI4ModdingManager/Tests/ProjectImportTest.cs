@@ -7,7 +7,7 @@ namespace HoI4ModdingManager.Tests
     {
         public void ImportProject()
         {
-            string filePath = @"C:\Users\miyaz\Documents\Visual Studio 2019\Projects\C#\HoI4ModdingManager\HoI4ModdingManager\Tests\test-mod.hmp"; 
+            string filePath = @"null"; 
 
             var exim = new EXIM();
             var data = new DataContainer();
