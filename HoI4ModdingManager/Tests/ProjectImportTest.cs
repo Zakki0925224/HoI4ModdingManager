@@ -7,7 +7,7 @@ namespace HoI4ModdingManager.Tests
     {
         public void ImportProject()
         {
-            string filePath = @"null"; 
+            string filePath = @"(ﾟДﾟ#) ｺﾞﾙｧ"; 
 
             var exim = new EXIM();
             var data = new DataContainer();
