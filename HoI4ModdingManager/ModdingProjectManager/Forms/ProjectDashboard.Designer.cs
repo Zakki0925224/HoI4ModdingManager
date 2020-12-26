@@ -43,6 +43,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.countryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ideologyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.focusManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,12 +55,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.mainTab = new System.Windows.Forms.TabControl();
             this.testTab1 = new System.Windows.Forms.TabPage();
             this.testTab2 = new System.Windows.Forms.TabPage();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.countryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ideologyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.focusManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eventManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
             this.SuspendLayout();
@@ -172,83 +172,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(184, 6);
             // 
-            // toolToolStripMenuItem
-            // 
-            this.toolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem});
-            this.toolToolStripMenuItem.Name = "toolToolStripMenuItem";
-            this.toolToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.toolToolStripMenuItem.Text = "ツール(&T)";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.settingsToolStripMenuItem.Text = "アプリケーション設定(&S)...";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.helpToolStripMenuItem.Text = "ヘルプ(&H)";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "バージョン情報(&A)";
-            // 
-            // mainTab
-            // 
-            this.mainTab.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.mainTab.Controls.Add(this.testTab1);
-            this.mainTab.Controls.Add(this.testTab2);
-            this.mainTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.mainTab.ItemSize = new System.Drawing.Size(50, 140);
-            this.mainTab.Location = new System.Drawing.Point(0, 24);
-            this.mainTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.mainTab.Multiline = true;
-            this.mainTab.Name = "mainTab";
-            this.mainTab.SelectedIndex = 0;
-            this.mainTab.Size = new System.Drawing.Size(873, 439);
-            this.mainTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.mainTab.TabIndex = 3;
-            this.mainTab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MainTab_DrawItem);
-            // 
-            // testTab1
-            // 
-            this.testTab1.Location = new System.Drawing.Point(144, 4);
-            this.testTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab1.Name = "testTab1";
-            this.testTab1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab1.Size = new System.Drawing.Size(725, 431);
-            this.testTab1.TabIndex = 0;
-            this.testTab1.Text = "Test1";
-            this.testTab1.UseVisualStyleBackColor = true;
-            // 
-            // testTab2
-            // 
-            this.testTab2.Location = new System.Drawing.Point(144, 4);
-            this.testTab2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab2.Name = "testTab2";
-            this.testTab2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab2.Size = new System.Drawing.Size(725, 431);
-            this.testTab2.TabIndex = 1;
-            this.testTab2.Text = "Test2";
-            this.testTab2.UseVisualStyleBackColor = true;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 441);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(873, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // countryManagerToolStripMenuItem
             // 
             this.countryManagerToolStripMenuItem.Name = "countryManagerToolStripMenuItem";
@@ -279,14 +202,91 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.eventManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.eventManagerToolStripMenuItem.Text = "EventManager(&E)...";
             // 
+            // toolToolStripMenuItem
+            // 
+            this.toolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem});
+            this.toolToolStripMenuItem.Name = "toolToolStripMenuItem";
+            this.toolToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.toolToolStripMenuItem.Text = "ツール(&T)";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.settingsToolStripMenuItem.Text = "アプリケーション設定(&S)...";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.helpToolStripMenuItem.Text = "ヘルプ(&H)";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.aboutToolStripMenuItem.Text = "バージョン情報(&A)";
+            // 
+            // mainTab
+            // 
+            this.mainTab.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.mainTab.Controls.Add(this.testTab1);
+            this.mainTab.Controls.Add(this.testTab2);
+            this.mainTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.mainTab.ItemSize = new System.Drawing.Size(50, 140);
+            this.mainTab.Location = new System.Drawing.Point(0, 24);
+            this.mainTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mainTab.Multiline = true;
+            this.mainTab.Name = "mainTab";
+            this.mainTab.SelectedIndex = 0;
+            this.mainTab.Size = new System.Drawing.Size(873, 417);
+            this.mainTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.mainTab.TabIndex = 3;
+            this.mainTab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MainTab_DrawItem);
+            // 
+            // testTab1
+            // 
+            this.testTab1.Location = new System.Drawing.Point(144, 4);
+            this.testTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.testTab1.Name = "testTab1";
+            this.testTab1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.testTab1.Size = new System.Drawing.Size(725, 409);
+            this.testTab1.TabIndex = 0;
+            this.testTab1.Text = "Test1";
+            this.testTab1.UseVisualStyleBackColor = true;
+            // 
+            // testTab2
+            // 
+            this.testTab2.Location = new System.Drawing.Point(144, 4);
+            this.testTab2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.testTab2.Name = "testTab2";
+            this.testTab2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.testTab2.Size = new System.Drawing.Size(725, 409);
+            this.testTab2.TabIndex = 1;
+            this.testTab2.Text = "Test2";
+            this.testTab2.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Location = new System.Drawing.Point(0, 441);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(873, 22);
+            this.statusStrip.TabIndex = 4;
+            this.statusStrip.Text = "statusStrip1";
+            // 
             // ProjectDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 463);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mainTab);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.statusStrip);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(720, 480);
@@ -321,7 +321,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripMenuItem projectSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;

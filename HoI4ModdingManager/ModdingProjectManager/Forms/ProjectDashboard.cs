@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using CefSharp;
+using CefSharp.WinForms;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -65,14 +67,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                     Text = data.country_name
                 };
 
-                var label = new Label()
-                {
-                    Text = data.country_name,
-                    Width = 500
-                };
-
-                tabPage.Controls.Add(label);
-
+                // cefsharp test
+                var browser = new ChromiumWebBrowser("https://www.google.co.jp/");
+                tabPage.Controls.Add(browser);
                 mainTab.TabPages.Add(tabPage);
             }
         }
