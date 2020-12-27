@@ -54,7 +54,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTab = new System.Windows.Forms.TabControl();
             this.testTab1 = new System.Windows.Forms.TabPage();
-            this.testTab2 = new System.Windows.Forms.TabPage();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -235,7 +234,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // 
             this.mainTab.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.mainTab.Controls.Add(this.testTab1);
-            this.mainTab.Controls.Add(this.testTab2);
             this.mainTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.mainTab.ItemSize = new System.Drawing.Size(50, 140);
@@ -257,19 +255,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.testTab1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.testTab1.Size = new System.Drawing.Size(725, 409);
             this.testTab1.TabIndex = 0;
-            this.testTab1.Text = "Test1";
+            this.testTab1.Text = "Test";
             this.testTab1.UseVisualStyleBackColor = true;
-            // 
-            // testTab2
-            // 
-            this.testTab2.Location = new System.Drawing.Point(144, 4);
-            this.testTab2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab2.Name = "testTab2";
-            this.testTab2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab2.Size = new System.Drawing.Size(725, 409);
-            this.testTab2.TabIndex = 1;
-            this.testTab2.Text = "Test2";
-            this.testTab2.UseVisualStyleBackColor = true;
             // 
             // statusStrip
             // 
@@ -313,7 +300,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.TabControl mainTab;
         private System.Windows.Forms.TabPage testTab1;
-        private System.Windows.Forms.TabPage testTab2;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;

@@ -1,14 +1,15 @@
-﻿using HoI4ModdingManager.Common;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using HoI4ModdingManager.Common;
 using HoI4ModdingManager.Common.Forms;
+using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
-using HoI4ModdingManager.Tests;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
-using CefSharp;
-using CefSharp.WinForms;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -23,11 +24,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private List<CountryDataHanger> countryData;
         private List<IdeologyDataHanger> ideologyData;
 
+        // ブラウザ
+        private ChromiumWebBrowser browser;
+
         public ProjectDashBoard(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
 
             InitializeComponent();
+            InitializeBrowser();
             SetWindowTitle();
             SetProjectData();
         }
@@ -67,11 +72,24 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                     Text = data.country_name
                 };
 
-                // cefsharp test
-                var browser = new ChromiumWebBrowser("https://www.google.co.jp/");
-                tabPage.Controls.Add(browser);
                 mainTab.TabPages.Add(tabPage);
             }
+        }
+
+        private void InitializeBrowser()
+        {
+            string html = ResourceLoader.GetStringResource("HoI4ModdingManager.Common.PageLayout.dashboard.html");
+
+            browser = ResourceLoader.GetBrowser();
+            browser.IsBrowserInitializedChanged += CefBrowser_IsBrowserInitializedChanged;
+            browser.Dock = DockStyle.Fill;
+            testTab1.Controls.Add(browser);
+            browser.LoadHtml(html, "http://rendering", Encoding.UTF8);
+        }
+
+        private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
+        {
+            browser.ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
