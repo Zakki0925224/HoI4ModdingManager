@@ -13,7 +13,7 @@
 * Visual Studio 2019
 
 ## Feautures
-現在制作中です
+現在製作中です
 
 ## Screenshots
 現在製作中です
