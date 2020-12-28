@@ -84,7 +84,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             browser.IsBrowserInitializedChanged += CefBrowser_IsBrowserInitializedChanged;
             browser.Dock = DockStyle.Fill;
             testTab1.Controls.Add(browser);
-            browser.LoadHtml(html, "http://rendering", Encoding.UTF8);
+            browser.LoadHtml(html, "http://hmm", Encoding.UTF8);
         }
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)

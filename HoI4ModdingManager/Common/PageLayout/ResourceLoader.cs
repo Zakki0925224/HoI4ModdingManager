@@ -5,15 +5,19 @@ using CefSharp.WinForms;
 
 namespace HoI4ModdingManager.Common.PageLayout
 {
+    /// <summary>
+    /// ブラウザのリソースをロード
+    /// </summary>
     class ResourceLoader
     {
         private static Assembly asm = Assembly.GetExecutingAssembly();
 
         public static ChromiumWebBrowser GetBrowser()
         {
-            var result = new ChromiumWebBrowser("http://redering");
-            result.RegisterResourceHandler("http://rendering/assets/css/bootstrap.min.css", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.css.bootstrap.min.css"), "text/css");
-            result.RegisterResourceHandler("http://rendering/assets/js/bootstrap.min.js", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.js.bootstrap.min.js"), "text/javascript");
+            var result = new ChromiumWebBrowser("http://hmm");
+            // 組み込みbootstrap
+            result.RegisterResourceHandler("http://hmm/assets/css/bootstrap.min.css", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.css.bootstrap.min.css"), "text/css");
+            result.RegisterResourceHandler("http://hmm/assets/js/bootstrap.min.js", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.js.bootstrap.min.js"), "text/javascript");
 
             return result;
         }
