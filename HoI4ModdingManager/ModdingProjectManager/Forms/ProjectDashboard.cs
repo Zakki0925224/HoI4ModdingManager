@@ -89,7 +89,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            browser.ShowDevTools();
+            if (chromiumDevToolToolStripMenuItem.Checked)
+                browser.ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)

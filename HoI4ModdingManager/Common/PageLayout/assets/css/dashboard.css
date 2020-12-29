@@ -1,0 +1,28 @@
+body {
+    background: #eeeeee;
+}
+
+h1 {
+    color: #444444;
+    font-weight: 400;
+    margin: 30px;
+}
+
+.row {
+    margin: 30px;
+}
+
+.card {
+    margin: 5px;
+}
+
+.count {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.text {
+    font-size: 30px;
+    font-weight: bold;
+}
