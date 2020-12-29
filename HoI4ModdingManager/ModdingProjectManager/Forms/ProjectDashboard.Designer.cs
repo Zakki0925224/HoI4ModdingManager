@@ -290,6 +290,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "ProjectDashBoard";
             this.Text = "ProjectDashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectDashBoard_FormClosed);
             this.Load += new System.EventHandler(this.ProjectEditor_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

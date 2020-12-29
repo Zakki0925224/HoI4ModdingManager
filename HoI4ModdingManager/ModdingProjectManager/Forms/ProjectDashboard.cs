@@ -82,6 +82,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void InitializeBrowser()
         {
+            var settings = new CefSettings();
+            Cef.Initialize(settings);
+
             string html = ResourceLoader.GetStringResource("HoI4ModdingManager.Common.PageLayout.dashboard.html");
 
             browser = ResourceLoader.GetBrowser();
@@ -166,6 +169,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             var apps = new AppSettings();
             apps.ShowDialog();
+        }
+
+        private void ProjectDashBoard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Cef.IsInitialized && InitializedBrowser)
+                Cef.Shutdown();
         }
     }
 }
