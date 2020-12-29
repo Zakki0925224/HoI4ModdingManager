@@ -27,6 +27,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         // ブラウザ
         private ChromiumWebBrowser browser;
 
+        // フラグ
+        private bool InitializedBrowser { get; set; }
+
+
         public ProjectDashBoard(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
@@ -85,6 +89,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             browser.Dock = DockStyle.Fill;
             testTab1.Controls.Add(browser);
             browser.LoadHtml(html, "http://hmm", Encoding.UTF8);
+
+            InitializedBrowser = true;
         }
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
