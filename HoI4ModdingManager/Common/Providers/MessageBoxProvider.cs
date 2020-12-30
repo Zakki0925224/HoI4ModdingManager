@@ -11,7 +11,7 @@ namespace HoI4ModdingManager.Common.Providers
         /// エラーメッセージ
         /// </summary>
         /// <param name="message">表示したいメッセージ</param>
-        public void ShowErrorMessageBox(string message)
+        public static void ShowErrorMessageBox(string message)
         {
             MessageBox.Show(message, "Error - HoI4 Modding Supporter", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -20,7 +20,7 @@ namespace HoI4ModdingManager.Common.Providers
         /// インフォメーションメッセージ
         /// </summary>
         /// <param name="message">表示したいメッセージ</param>
-        public void ShowInfoMessageBox(string message)
+        public static void ShowInfoMessageBox(string message)
         {
             MessageBox.Show(message, "Info - HoI4 Modding Supporter", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
