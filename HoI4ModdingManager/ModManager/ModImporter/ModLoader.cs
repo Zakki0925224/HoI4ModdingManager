@@ -109,6 +109,56 @@ namespace HoI4ModdingManager.ModManager.ModImporter
                 return;
             }
 
+            // 一行ずつデータを取得
+            string[] contents = content.Split('\n');
+
+            string version;
+            string[] tags;
+            string name;
+            string supported_version;
+            string path;
+            string[] replace_path;
+            string[] dependencies;
+            string picture;
+            string remote_file_id;
+
+            foreach (string str in contents)
+            {
+                // version
+                if (Regex.IsMatch(str, "version="))
+                {
+                    // ""で囲まれた文字列を取得
+                    var matches = new Regex("\"(.+?)\"").Matches(str);
+
+                    if (matches.Count == 1)
+                    {
+                        version = matches[0].Value;
+                        // この行での処理は終了したので次の行へ
+                        continue;
+                    }
+                    else
+                    {
+                        // 構文エラー
+                        MessageBoxProvider.ShowErrorMessageBox("構文エラー");
+                    }
+                }
+
+                // name
+                if (Regex.IsMatch(str, "name="))
+                {
+                    var matches = new Regex("\"(.+?)\"").Matches(str);
+
+                    if (matches.Count == 1)
+                    {
+                        name = matches[0].Value;
+                        continue;
+                    }
+                    else
+                    {
+                        MessageBoxProvider.ShowErrorMessageBox("構文エラー");
+                    }
+                }
+            }
         }
     }
 }
