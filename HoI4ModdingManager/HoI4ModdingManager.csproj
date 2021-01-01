@@ -145,28 +145,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.rtl.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.rtl.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.rtl.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.rtl.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.rtl.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.rtl.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.rtl.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.rtl.min.css.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.bundle.js.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.bundle.min.js.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.esm.js.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.esm.min.js.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.js.map" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.min.js.map" />
     <None Include="Tests\test-mod.hmp" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -183,6 +161,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\PageLayout\assets\js\" />
     <Folder Include="ModdingProjectManager\ProjectExporter\" />
   </ItemGroup>
   <ItemGroup>
@@ -198,28 +177,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.rtl.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-grid.rtl.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.rtl.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-reboot.rtl.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.rtl.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap-utilities.rtl.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.rtl.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\css\bootstrap.rtl.min.css" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.bundle.js" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.bundle.min.js" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.esm.js" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.esm.min.js" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.js" />
-    <EmbeddedResource Include="Common\PageLayout\assets\js\bootstrap.min.js" />
     <EmbeddedResource Include="Common\PageLayout\dashboard.html" />
   </ItemGroup>
   <ItemGroup>

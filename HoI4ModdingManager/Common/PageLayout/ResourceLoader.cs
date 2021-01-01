@@ -15,10 +15,6 @@ namespace HoI4ModdingManager.Common.PageLayout
         public static ChromiumWebBrowser GetBrowser()
         {
             var result = new ChromiumWebBrowser("http://hmm");
-            // 組み込みbootstrap
-            result.RegisterResourceHandler("http://hmm/assets/css/bootstrap.min.css", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.css.bootstrap.min.css"), "text/css");
-            result.RegisterResourceHandler("http://hmm/assets/js/bootstrap.min.js", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.js.bootstrap.min.js"), "text/javascript");
-
             // 自作
             result.RegisterResourceHandler("http://hmm/assets/css/dashboard.css", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.css.dashboard.css"), "text/css");
 
