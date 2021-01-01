@@ -17,6 +17,7 @@ namespace HoI4ModdingManager.Common.PageLayout
             var result = new ChromiumWebBrowser("http://hmm");
             // 自作
             result.RegisterResourceHandler("http://hmm/assets/css/dashboard.css", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.css.dashboard.css"), "text/css");
+            result.RegisterResourceHandler("http://hmm/assets/js/dashboard.js", GetStreamResource("HoI4ModdingManager.Common.PageLayout.assets.js.dashboard.js"), "text/javascript");
 
             return result;
         }

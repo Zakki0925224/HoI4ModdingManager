@@ -23,9 +23,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private List<ProjectDataHanger> projectData;
         private List<CountryDataHanger> countryData;
         private List<IdeologyDataHanger> ideologyData;
-
-        // ブラウザ
-        private ChromiumWebBrowser browser;
+        private CefSettings settings;
 
         // フラグ
         private bool InitializedBrowser { get; set; }
@@ -76,30 +74,55 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                     Text = data.country_name
                 };
 
+                tabPage.Controls.Add(SetBrowser(data));
                 mainTab.TabPages.Add(tabPage);
             }
         }
 
+        /// <summary>
+        /// ブラウザを初期化
+        /// </summary>
         private void InitializeBrowser()
         {
-            var settings = new CefSettings();
+            settings = new CefSettings();
             Cef.Initialize(settings);
 
-            string html = ResourceLoader.GetStringResource("HoI4ModdingManager.Common.PageLayout.dashboard.html");
+            InitializedBrowser = true;
+        }
+
+        private ChromiumWebBrowser SetBrowser(CountryDataHanger countryData)
+        {
+            ChromiumWebBrowser browser;
+            string pageSource = ResourceLoader.GetStringResource("HoI4ModdingManager.Common.PageLayout.dashboard.html");
 
             browser = ResourceLoader.GetBrowser();
+            browser.Tag = countryData;
             browser.IsBrowserInitializedChanged += CefBrowser_IsBrowserInitializedChanged;
+            browser.LoadingStateChanged += CefBrowser_LoadingStateChanged;
             browser.Dock = DockStyle.Fill;
-            testTab1.Controls.Add(browser);
-            browser.LoadHtml(html, "http://hmm", Encoding.UTF8);
+            browser.LoadHtml(pageSource, "http://hmm", Encoding.UTF8);
 
-            InitializedBrowser = true;
+            return browser;
+        }
+
+        private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
+        {
+            ChromiumWebBrowser browser = (ChromiumWebBrowser)sender;
+
+            if (!e.IsLoading)
+                browser.ExecuteScriptAsyncWhenPageLoaded("SetCountryData(\"" + ((CountryDataHanger)browser.Tag).country_name + "\", " +
+                                                                               ((CountryDataHanger)browser.Tag).initial_political_power + ", " +
+                                                                               ((CountryDataHanger)browser.Tag).initial_stability + ", " +
+                                                                               ((CountryDataHanger)browser.Tag).initial_war_coop + ", " +
+                                                                               ((CountryDataHanger)browser.Tag).initial_transport + ", " +
+                                                                        "\"" + ((CountryDataHanger)browser.Tag).initial_ideology + "\", " +
+                                                                               "false);");
         }
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
             if (chromiumDevToolToolStripMenuItem.Checked)
-                browser.ShowDevTools();
+                ((ChromiumWebBrowser)sender).ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)

@@ -40,6 +40,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chromiumDevToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,7 +56,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.mainTab = new System.Windows.Forms.TabControl();
             this.testTab1 = new System.Windows.Forms.TabPage();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.chromiumDevToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
             this.SuspendLayout();
@@ -149,6 +149,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.viewToolStripMenuItem.Text = "表示(&V)";
             // 
+            // chromiumDevToolToolStripMenuItem
+            // 
+            this.chromiumDevToolToolStripMenuItem.Checked = true;
+            this.chromiumDevToolToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chromiumDevToolToolStripMenuItem.Name = "chromiumDevToolToolStripMenuItem";
+            this.chromiumDevToolToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.chromiumDevToolToolStripMenuItem.Text = "Chromium開発者ツール(&C)";
+            // 
             // projectToolStripMenuItem
             // 
             this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -230,7 +238,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.aboutToolStripMenuItem.Text = "バージョン情報(&A)";
             // 
             // mainTab
@@ -268,14 +276,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.statusStrip.Size = new System.Drawing.Size(873, 22);
             this.statusStrip.TabIndex = 4;
             this.statusStrip.Text = "statusStrip1";
-            // 
-            // chromiumDevToolToolStripMenuItem
-            // 
-            this.chromiumDevToolToolStripMenuItem.Checked = true;
-            this.chromiumDevToolToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chromiumDevToolToolStripMenuItem.Name = "chromiumDevToolToolStripMenuItem";
-            this.chromiumDevToolToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.chromiumDevToolToolStripMenuItem.Text = "Chromium開発者ツール(&C)";
             // 
             // ProjectDashBoard
             // 
