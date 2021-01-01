@@ -1,8 +1,8 @@
 # HoI4ModdingManager
 ## Overview
 ### Library
-* [System.Data.SQLite.Core](https://www.nuget.org/packages/System.Data.SQLite.Core/)
-* [CefSharp.WinForms](https://www.nuget.org/packages/CefSharp.WinForms/)
+* [System.Data.SQLite.Core](https://www.nuget.org/packages/System.Data.SQLite.Core/) (NuGet)
+* [CefSharp.WinForms](https://www.nuget.org/packages/CefSharp.WinForms/) (NuGet)
 * [Bootstrap v4.5.0](https://getbootstrap.com)
 
 ### Framework
