@@ -1,7 +1,7 @@
-﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+﻿using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 using HoI4ModdingManager.ModdingProjectManager.SQLite;
-using HoI4ModdingManager.Common.Providers;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {

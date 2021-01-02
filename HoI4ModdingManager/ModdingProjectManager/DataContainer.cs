@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+using System.Collections.Generic;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {

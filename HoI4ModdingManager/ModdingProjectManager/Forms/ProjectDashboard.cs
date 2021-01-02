@@ -6,7 +6,6 @@ using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
