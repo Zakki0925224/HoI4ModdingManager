@@ -1,5 +1,6 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
+using HoI4ModdingManager.Common.Providers;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {
@@ -8,10 +9,17 @@ namespace HoI4ModdingManager.ModdingProjectManager
     /// </summary>
     class EXIM
     {
-        public void ImportProject(string dbFile, DataContainer dc)
+        public bool ImportProject(string dbFile, DataContainer dc)
         {
             var sd = new StoreData();
             var projectData = new ProjectDataHanger();
+
+            // 整合性確認
+            if (!FileChecker.IsThisFileCanUse(dbFile))
+            {
+                MessageBoxProvider.ShowErrorMessageBox("指定されたファイルは使用できません。");
+                return false;
+            }
 
             // プロジェクトデータの取得
             sd.ImportProjectData(dbFile, "project_data", projectData);
@@ -33,6 +41,8 @@ namespace HoI4ModdingManager.ModdingProjectManager
                 sd.ImportIdeologyData(dbFile, "ideologies_data", colmn, ideologyData);
                 dc.IdeologyDataList.Add(ideologyData);
             }
+
+            return true;
         }
     }
 }

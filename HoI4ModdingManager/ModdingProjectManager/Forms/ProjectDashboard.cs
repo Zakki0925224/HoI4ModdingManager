@@ -35,20 +35,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             InitializeComponent();
             InitializeBrowser();
-            SetWindowTitle();
             SetProjectData();
         }
 
-        private void SetWindowTitle()
+        private void SetWindowTitle(bool notSet)
         {
-            if (filePathArgument.Length != 1)
-            {
+            if (notSet)
                 this.Text = "HoI4ModdingManager";
-            }
             else
-            {
                 this.Text = filePathArgument[0] + " - HoI4ModdingManager";
-            }
         }
 
         /// <summary>
@@ -57,10 +52,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void SetProjectData()
         {
             if (filePathArgument.Length != 1)
+            {
+                SetWindowTitle(true);
                 return;
+            }
 
             EXIM exim = new EXIM();
-            exim.ImportProject(filePathArgument[0], mainContainer);
+
+            if (!exim.ImportProject(filePathArgument[0], mainContainer))
+            {
+                SetWindowTitle(true);
+                return;
+            }
+
             projectData = mainContainer.ProjectDataList;
             countryData = mainContainer.CountryDataList;
             ideologyData = mainContainer.IdeologyDataList;
@@ -77,6 +81,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 tabPage.Controls.Add(SetBrowser(data));
                 mainTab.TabPages.Add(tabPage);
             }
+
+            SetWindowTitle(false);
         }
 
         /// <summary>
