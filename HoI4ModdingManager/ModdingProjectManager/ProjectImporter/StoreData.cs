@@ -213,13 +213,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd)
+        public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd, DataBaseConnector dbc)
         {
-            using (DataBaseConnector dbc = new DataBaseConnector())
-            {
-                dbc.ConnectionDataBase(dbFile);
-                ReadCountryData(tableName, colmn, cd, dbc.sqlc);
-            }
+            dbc.ConnectionDataBase(dbFile);
+            ReadCountryData(tableName, colmn, cd, dbc.sqlc);
+            dbc.Dispose();
         }
 
         /// <summary>
@@ -228,13 +226,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd)
+        public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd, DataBaseConnector dbc)
         {
-            using (DataBaseConnector dbc = new DataBaseConnector())
-            {
-                dbc.ConnectionDataBase(dbFile);
-                ReadProjectData(tableName, pd, dbc.sqlc);
-            }
+            dbc.ConnectionDataBase(dbFile);
+            ReadProjectData(tableName, pd, dbc.sqlc);
+            dbc.Dispose();
         }
 
         /// <summary>
@@ -244,13 +240,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="id">クラスインスタンス</param>
-        public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id)
+        public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id, DataBaseConnector dbc)
         {
-            using (DataBaseConnector dbc = new DataBaseConnector())
-            {
-                dbc.ConnectionDataBase(dbFile);
-                ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
-            }
+            dbc.ConnectionDataBase(dbFile);
+            ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
+            dbc.Dispose();
         }
     }
 }
