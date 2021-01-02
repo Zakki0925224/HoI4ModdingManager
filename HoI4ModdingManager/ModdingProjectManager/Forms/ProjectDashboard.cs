@@ -20,9 +20,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         // データコンテナ
         private DataContainer mainContainer = new DataContainer();
-        private List<ProjectDataHanger> projectData;
-        private List<CountryDataHanger> countryData;
-        private List<IdeologyDataHanger> ideologyData;
         private CefSettings settings;
 
         // フラグ
@@ -51,13 +48,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void SetProjectData()
         {
+            var exim = new EXIM();
+
             if (filePathArgument.Length != 1)
             {
                 SetWindowTitle(true);
                 return;
             }
-
-            EXIM exim = new EXIM();
 
             if (!exim.ImportProject(filePathArgument[0], mainContainer))
             {
@@ -65,12 +62,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
             }
 
-            projectData = mainContainer.ProjectDataList;
-            countryData = mainContainer.CountryDataList;
-            ideologyData = mainContainer.IdeologyDataList;
-
             // UI更新
-            foreach (CountryDataHanger data in countryData)
+            foreach (CountryDataHanger data in mainContainer.CountryDataList)
             {
                 var tabPage = new TabPage()
                 {
