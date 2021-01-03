@@ -23,17 +23,23 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         // フラグ
         private bool InitializedBrowser { get; set; }
+        private bool OpeningProject { get; set; }
 
 
         public ProjectDashBoard(params string[] filePathArgument)
         {
             this.filePathArgument = filePathArgument;
+            OpeningProject = false;
 
             InitializeComponent();
             InitializeBrowser();
             SetProjectData();
         }
 
+        /// <summary>
+        /// ウィンドウタイトルを設定
+        /// </summary>
+        /// <param name="notSet"></param>
         private void SetWindowTitle(bool notSet)
         {
             if (notSet)
@@ -74,6 +80,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 mainTab.TabPages.Add(tabPage);
             }
 
+            OpeningProject = true;
             SetWindowTitle(false);
         }
 
@@ -86,6 +93,21 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             Cef.Initialize(settings);
 
             InitializedBrowser = true;
+        }
+
+        /// <summary>
+        /// ダッシュボードを再読み込み
+        /// </summary>
+        private void Reload()
+        {
+            if (!OpeningProject)
+                return;
+
+            mainContainer.CountryDataList.Clear();
+            mainContainer.ProjectDataList.Clear();
+            mainContainer.IdeologyDataList.Clear();
+            mainTab.TabPages.Clear();
+            SetProjectData();
         }
 
         private ChromiumWebBrowser SetBrowser(CountryDataHanger countryData)
@@ -119,8 +141,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            if (chromiumDevToolToolStripMenuItem.Checked)
-                ((ChromiumWebBrowser)sender).ShowDevTools();
+            //if (chromiumDevToolToolStripMenuItem.Checked)
+            //    ((ChromiumWebBrowser)sender).ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,6 +218,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             if (Cef.IsInitialized && InitializedBrowser)
                 Cef.Shutdown();
+        }
+
+        private void reloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reload();
         }
     }
 }
