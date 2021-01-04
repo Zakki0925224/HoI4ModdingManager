@@ -6,6 +6,7 @@ using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -67,8 +68,17 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
             }
 
-            // UI更新
-            foreach (CountryDataHanger data in mainContainer.CountryDataList)
+            UpdateUI(mainContainer.CountryDataList);
+            OpeningProject = true;
+            SetWindowTitle(false);
+        }
+
+        /// <summary>
+        /// UI更新
+        /// </summary>
+        private void UpdateUI(List<CountryDataHanger> countryData)
+        {
+            foreach (CountryDataHanger data in countryData)
             {
                 var tabPage = new TabPage()
                 {
@@ -79,9 +89,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 tabPage.Controls.Add(SetBrowser(data));
                 mainTab.TabPages.Add(tabPage);
             }
-
-            OpeningProject = true;
-            SetWindowTitle(false);
         }
 
         /// <summary>
@@ -103,11 +110,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (!OpeningProject)
                 return;
 
-            mainContainer.CountryDataList.Clear();
-            mainContainer.ProjectDataList.Clear();
-            mainContainer.IdeologyDataList.Clear();
             mainTab.TabPages.Clear();
-            SetProjectData();
+            UpdateUI(mainContainer.CountryDataList);
         }
 
         private ChromiumWebBrowser SetBrowser(CountryDataHanger countryData)
