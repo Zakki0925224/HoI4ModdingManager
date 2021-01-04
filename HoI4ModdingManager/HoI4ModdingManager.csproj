@@ -98,6 +98,7 @@
       <DependentUpon>AppSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\PageLayout\ResourceLoader.cs" />
+    <Compile Include="Common\Parsers\Descriptor.cs" />
     <Compile Include="Common\Responders\AppVersionResponder.cs" />
     <Compile Include="Common\Responders\AssemblyResponder.cs" />
     <Compile Include="Common\Providers\MessageBoxProvider.cs" />
