@@ -140,6 +140,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                                                                                ((CountryDataHanger)browser.Tag).initial_war_coop + ", " +
                                                                                ((CountryDataHanger)browser.Tag).initial_transport + ", " +
                                                                         "\"" + ((CountryDataHanger)browser.Tag).initial_ideology + "\", " +
+                                                                               ((CountryDataHanger)browser.Tag).party_support_neutrality + ", " +
+                                                                               ((CountryDataHanger)browser.Tag).party_support_democratic + ", " +
+                                                                               ((CountryDataHanger)browser.Tag).party_support_fascism + ", " +
+                                                                               ((CountryDataHanger)browser.Tag).party_support_communism + ", " +
                                                                                "false);");
         }
 
