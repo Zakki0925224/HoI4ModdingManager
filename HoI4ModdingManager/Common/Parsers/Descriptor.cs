@@ -60,15 +60,19 @@ namespace HoI4ModdingManager.Common.Parsers
         {
             char[] chars = text.ToCharArray();
             var content = new List<string>();
+            var sb = new StringBuilder();
 
             foreach (char achar in chars)
             {
-                var sb = new StringBuilder();
-
-                if (achar != '\n') // 現段階では改行コードで区切ってるだけ
+                if (achar != '\n')
+                {
                     sb.Append(achar);
+                }
                 else
+                {
                     content.Add(sb.ToString());
+                    sb.Clear();
+                }
             }
 
             return content;
