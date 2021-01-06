@@ -215,7 +215,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="cd">クラスインスタンス</param>
         public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd, DataBaseConnector dbc)
         {
-            dbc.ConnectionDataBase(dbFile);
+            dbc.ConnectionDataBase(dbFile, tableName);
             ReadCountryData(tableName, colmn, cd, dbc.sqlc);
             dbc.Dispose();
         }
@@ -228,7 +228,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="pd">クラスインスタンス</param>
         public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd, DataBaseConnector dbc)
         {
-            dbc.ConnectionDataBase(dbFile);
+            dbc.ConnectionDataBase(dbFile, tableName);
             ReadProjectData(tableName, pd, dbc.sqlc);
             dbc.Dispose();
         }
@@ -242,7 +242,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="id">クラスインスタンス</param>
         public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id, DataBaseConnector dbc)
         {
-            dbc.ConnectionDataBase(dbFile);
+            dbc.ConnectionDataBase(dbFile, tableName);
             ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
             dbc.Dispose();
         }
