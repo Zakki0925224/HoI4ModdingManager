@@ -42,6 +42,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chromiumDevToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadDashBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.countryManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.mainTab = new System.Windows.Forms.TabControl();
             this.testTab1 = new System.Windows.Forms.TabPage();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.reloadDashBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
             this.SuspendLayout();
@@ -173,6 +173,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.projectToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.projectToolStripMenuItem.Text = "プロジェクト(&P)";
             // 
+            // reloadDashBoardToolStripMenuItem
+            // 
+            this.reloadDashBoardToolStripMenuItem.Name = "reloadDashBoardToolStripMenuItem";
+            this.reloadDashBoardToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.reloadDashBoardToolStripMenuItem.Text = "ダッシュボードの再読み込み(&R)";
+            this.reloadDashBoardToolStripMenuItem.Click += new System.EventHandler(this.reloadDashBoardToolStripMenuItem_Click);
+            // 
             // projectSettingsToolStripMenuItem
             // 
             this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
@@ -240,7 +247,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.aboutToolStripMenuItem.Text = "バージョン情報(&A)";
             // 
             // mainTab
@@ -279,13 +286,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.statusStrip.TabIndex = 4;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // reloadDashBoardToolStripMenuItem
-            // 
-            this.reloadDashBoardToolStripMenuItem.Name = "reloadDashBoardToolStripMenuItem";
-            this.reloadDashBoardToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.reloadDashBoardToolStripMenuItem.Text = "ダッシュボードの再読み込み(&R)";
-            this.reloadDashBoardToolStripMenuItem.Click += new System.EventHandler(this.reloadDashBoardToolStripMenuItem_Click);
-            // 
             // ProjectDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -300,7 +300,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.Name = "ProjectDashBoard";
             this.Text = "ProjectDashboard";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectDashBoard_FormClosed);
-            this.Load += new System.EventHandler(this.ProjectEditor_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.mainTab.ResumeLayout(false);

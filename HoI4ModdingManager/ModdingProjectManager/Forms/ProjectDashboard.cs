@@ -161,9 +161,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectEditor_Load(object sender, EventArgs e)
         {
-            // デバッグ用
-            //var test = new ProjectImportTest();
-            //test.ImportProject();
         }
 
         /// <summary>

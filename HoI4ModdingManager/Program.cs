@@ -1,6 +1,7 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.Forms;
 using System;
 using System.Windows.Forms;
+using HoI4ModdingManager.Tests;
 
 namespace HoI4ModdingManager
 {
@@ -16,10 +17,15 @@ namespace HoI4ModdingManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            
+
             if (args.Length == 0)
                 Application.Run(new ProjectDashBoard());
             else
+            {
+                ProjectImportTest.ImportProject(args[0]);
                 Application.Run(new ProjectDashBoard(args[0]));
+            }
         }
     }
 }
