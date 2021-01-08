@@ -17,8 +17,6 @@ namespace HoI4ModdingManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
-
             if (args.Length == 0)
                 Application.Run(new ProjectDashBoard());
             else

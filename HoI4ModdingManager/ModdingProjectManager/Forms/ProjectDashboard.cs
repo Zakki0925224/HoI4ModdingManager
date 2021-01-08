@@ -19,7 +19,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private string[] filePathArgument;
 
         // データコンテナ
-        private DataContainer mainContainer = new DataContainer();
+        private DataContainer mainContainer;
         private CefSettings settings;
 
         // フラグ
@@ -31,6 +31,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             this.filePathArgument = filePathArgument;
             OpeningProject = false;
+            mainContainer = new DataContainer();
 
             InitializeComponent();
             InitializeBrowser();
@@ -181,7 +182,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             };
             sf.FormatFlags |= StringFormatFlags.LineLimit;
-            
+
             var backBrush = new SolidBrush(page.BackColor);
             e.Graphics.FillRectangle(backBrush, e.Bounds);
             backBrush.Dispose();
