@@ -1,7 +1,7 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.Forms;
+using HoI4ModdingManager.Tests;
 using System;
 using System.Windows.Forms;
-using HoI4ModdingManager.Tests;
 
 namespace HoI4ModdingManager
 {

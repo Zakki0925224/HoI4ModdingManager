@@ -2,6 +2,7 @@
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 using HoI4ModdingManager.ModdingProjectManager.SQLite;
+using System.Collections.Generic;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {
@@ -14,6 +15,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
         {
             var sd = new StoreData();
             var dbc = new DataBaseConnector();
+            dc.Initialize();
 
             // 整合性確認
             if (!FileChecker.IsThisFileCanUse(dbFile))
