@@ -14,7 +14,7 @@ namespace HoI4ModdingManager.Common
             var psi = new ProcessStartInfo()
             {
                 FileName = Application.ExecutablePath,
-                Arguments = "\"" + filePath + "\""
+                Arguments = $"\"{filePath}\""
             };
             Process.Start(psi);
         }
