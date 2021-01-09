@@ -5,7 +5,7 @@ namespace HoI4ModdingManager.Common.Providers
     /// <summary>
     /// メッセージボックス関連の処理
     /// </summary>
-    class MessageBoxProvider
+    static class MessageBoxProvider
     {
         /// <summary>
         /// エラーメッセージ

@@ -5,23 +5,22 @@ namespace HoI4ModdingManager.Common.Responders
     /// <summary>
     /// ソフトのバージョン情報を返す
     /// </summary>
-    class AppVersionResponder
+    static class AppVersionResponder
     {
         /// <summary>
         /// AssembryVersionを取得
         /// </summary>
         /// <returns></returns>
-        private Version GetAssembryVersion()
+        private static Version GetAssembryVersion()
         {
-            var ar = new AssemblyResponder();
-            return ar.RespondAssembryVersionRaw();
+            return AssemblyResponder.RespondAssembryVersionRaw();
         }
 
         /// <summary>
         /// メジャーバージョンを返す
         /// </summary>
         /// <returns></returns>
-        private int RespondMajorVersion()
+        private static int RespondMajorVersion()
         {
             return GetAssembryVersion().Major;
         }
@@ -30,7 +29,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// マイナーバージョンを返す
         /// </summary>
         /// <returns></returns>
-        private int RespondMinorVersion()
+        private static int RespondMinorVersion()
         {
             return GetAssembryVersion().Minor;
         }
@@ -39,7 +38,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// ビルドバージョンを返す
         /// </summary>
         /// <returns></returns>
-        private int RespondBuildVersion()
+        private static int RespondBuildVersion()
         {
             return GetAssembryVersion().Build;
         }
@@ -48,7 +47,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// リビジョンバージョンを返す
         /// </summary>
         /// <returns></returns>
-        private int RespondRevisionVersion()
+        private static int RespondRevisionVersion()
         {
             return GetAssembryVersion().Revision;
         }
@@ -57,7 +56,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// 通称バージョン（メジャー+マイナー）を返す
         /// </summary>
         /// <returns></returns>
-        public string RespondAliasVersion()
+        public static string RespondAliasVersion()
         {
             string aliasVersion = RespondMajorVersion().ToString() + "." + RespondMinorVersion().ToString();
             return aliasVersion;
@@ -67,7 +66,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// AlphaまたはBetaを返す（それ以外は空文字を返す）
         /// </summary>
         /// <returns></returns>
-        public string RespondVersionType()
+        public static string RespondVersionType()
         {
             switch (RespondAliasVersion())
             {

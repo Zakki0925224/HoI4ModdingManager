@@ -6,13 +6,13 @@ namespace HoI4ModdingManager.Common.Responders
     /// <summary>
     /// アプリケーションのアセンブリ情報を返す
     /// </summary>
-    class AssemblyResponder
+    static class AssemblyResponder
     {
         /// <summary>
         /// AssemblyTitleを返す
         /// </summary>
         /// <returns></returns>
-        public string RespondAssemblyTitle()
+        public static string RespondAssemblyTitle()
         {
             var assembly = Assembly.GetExecutingAssembly();
             return assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
@@ -22,7 +22,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// AssemblyCopyrightを返す
         /// </summary>
         /// <returns></returns>
-        public string RespondAssemblyCopyright()
+        public static string RespondAssemblyCopyright()
         {
             var assembly = Assembly.GetExecutingAssembly();
             return assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
@@ -32,7 +32,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// AssembryVersionを返す（string）
         /// </summary>
         /// <returns></returns>
-        public string RespondAssembryVersion()
+        public static string RespondAssembryVersion()
         {
             var assemblyName = Assembly.GetExecutingAssembly().GetName();
             var version = assemblyName.Version;
@@ -43,7 +43,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// AssembryVersionを返す（Versionクラス）
         /// </summary>
         /// <returns></returns>
-        public Version RespondAssembryVersionRaw()
+        public static Version RespondAssembryVersionRaw()
         {
             var assemblyName = Assembly.GetExecutingAssembly().GetName();
             return assemblyName.Version;

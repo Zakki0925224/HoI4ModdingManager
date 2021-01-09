@@ -55,10 +55,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTab = new System.Windows.Forms.TabControl();
-            this.testTab1 = new System.Windows.Forms.TabPage();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.menuStrip.SuspendLayout();
-            this.mainTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -253,7 +251,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // mainTab
             // 
             this.mainTab.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.mainTab.Controls.Add(this.testTab1);
             this.mainTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.mainTab.ItemSize = new System.Drawing.Size(50, 140);
@@ -266,17 +263,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.mainTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTab.TabIndex = 3;
             this.mainTab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MainTab_DrawItem);
-            // 
-            // testTab1
-            // 
-            this.testTab1.Location = new System.Drawing.Point(144, 4);
-            this.testTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab1.Name = "testTab1";
-            this.testTab1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testTab1.Size = new System.Drawing.Size(725, 409);
-            this.testTab1.TabIndex = 0;
-            this.testTab1.Text = "Test";
-            this.testTab1.UseVisualStyleBackColor = true;
             // 
             // statusStrip
             // 
@@ -302,7 +288,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectDashBoard_FormClosed);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.mainTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,7 +304,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.TabControl mainTab;
-        private System.Windows.Forms.TabPage testTab1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;

@@ -16,7 +16,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private string[] filePathArgument;
+        private string[] filePathArguments;
 
         // データコンテナ
         private DataContainer mainContainer;
@@ -27,9 +27,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private bool OpeningProject { get; set; }
 
 
-        public ProjectDashBoard(params string[] filePathArgument)
+        public ProjectDashBoard(params string[] filePathArguments)
         {
-            this.filePathArgument = filePathArgument;
+            this.filePathArguments = filePathArguments;
             OpeningProject = false;
             mainContainer = new DataContainer();
 
@@ -47,7 +47,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (notSet)
                 this.Text = "HoI4ModdingManager";
             else
-                this.Text = filePathArgument[0] + " - HoI4ModdingManager";
+                this.Text = filePathArguments[0] + " - HoI4ModdingManager";
         }
 
         /// <summary>
@@ -57,19 +57,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             var exim = new EXIM();
 
-            if (filePathArgument.Length != 1)
+            if (filePathArguments.Length != 1)
             {
                 SetWindowTitle(true);
                 return;
             }
 
-            if (!exim.ImportProject(filePathArgument[0], mainContainer))
+            if (!exim.ImportProject(filePathArguments[0], mainContainer))
             {
                 SetWindowTitle(true);
                 return;
             }
 
-            UpdateUI(mainContainer.CountryDataList);
+            UpdateUI(mainContainer.CountryData);
             OpeningProject = true;
             SetWindowTitle(false);
         }
@@ -112,7 +112,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
 
             mainTab.TabPages.Clear();
-            UpdateUI(mainContainer.CountryDataList);
+            UpdateUI(mainContainer.CountryData);
         }
 
         private ChromiumWebBrowser SetBrowser(CountryDataHanger countryData)
@@ -132,19 +132,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            ChromiumWebBrowser browser = (ChromiumWebBrowser)sender;
+            var browser = (ChromiumWebBrowser)sender;
+            var sendedDatas = (CountryDataHanger)browser.Tag;
 
             if (!e.IsLoading)
-                browser.ExecuteScriptAsyncWhenPageLoaded("SetCountryData(\"" + ((CountryDataHanger)browser.Tag).country_name + "\", " +
-                                                                               ((CountryDataHanger)browser.Tag).initial_political_power + ", " +
-                                                                               ((CountryDataHanger)browser.Tag).initial_stability + ", " +
-                                                                               ((CountryDataHanger)browser.Tag).initial_war_coop + ", " +
-                                                                               ((CountryDataHanger)browser.Tag).initial_transport + ", " +
-                                                                        "\"" + ((CountryDataHanger)browser.Tag).initial_ideology + "\", " +
-                                                                               ((CountryDataHanger)browser.Tag).party_support_neutrality + ", " +
-                                                                               ((CountryDataHanger)browser.Tag).party_support_democratic + ", " +
-                                                                               ((CountryDataHanger)browser.Tag).party_support_fascism + ", " +
-                                                                               ((CountryDataHanger)browser.Tag).party_support_communism + ", " +
+                browser.ExecuteScriptAsyncWhenPageLoaded("SetCountryData(\"" + sendedDatas.country_name + "\", " +
+                                                                               sendedDatas.initial_political_power + ", " +
+                                                                               sendedDatas.initial_stability + ", " +
+                                                                               sendedDatas.initial_war_coop + ", " +
+                                                                               sendedDatas.initial_transport + ", " +
+                                                                        "\"" + sendedDatas.initial_ideology + "\", " +
+                                                                               sendedDatas.party_support_neutrality + ", " +
+                                                                               sendedDatas.party_support_democratic + ", " +
+                                                                               sendedDatas.party_support_fascism + ", " +
+                                                                               sendedDatas.party_support_communism + ", " +
                                                                                "false);");
         }
 

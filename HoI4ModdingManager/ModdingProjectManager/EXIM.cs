@@ -2,7 +2,6 @@
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 using HoI4ModdingManager.ModdingProjectManager.SQLite;
-using System.Collections.Generic;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {
@@ -27,7 +26,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             // プロジェクトデータの取得
             var projectData = new ProjectDataHanger();
             sd.ImportProjectData(dbFile, "project_data", projectData, dbc);
-            dc.ProjectDataList.Add(projectData);
+            dc.ProjectData.Add(projectData);
 
             // 国家データの取得
             for (int colmn = 0; colmn < projectData.number_of_countries; colmn++)
@@ -35,7 +34,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
                 // 取得した列ごとにリストに格納
                 var countryData = new CountryDataHanger();
                 sd.ImportCountryData(dbFile, "countries_data", colmn, countryData, dbc);
-                dc.CountryDataList.Add(countryData);
+                dc.CountryData.Add(countryData);
             }
 
             // イデオロギーデータの取得
@@ -43,7 +42,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             {
                 var ideologyData = new IdeologyDataHanger();
                 sd.ImportIdeologyData(dbFile, "ideologies_data", colmn, ideologyData, dbc);
-                dc.IdeologyDataList.Add(ideologyData);
+                dc.IdeologyData.Add(ideologyData);
             }
 
             return true;
