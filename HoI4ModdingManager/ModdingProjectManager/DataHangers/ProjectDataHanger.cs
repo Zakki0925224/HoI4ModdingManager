@@ -15,7 +15,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
         /// </summary>
         public void Initialize()
         {
-            Project_name = null;
+            Project_name = "";
             Created_at = DateTime.MinValue;
             Updated_at = DateTime.MinValue;
             Number_of_countries = 0;

@@ -39,8 +39,8 @@
         /// </summary>
         public void Initialize()
         {
-            Ideology_name = null;
-            Small_ideologies = null;
+            Ideology_name = "";
+            Small_ideologies = new string[] { };
             Color_r = 0;
             Color_g = 0;
             Color_b = 0;
