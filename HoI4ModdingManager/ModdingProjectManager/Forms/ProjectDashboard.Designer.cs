@@ -282,7 +282,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.Controls.Add(this.statusStrip);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(720, 480);
+            this.MinimumSize = new System.Drawing.Size(889, 502);
             this.Name = "ProjectDashBoard";
             this.Text = "ProjectDashboard";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectDashBoard_FormClosed);

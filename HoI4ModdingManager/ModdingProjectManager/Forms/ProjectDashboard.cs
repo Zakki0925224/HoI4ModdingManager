@@ -79,6 +79,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void UpdateUI(List<CountryDataHanger> countryData)
         {
+            mainTab.TabPages.Clear();
+
             foreach (CountryDataHanger data in countryData)
             {
                 var tabPage = new TabPage()
@@ -101,18 +103,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             Cef.Initialize(settings);
 
             InitializedBrowser = true;
-        }
-
-        /// <summary>
-        /// ダッシュボードを再読み込み
-        /// </summary>
-        private void Reload()
-        {
-            if (!OpeningProject)
-                return;
-
-            mainTab.TabPages.Clear();
-            UpdateUI(mainContainer.CountryData);
         }
 
         private ChromiumWebBrowser SetBrowser(CountryDataHanger countryData)
@@ -151,8 +141,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            //if (chromiumDevToolToolStripMenuItem.Checked)
-            //    ((ChromiumWebBrowser)sender).ShowDevTools();
+            if (chromiumDevToolToolStripMenuItem.Checked)
+                ((ChromiumWebBrowser)sender).ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -229,7 +219,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void reloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reload();
+            UpdateUI(mainContainer.CountryData);
         }
     }
 }
