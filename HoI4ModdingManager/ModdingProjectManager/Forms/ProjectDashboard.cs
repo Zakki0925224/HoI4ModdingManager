@@ -83,8 +83,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             {
                 var tabPage = new TabPage()
                 {
-                    Name = data.country_name + "-Tab",
-                    Text = data.country_name
+                    Name = data.Country_name + "-Tab",
+                    Text = data.Country_name
                 };
 
                 tabPage.Controls.Add(SetBrowser(data));
@@ -136,16 +136,16 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             var sendedDatas = (CountryDataHanger)browser.Tag;
 
             if (!e.IsLoading)
-                browser.ExecuteScriptAsyncWhenPageLoaded("SetCountryData(\"" + sendedDatas.country_name + "\", " +
-                                                                               sendedDatas.initial_political_power + ", " +
-                                                                               sendedDatas.initial_stability + ", " +
-                                                                               sendedDatas.initial_war_coop + ", " +
-                                                                               sendedDatas.initial_transport + ", " +
-                                                                        "\"" + sendedDatas.initial_ideology + "\", " +
-                                                                               sendedDatas.party_support_neutrality + ", " +
-                                                                               sendedDatas.party_support_democratic + ", " +
-                                                                               sendedDatas.party_support_fascism + ", " +
-                                                                               sendedDatas.party_support_communism + ", " +
+                browser.ExecuteScriptAsyncWhenPageLoaded("SetCountryData(\"" + sendedDatas.Country_name + "\", " +
+                                                                               sendedDatas.Initial_political_power + ", " +
+                                                                               sendedDatas.Initial_stability + ", " +
+                                                                               sendedDatas.Initial_war_coop + ", " +
+                                                                               sendedDatas.Initial_transport + ", " +
+                                                                        "\"" + sendedDatas.Initial_ideology + "\", " +
+                                                                               sendedDatas.Party_support_neutrality + ", " +
+                                                                               sendedDatas.Party_support_democratic + ", " +
+                                                                               sendedDatas.Party_support_fascism + ", " +
+                                                                               sendedDatas.Party_support_communism + ", " +
                                                                                "false);");
         }
 

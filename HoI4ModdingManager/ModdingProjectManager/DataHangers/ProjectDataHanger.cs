@@ -4,22 +4,22 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
     class ProjectDataHanger
     {
-        public string project_name;
-        public DateTime created_at;
-        public DateTime updated_at;
-        public int number_of_countries;
-        public int number_of_ideologies;
+        public string Project_name { get; set; }
+        public DateTime Created_at { get; set; }
+        public DateTime Updated_at { get; set; }
+        public int Number_of_countries { get; set; }
+        public int Number_of_ideologies { get; set; }
 
         /// <summary>
         /// データをすべて初期化
         /// </summary>
         public void Initialize()
         {
-            project_name = null;
-            created_at = DateTime.MinValue;
-            updated_at = DateTime.MinValue;
-            number_of_countries = 0;
-            number_of_ideologies = 0;
+            Project_name = null;
+            Created_at = DateTime.MinValue;
+            Updated_at = DateTime.MinValue;
+            Number_of_countries = 0;
+            Number_of_ideologies = 0;
         }
     }
 }

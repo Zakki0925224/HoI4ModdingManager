@@ -29,7 +29,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             dc.ProjectData.Add(projectData);
 
             // 国家データの取得
-            for (int colmn = 0; colmn < projectData.number_of_countries; colmn++)
+            for (int colmn = 0; colmn < projectData.Number_of_countries; colmn++)
             {
                 // 取得した列ごとにリストに格納
                 var countryData = new CountryDataHanger();
@@ -38,7 +38,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             }
 
             // イデオロギーデータの取得
-            for (int colmn = 0; colmn < projectData.number_of_ideologies; colmn++)
+            for (int colmn = 0; colmn < projectData.Number_of_ideologies; colmn++)
             {
                 var ideologyData = new IdeologyDataHanger();
                 sd.ImportIdeologyData(dbFile, "ideologies_data", colmn, ideologyData, dbc);
