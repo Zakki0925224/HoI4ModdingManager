@@ -12,7 +12,7 @@ namespace HoI4ModdingManager.Common.Parsers
     /// </summary>
     class Descriptor
     {
-        List<string> keywords = new List<string>()
+        readonly List<string> keywords = new List<string>()
         {
             "version",
             "name",
@@ -26,7 +26,7 @@ namespace HoI4ModdingManager.Common.Parsers
             "dependencies"
         };
 
-        List<string> tags = new List<string>()
+        readonly List<string> tags = new List<string>()
         {
             "Alternative History",
             "Events",
@@ -51,31 +51,108 @@ namespace HoI4ModdingManager.Common.Parsers
             var strings = new Regex(startChar + "(.+?)" + endChar).Matches(text);
 
             if (strings.Count == 0)
-                return null;
+                return new string[] { };
             else
                 return strings.Cast<Match>().Select(m => m.Value).ToArray();
         }
 
-        public List<string> CreateArray(string text)
+        public void CreateArray(string text)
         {
-            char[] chars = text.ToCharArray();
-            var content = new List<string>();
-            var sb = new StringBuilder();
+            var dataHanger = new FileData();
+            string[] oneLines = text.Split('\n');
+            dataHanger.Initialize();
 
-            foreach (char achar in chars)
+            for (int i = 0; i < oneLines.Length; i++)
             {
-                if (achar != '\n')
+                // 左辺="右辺"の形式で検索
+                string[] matchedStrings = new Regex("(.+?)=\"(.+?)\"").Matches(oneLines[i]).Cast<Match>().Select(m => m.Value).ToArray();
+
+                if (matchedStrings.Length != 2)
+                    continue;
+
+                for (int j = 0; j < keywords.Count; j++)
                 {
-                    sb.Append(achar);
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "version"))
+                    {
+                        dataHanger.Version = matchedStrings[1];
+                        break;
+                    }
+
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "name"))
+                    {
+                        dataHanger.Name = matchedStrings[1];
+                        break;
+                    }
+
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "supported_version"))
+                    {
+                        dataHanger.SupportedVersion = matchedStrings[1];
+                        break;
+                    }
+
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "picture"))
+                    {
+                        dataHanger.PicturePath = matchedStrings[1];
+                        break;
+                    }
+
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "remote_file_id"))
+                    {
+                        dataHanger.RemoteFileID = matchedStrings[1];
+                        break;
+                    }
+
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "path"))
+                    {
+                        dataHanger.ModPath = matchedStrings[1];
+                        break;
+                    }
+
+                    if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "user_dir"))
+                    {
+                        dataHanger.UserDir = matchedStrings[1];
+                        break;
+                    }
                 }
-                else
+
+                if (matchedStrings[1] == "{")
                 {
-                    content.Add(sb.ToString());
-                    sb.Clear();
+                    for (int j = 0; j < keywords.Count; j++)
+                    {
+                        // TODO
+                    }
                 }
             }
-
-            return content;
         }
     }
+
+    class FileData
+    {
+        public string Version { get; set; }
+        public string Name { get; set; }
+        public string SupportedVersion { get; set; }
+        public List<string> Tags { get; set; } = new List<string>();
+        public string PicturePath { get; set; }
+        public List<string> ReplacePaths { get; set; } = new List<string>();
+        public string RemoteFileID { get; set; }
+        public string ModPath { get; set; }
+        public string UserDir { get; set; }
+        public List<string> Depondencies { get; set; } = new List<string>();
+
+        public void Initialize()
+        {
+            Version = "";
+            Name = "";
+            SupportedVersion = "";
+            Tags.Clear();
+            PicturePath = "";
+            ReplacePaths.Clear();
+            RemoteFileID = "";
+            ModPath = "";
+            UserDir = "";
+            Depondencies.Clear();
+
+        }
+    }
+
 }
