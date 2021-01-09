@@ -69,7 +69,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
             }
 
-            UpdateUI(mainContainer.CountryData);
+            UpdateUI(mainContainer);
             OpeningProject = true;
             SetWindowTitle(false);
         }
@@ -77,11 +77,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <summary>
         /// UI更新
         /// </summary>
-        private void UpdateUI(List<CountryDataHanger> countryData)
+        private void UpdateUI(DataContainer container)
         {
             mainTab.TabPages.Clear();
 
-            foreach (CountryDataHanger data in countryData)
+            foreach (CountryDataHanger data in container.CountryData)
             {
                 var tabPage = new TabPage()
                 {
@@ -89,7 +89,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                     Text = data.Country_name
                 };
 
-                tabPage.Controls.Add(SetBrowser(data));
+                tabPage.Controls.Add(SetBrowser(data, container.IdeologyData, container.ProjectData));
                 mainTab.TabPages.Add(tabPage);
             }
         }
@@ -105,13 +105,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             InitializedBrowser = true;
         }
 
-        private ChromiumWebBrowser SetBrowser(CountryDataHanger countryData)
+        private ChromiumWebBrowser SetBrowser(CountryDataHanger thisBrowserCountryData, List<IdeologyDataHanger> ideologyData, List<ProjectDataHanger> projectData)
         {
             ChromiumWebBrowser browser;
             string pageSource = ResourceLoader.GetStringResource("HoI4ModdingManager.Common.PageLayout.dashboard.html");
 
+            object[] sendObjects = new object[3];
+            sendObjects[0] = thisBrowserCountryData;
+            sendObjects[1] = ideologyData;
+            sendObjects[2] = projectData;
+
             browser = ResourceLoader.GetBrowser();
-            browser.Tag = countryData;
+            browser.Tag = sendObjects[0];
+            browser.JavascriptObjectRepository.ObjectBoundInJavascript += JavascriptObjectRepository_ObjectBoundInJavascript;
             browser.IsBrowserInitializedChanged += CefBrowser_IsBrowserInitializedChanged;
             browser.LoadingStateChanged += CefBrowser_LoadingStateChanged;
             browser.Dock = DockStyle.Fill;
@@ -120,23 +126,28 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             return browser;
         }
 
+        private void JavascriptObjectRepository_ObjectBoundInJavascript(object sender, CefSharp.Event.JavascriptBindingCompleteEventArgs e)
+        {
+            Console.WriteLine($"[CefSharp]: Object {e.ObjectName} was bound successfully.");
+        }
+
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
             var browser = (ChromiumWebBrowser)sender;
-            var sendedDatas = (CountryDataHanger)browser.Tag;
+            var thisCountryData = (CountryDataHanger)browser.Tag;
 
             if (!e.IsLoading)
-                browser.ExecuteScriptAsyncWhenPageLoaded("SetCountryData(\"" + sendedDatas.Country_name + "\", " +
-                                                                               sendedDatas.Initial_political_power + ", " +
-                                                                               sendedDatas.Initial_stability + ", " +
-                                                                               sendedDatas.Initial_war_coop + ", " +
-                                                                               sendedDatas.Initial_transport + ", " +
-                                                                        "\"" + sendedDatas.Initial_ideology + "\", " +
-                                                                               sendedDatas.Party_support_neutrality + ", " +
-                                                                               sendedDatas.Party_support_democratic + ", " +
-                                                                               sendedDatas.Party_support_fascism + ", " +
-                                                                               sendedDatas.Party_support_communism + ", " +
-                                                                               "false);");
+                browser.ExecuteScriptAsync($"SetCountryData(\"{thisCountryData.Country_name}\"," +
+                                                          $"{thisCountryData.Initial_political_power}," +
+                                                          $"{thisCountryData.Initial_stability}," +
+                                                          $"{thisCountryData.Initial_war_coop}," +
+                                                          $"{thisCountryData.Initial_transport}," +
+                                                          $"\"{thisCountryData.Initial_ideology}\"," +
+                                                          $"{thisCountryData.Party_support_neutrality}," +
+                                                          $"{thisCountryData.Party_support_democratic}," +
+                                                          $"{thisCountryData.Party_support_fascism}," +
+                                                          $"{thisCountryData.Party_support_communism}," +
+                                                          $"false)");
         }
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
@@ -219,7 +230,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void reloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateUI(mainContainer.CountryData);
+            UpdateUI(mainContainer);
         }
     }
 }
