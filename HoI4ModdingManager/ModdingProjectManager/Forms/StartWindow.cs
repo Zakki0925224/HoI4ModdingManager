@@ -13,7 +13,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         public StartWindow()
         {
             InitializeComponent();
-            titleLabel.Text = AssemblyResponder.RespondAssemblyTitle() + " - v" + AppVersionResponder.RespondAliasVersion() + AppVersionResponder.RespondVersionType();
+            titleLabel.Text = $"{AssemblyResponder.RespondAssemblyTitle()} - v{AppVersionResponder.RespondAliasVersion()}{AppVersionResponder.RespondVersionType()}";
         }
 
         private void OpenProjectButton_Click(object sender, EventArgs e)

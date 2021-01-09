@@ -47,7 +47,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (notSet)
                 this.Text = "HoI4ModdingManager";
             else
-                this.Text = filePathArguments[0] + " - HoI4ModdingManager";
+                this.Text = $"{filePathArguments[0]} - HoI4ModdingManager";
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             {
                 var tabPage = new TabPage()
                 {
-                    Name = data.Country_name + "-Tab",
+                    Name = $"{data.Country_name}-Tab",
                     Text = data.Country_name
                 };
 

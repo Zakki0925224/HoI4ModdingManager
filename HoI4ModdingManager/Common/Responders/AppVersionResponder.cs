@@ -58,7 +58,7 @@ namespace HoI4ModdingManager.Common.Responders
         /// <returns></returns>
         public static string RespondAliasVersion()
         {
-            string aliasVersion = RespondMajorVersion().ToString() + "." + RespondMinorVersion().ToString();
+            string aliasVersion = $"{RespondMajorVersion()}.{RespondMinorVersion()}";
             return aliasVersion;
         }
 
