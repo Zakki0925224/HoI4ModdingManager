@@ -119,7 +119,14 @@ namespace HoI4ModdingManager.Common.Parsers
                 {
                     for (int j = 0; j < keywords.Count; j++)
                     {
-                        // TODO
+                        if ((keywords[j] == matchedStrings[0]) && (matchedStrings[0] == "tags"))
+                        {
+                            // '}'がある行まで
+                            foreach (string tag in tags)
+                            {
+                                // TODO
+                            }
+                        }
                     }
                 }
             }
