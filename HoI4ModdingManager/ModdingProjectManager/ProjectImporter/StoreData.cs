@@ -127,7 +127,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
                 throw new NotConnectingException();
 
             var cmd = sqlc.CreateCommand();
-            cmd.CommandText = $"SELECT * FORM {tableName} LIMIT {colmn}, 1";
+            cmd.CommandText = $"SELECT * FROM {tableName} LIMIT {colmn}, 1";
 
             using (var reader = cmd.ExecuteReader())
             {

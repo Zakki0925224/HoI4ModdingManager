@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -89,7 +90,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                     Text = data.Country_name
                 };
 
-                tabPage.Controls.Add(SetBrowser(data, container.IdeologyData, container.ProjectData));
+                tabPage.Controls.Add(SetBrowser(data));
                 mainTab.TabPages.Add(tabPage);
             }
         }
@@ -105,19 +106,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             InitializedBrowser = true;
         }
 
-        private ChromiumWebBrowser SetBrowser(CountryDataHanger thisBrowserCountryData, List<IdeologyDataHanger> ideologyData, List<ProjectDataHanger> projectData)
+        private ChromiumWebBrowser SetBrowser(CountryDataHanger thisBrowserCountryData)
         {
             ChromiumWebBrowser browser;
             string pageSource = ResourceLoader.GetStringResource("HoI4ModdingManager.Common.PageLayout.dashboard.html");
 
-            object[] sendObjects = new object[3];
-            sendObjects[0] = thisBrowserCountryData;
-            sendObjects[1] = ideologyData;
-            sendObjects[2] = projectData;
-
             browser = ResourceLoader.GetBrowser();
-            browser.Tag = sendObjects[0];
-            browser.JavascriptObjectRepository.ObjectBoundInJavascript += JavascriptObjectRepository_ObjectBoundInJavascript;
+            browser.Tag = thisBrowserCountryData;
             browser.IsBrowserInitializedChanged += CefBrowser_IsBrowserInitializedChanged;
             browser.LoadingStateChanged += CefBrowser_LoadingStateChanged;
             browser.Dock = DockStyle.Fill;
@@ -126,28 +121,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             return browser;
         }
 
-        private void JavascriptObjectRepository_ObjectBoundInJavascript(object sender, CefSharp.Event.JavascriptBindingCompleteEventArgs e)
-        {
-            Console.WriteLine($"[CefSharp]: Object {e.ObjectName} was bound successfully.");
-        }
-
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
+            if (!OpeningProject)
+                return;
+
             var browser = (ChromiumWebBrowser)sender;
-            var thisCountryData = (CountryDataHanger)browser.Tag;
+            string thisCountryData = JsonConvert.SerializeObject((CountryDataHanger)browser.Tag);
+            string countryData = JsonConvert.SerializeObject(mainContainer.CountryData);
+            string projectData = JsonConvert.SerializeObject(mainContainer.ProjectData);
+            string ideologyData = JsonConvert.SerializeObject(mainContainer.IdeologyData);
 
             if (!e.IsLoading)
-                browser.ExecuteScriptAsync($"SetCountryData(\"{thisCountryData.Country_name}\"," +
-                                                          $"{thisCountryData.Initial_political_power}," +
-                                                          $"{thisCountryData.Initial_stability}," +
-                                                          $"{thisCountryData.Initial_war_coop}," +
-                                                          $"{thisCountryData.Initial_transport}," +
-                                                          $"\"{thisCountryData.Initial_ideology}\"," +
-                                                          $"{thisCountryData.Party_support_neutrality}," +
-                                                          $"{thisCountryData.Party_support_democratic}," +
-                                                          $"{thisCountryData.Party_support_fascism}," +
-                                                          $"{thisCountryData.Party_support_communism}," +
-                                                          $"false)");
+                browser.ExecuteScriptAsync($"GetCountryData({thisCountryData}, {countryData}, {projectData}, {ideologyData})");
         }
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
@@ -232,5 +218,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             UpdateUI(mainContainer);
         }
+    }
+
+    class BrowserData
+    {
+        
     }
 }
