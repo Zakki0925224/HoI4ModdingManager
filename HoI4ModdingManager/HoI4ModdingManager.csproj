@@ -188,6 +188,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Common\PageLayout\assets\js\dashboard.js" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Common\PageLayout\assets\js\utils.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
