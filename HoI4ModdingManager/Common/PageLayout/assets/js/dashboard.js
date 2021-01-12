@@ -26,6 +26,24 @@ function SetStatus(thisCountryData)
 
 function SetPartySupportGraph(thisCountryData, ideologyData)
 {
+    // neutrality party support count
+    const nPartySupportCount = thisCountryData.Party_support_neutrality;
+    // democratic party support count
+    const dPartySupportCount = thisCountryData.Party_support_democratic;
+    // fascism party support count
+    const fPartySupportCount = thisCountryData.Party_support_fascism;
+    // communism party support count
+    const cPartySupportCount = thisCountryData.Party_support_communism;
+
+    // neutrality party name (long)
+    const nPartyName = thisCountryData.Party_name_neutrality_long;
+    // democratic party name (long)
+    const dPartyName = thisCountryData.Party_name_democratic_long;
+    // fascism party name (long)
+    const fPartyName = thisCountryData.Party_name_fascism_long;
+    // communism party name (long)
+    const cPartyName = thisCountryData.Party_name_communism_long;
+
     var ctx = document.getElementById("party_support_graph");
     var party_support_graph = new Chart
     (
@@ -34,12 +52,25 @@ function SetPartySupportGraph(thisCountryData, ideologyData)
             type: "doughnut",
             data:
             {
-                labels: ["Neutrality", "Democratic", "Fascism", "Communism"],
+                labels: [nPartyName, dPartyName, fPartyName, cPartyName],
                 datasets:
                 [{
                     backgroundColor: ["#7c7c7c", "#0000ff", "#964b00", "#ff0000"],
-                    data: [thisCountryData.Party_support_neutrality, thisCountryData.Party_support_democratic, thisCountryData.Party_support_fascism, thisCountryData.Party_support_communism]
+                    data: [nPartySupportCount, dPartySupportCount, fPartySupportCount, cPartySupportCount]
                 }]
+            },
+            options:
+            {
+                tooltips:
+                {
+                    callbacks:
+                    {
+                        label: function (tooltipItem, data)
+                        {
+                            return data.labels[tooltipItem.index] + ": " + data.datasets[0].data[tooltipItem.index] + " %";
+                        }
+                    }
+                }
             }
         }
     );
