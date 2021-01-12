@@ -12,6 +12,7 @@ function GetCountryData(thisCountryData,countryData,projectData,ideologyData)
 
     SetStatus(thisCountryData);
     SetPartySupportGraph(thisCountryData, ideologyData);
+    AddPartyCard(thisCountryData, ideologyData);
 }
 
 function SetStatus(thisCountryData)
@@ -74,4 +75,111 @@ function SetPartySupportGraph(thisCountryData, ideologyData)
             }
         }
     );
+}
+
+function AddPartyCard(thisCountryData, ideologyData)
+{
+    const cardsCount = Object.keys(ideologyData).length;
+    var container = document.getElementById("party_cards_container");
+
+    for (let i = 0; i < cardsCount; i++)
+    {
+        const ideologyName = ideologyData[i].Ideology_name;
+        let partyName;
+        let partySupport;
+        const partyLeaderName = "Donald Trump"; // temporary
+
+        if (ideologyName == "neutrality")
+        {
+            partyName = thisCountryData.Party_name_neutrality_long;
+            partySupport = thisCountryData.Party_support_neutrality;
+        }
+
+        else if (ideologyName == "democratic")
+        {
+            partyName = thisCountryData.Party_name_democratic_long;
+            partySupport = thisCountryData.Party_support_democratic;
+        }
+
+        else if (ideologyName == "fascism")
+        {
+            partyName = thisCountryData.Party_name_fascism_long;
+            partySupport = thisCountryData.Party_support_fascism;
+        }
+
+        else if (ideologyName == "communism")
+        {
+            partyName = thisCountryData.Party_name_communism_long;
+            partySupport = thisCountryData.Party_support_communism;
+        }
+        else
+        {
+            partyName = "";
+            partySupport = "";
+        }
+
+        var card = document.createElement("div");
+        card.setAttribute("class", "card");
+        card.setAttribute("style", "width: 25rem;");
+
+        var cardBody = document.createElement("div");
+        cardBody.setAttribute("class", "card-body");
+        card.appendChild(cardBody);
+
+        var cardTitle = document.createElement("h4");
+        cardTitle.setAttribute("class", "card-title");
+        cardTitle.appendChild(document.createTextNode(partyName));
+        cardBody.appendChild(cardTitle);
+
+        var cardSubTitle = document.createElement("h6");
+        cardSubTitle.setAttribute("class", "card-subtitle mb-2 text-secondary");
+        cardSubTitle.appendChild(document.createTextNode("opposition party"));
+        cardBody.appendChild(cardSubTitle);
+
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        cardBody.appendChild(table);
+
+        var tableBody = document.createElement("tbody");
+        table.appendChild(tableBody);
+
+        var tr1 = document.createElement("tr");
+        tableBody.appendChild(tr1);
+
+        var leaderSection = document.createElement("th");
+        leaderSection.setAttribute("scope", "row");
+        leaderSection.appendChild(document.createTextNode("Leader"));
+        tr1.appendChild(leaderSection);
+
+        var leaderValue = document.createElement("td");
+        leaderValue.appendChild(document.createTextNode(partyLeaderName));
+        tr1.appendChild(leaderValue);
+
+        var tr2 = document.createElement("tr");
+        tableBody.appendChild(tr2);
+
+        var ideologySection = document.createElement("th");
+        ideologySection.setAttribute("scope", "row");
+        ideologySection.appendChild(document.createTextNode("Ideology"));
+        tr2.appendChild(ideologySection);
+
+        var ideologyValue = document.createElement("td");
+        ideologyValue.appendChild(document.createTextNode(ideologyName));
+        tr2.appendChild(ideologyValue);
+
+        var tr3 = document.createElement("tr");
+        tableBody.appendChild(tr3);
+
+        var supportSection = document.createElement("th");
+        supportSection.setAttribute("scope", "row");
+        supportSection.appendChild(document.createTextNode("Party approval rating"));
+        tr3.appendChild(supportSection);
+
+        var supportValue = document.createElement("td");
+        supportValue.appendChild(document.createTextNode(partySupport + "%"));
+        tr3.appendChild(supportValue);
+
+        // last
+        container.appendChild(card);
+    }
 }
