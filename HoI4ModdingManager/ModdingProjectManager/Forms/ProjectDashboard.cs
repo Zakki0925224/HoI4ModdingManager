@@ -5,12 +5,11 @@ using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -56,15 +55,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void SetProjectData()
         {
-            var exim = new EXIM();
-
             if (filePathArguments.Length != 1)
             {
                 SetWindowTitle(true);
                 return;
             }
 
-            if (!exim.ImportProject(filePathArguments[0], mainContainer))
+            if (!new EXIM().ImportProject(filePathArguments[0], mainContainer))
             {
                 SetWindowTitle(true);
                 return;
@@ -144,8 +141,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var sw = new StartWindow();
-            sw.ShowDialog();
+            new StartWindow().ShowDialog();
         }
 
         private void ProjectEditor_Load(object sender, EventArgs e)
@@ -181,20 +177,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ods = new DialogProvider();
-            string filePath = ods.ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
+            string filePath = new DialogProvider().ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
 
             if (filePath != null)
-            {
-                var pc = new ProcessCreater();
-                pc.CreateNewProcess(filePath);
-            }
+                new ProcessCreater().CreateNewProcess(filePath);
         }
 
         private void createProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var sw = new StartWindow();
-            sw.ShowDialog();
+            new StartWindow().ShowDialog();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,8 +195,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var apps = new AppSettings();
-            apps.ShowDialog();
+            new AppSettings().ShowDialog();
         }
 
         private void ProjectDashBoard_FormClosed(object sender, FormClosedEventArgs e)
@@ -218,10 +208,5 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             UpdateUI(mainContainer);
         }
-    }
-
-    class BrowserData
-    {
-        
     }
 }

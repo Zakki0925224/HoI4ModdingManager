@@ -237,6 +237,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.checkBox.TabIndex = 10;
             this.checkBox.Text = "既存Modからプロジェクトを作成";
             this.checkBox.UseVisualStyleBackColor = true;
+            this.checkBox.Visible = false;
             this.checkBox.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
             // 
             // StartWindow

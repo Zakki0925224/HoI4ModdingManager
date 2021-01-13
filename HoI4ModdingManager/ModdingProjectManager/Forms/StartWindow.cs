@@ -3,7 +3,6 @@ using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Responders;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
@@ -19,11 +18,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void OpenProjectButton_Click(object sender, EventArgs e)
         {
             // 新しいプロセスで開始
-            var ds = new DialogProvider();
-            var pc = new ProcessCreater();
-            pc.CreateNewProcess(ds.ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true));
+            string result = new DialogProvider().ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
 
-            this.Close();
+            if (result != null)
+            {
+                new ProcessCreater().CreateNewProcess(result);
+                this.Close();
+            }
         }
 
         private void CreateProjectButton_Click(object sender, EventArgs e)
@@ -33,8 +34,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            var apps = new AppSettings();
-            apps.ShowDialog();
+            new AppSettings().ShowDialog();
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -60,8 +60,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void referenceButton_Click(object sender, EventArgs e)
         {
-            var ds = new DialogProvider();
-            projectPlaceTextBox.Text = ds.ShowSaveFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを保存", true);
+            projectPlaceTextBox.Text = new DialogProvider().ShowSaveFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを保存", true);
         }
     }
 }
