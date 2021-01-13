@@ -183,6 +183,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
             this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.projectSettingsToolStripMenuItem.Text = "プロジェクト設定(&P)...";
+            this.projectSettingsToolStripMenuItem.Click += new System.EventHandler(this.projectSettingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 

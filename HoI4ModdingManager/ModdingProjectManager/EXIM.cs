@@ -14,7 +14,6 @@ namespace HoI4ModdingManager.ModdingProjectManager
         {
             var sd = new StoreData();
             var dbc = new DataBaseConnector();
-            dc.Initialize();
 
             // 整合性確認
             if (!FileChecker.IsThisFileCanUse(dbFile))

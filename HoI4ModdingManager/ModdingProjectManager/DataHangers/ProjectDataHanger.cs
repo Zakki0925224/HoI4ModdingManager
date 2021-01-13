@@ -2,13 +2,18 @@
 
 namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
-    class ProjectDataHanger
+    public class ProjectDataHanger
     {
         public string Project_name { get; set; }
         public DateTime Created_at { get; set; }
         public DateTime Updated_at { get; set; }
         public int Number_of_countries { get; set; }
         public int Number_of_ideologies { get; set; }
+
+        public ProjectDataHanger()
+        {
+            Initialize();
+        }
 
         /// <summary>
         /// データをすべて初期化

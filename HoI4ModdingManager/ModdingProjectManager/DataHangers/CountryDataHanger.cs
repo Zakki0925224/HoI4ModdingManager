@@ -2,7 +2,7 @@
 
 namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
-    class CountryDataHanger
+    public class CountryDataHanger
     {
         public int Id { get; set; }
         public string Country_tag { get; set; }
@@ -57,6 +57,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
         public int Party_support_democratic { get; set; }
         public int Party_support_fascism { get; set; }
         public int Party_support_communism { get; set; }
+
+        public CountryDataHanger()
+        {
+            Initialize();
+        }
 
         /// <summary>
         /// データをすべて初期化

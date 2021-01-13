@@ -1,6 +1,6 @@
 ﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
-    class IdeologyDataHanger
+    public class IdeologyDataHanger
     {
         public string Ideology_name { get; set; }
         public string[] Small_ideologies { get; set; }
@@ -33,6 +33,11 @@
         public int War_impact_on_world_tension { get; set; }
         public bool Can_collaborate { get; set; }
         public bool Can_host_government_in_exile { get; set; }
+
+        public IdeologyDataHanger()
+        {
+            Initialize();
+        }
 
         /// <summary>
         /// データをすべて初期化

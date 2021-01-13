@@ -10,6 +10,7 @@ using System;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using HoI4ModdingManager.ModManager.Forms;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -207,6 +208,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void reloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateUI(mainContainer);
+        }
+
+        private void projectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var ps = new ProjectSettings(mainContainer.ProjectData);
+            ps.ShowDialog();
         }
     }
 }

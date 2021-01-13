@@ -15,6 +15,11 @@ namespace HoI4ModdingManager.ModdingProjectManager
 
         public List<ProjectDataHanger> ProjectData { get; set; }
 
+        public DataContainer()
+        {
+            Initialize();
+        }
+
         /// <summary>
         /// 初期化
         /// </summary>
