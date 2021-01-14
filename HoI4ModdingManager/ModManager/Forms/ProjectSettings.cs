@@ -12,6 +12,7 @@ namespace HoI4ModdingManager.ModManager.Forms
         {
             InitializeComponent();
             ProjectDataContainer = projectData[0];
+            textBox1.Text = ProjectDataContainer.Project_name;
         }
     }
 }
