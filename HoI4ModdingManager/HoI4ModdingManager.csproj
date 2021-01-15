@@ -113,6 +113,7 @@
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
     <Compile Include="ModdingProjectManager\EXIM.cs" />
     <Compile Include="ModdingProjectManager\ProjectImporter\FileChecker.cs" />
+    <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NotConnectingException.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.cs">
       <SubType>Form</SubType>

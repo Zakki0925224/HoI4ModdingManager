@@ -15,13 +15,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="sqlc">SQLiteConnection</param>
         private void ReadCountryData(string tableName, int colmn, CountryDataHanger cd, SQLiteConnection sqlc)
         {
-            if (sqlc == null)
-                throw new NotConnectingException();
-
-            var cmd = sqlc.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {tableName} LIMIT {colmn}, 1";
-
-            using (var reader = cmd.ExecuteReader())
+            using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, true, colmn).ExecuteReader())
             {
                 reader.Read();
                 cd.Initialize();
@@ -95,13 +89,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="sqlc">SQLiteConnection</param>
         private void ReadProjectData(string tableName, ProjectDataHanger pd, SQLiteConnection sqlc)
         {
-            if (sqlc == null)
-                throw new NotConnectingException();
-
-            var cmd = sqlc.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {tableName}";
-
-            using (var reader = cmd.ExecuteReader())
+            using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, false).ExecuteReader())
             {
                 reader.Read();
 
@@ -123,13 +111,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="sqlc">SQLiteConnection</param>
         private void ReadIdeologyData(string tableName, int colmn, IdeologyDataHanger id, SQLiteConnection sqlc)
         {
-            if (sqlc == null)
-                throw new NotConnectingException();
-
-            var cmd = sqlc.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {tableName} LIMIT {colmn}, 1";
-
-            using (var reader = cmd.ExecuteReader())
+            using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, true, colmn).ExecuteReader())
             {
                 reader.Read();
 
