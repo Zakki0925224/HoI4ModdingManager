@@ -1,7 +1,6 @@
 ﻿using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
-using HoI4ModdingManager.ModdingProjectManager.SQLite;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {
@@ -13,7 +12,6 @@ namespace HoI4ModdingManager.ModdingProjectManager
         public bool ImportProject(string dbFile, DataContainer dc)
         {
             var sd = new StoreData();
-            var dbc = new DataBaseConnector();
 
             // 整合性確認
             if (!FileChecker.IsThisFileCanUse(dbFile))
@@ -24,7 +22,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
 
             // プロジェクトデータの取得
             var projectData = new ProjectDataHanger();
-            sd.ImportProjectData(dbFile, "project_data", projectData, dbc);
+            sd.ImportProjectData(dbFile, "project_data", projectData);
             dc.ProjectData.Add(projectData);
 
             // 国家データの取得
@@ -32,7 +30,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             {
                 // 取得した列ごとにリストに格納
                 var countryData = new CountryDataHanger();
-                sd.ImportCountryData(dbFile, "countries_data", colmn, countryData, dbc);
+                sd.ImportCountryData(dbFile, "countries_data", colmn, countryData);
                 dc.CountryData.Add(countryData);
             }
 
@@ -40,7 +38,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             for (int colmn = 0; colmn < projectData.Number_of_ideologies; colmn++)
             {
                 var ideologyData = new IdeologyDataHanger();
-                sd.ImportIdeologyData(dbFile, "ideologies_data", colmn, ideologyData, dbc);
+                sd.ImportIdeologyData(dbFile, "ideologies_data", colmn, ideologyData);
                 dc.IdeologyData.Add(ideologyData);
             }
 

@@ -18,7 +18,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, true, colmn).ExecuteReader())
             {
                 reader.Read();
-                cd.Initialize();
 
                 cd.Id = reader.GetInt32(0);
                 cd.Country_tag = reader.GetString(1);
@@ -53,12 +52,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
                 cd.Initial_ideology = reader.GetString(30);
                 cd.Last_election_at = reader.GetDateTime(31);
                 cd.Election_interval = reader.GetInt32(32);
-
-                if (reader.GetInt32(33) == 0)
-                    cd.Is_no_election = false;
-                else
-                    cd.Is_no_election = true;
-
+                cd.Is_no_election = GetBool(reader.GetInt32(33));
                 cd.Color_r = reader.GetInt32(34);
                 cd.Color_g = reader.GetInt32(35);
                 cd.Color_b = reader.GetInt32(36);
@@ -93,7 +87,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 reader.Read();
 
-                pd.Initialize();
                 pd.Project_name = reader.GetString(0);
                 pd.Created_at = reader.GetDateTime(1);
                 pd.Updated_at = reader.GetDateTime(2);
@@ -115,44 +108,18 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 reader.Read();
 
-                id.Initialize();
                 id.Ideology_name = reader.GetString(0);
                 // コンマで区切る（スペースは含めない）
                 id.Small_ideologies = reader.GetString(1).Split(',');
                 id.Color_r = reader.GetInt32(2);
                 id.Color_g = reader.GetInt32(3);
                 id.Color_b = reader.GetInt32(4);
-
-                if (reader.GetInt32(5) == 0)
-                    id.Rule_can_force_government = false;
-                else
-                    id.Rule_can_force_government = true;
-
-                if (reader.GetInt32(6) == 0)
-                    id.Rule_can_puppet = false;
-                else
-                    id.Rule_can_puppet = true;
-
-                if (reader.GetInt32(7) == 0)
-                    id.Rule_can_join_factions = false;
-                else
-                    id.Rule_can_join_factions = true;
-
-                if (reader.GetInt32(8) == 0)
-                    id.Rule_can_create_factions = false;
-                else
-                    id.Rule_can_create_factions = true;
-
-                if (reader.GetInt32(9) == 0)
-                    id.Rule_can_send_volunteers = false;
-                else
-                    id.Rule_can_send_volunteers = true;
-
-                if (reader.GetInt32(10) == 0)
-                    id.Rule_can_lower_tension = false;
-                else
-                    id.Rule_can_lower_tension = true;
-
+                id.Rule_can_force_government = GetBool(reader.GetInt32(5));
+                id.Rule_can_puppet = GetBool(reader.GetInt32(6));
+                id.Rule_can_join_factions = GetBool(reader.GetInt32(7));
+                id.Rule_can_create_factions = GetBool(reader.GetInt32(8));
+                id.Rule_can_send_volunteers = GetBool(reader.GetInt32(9));
+                id.Rule_can_lower_tension = GetBool(reader.GetInt32(10));
                 id.Modifier_generate_wargoal_tension = reader.GetInt32(11);
                 id.Modifier_guarantee_tension = reader.GetInt32(12);
                 id.Modifier_civilian_intel_to_others = reader.GetInt32(13);
@@ -163,29 +130,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
                 id.Modifier_join_faction_tension = reader.GetInt32(18);
                 id.Modifier_lend_lease_tension = reader.GetInt32(19);
                 id.Modifier_annex_cost_factor = reader.GetInt32(20);
-
-                if (reader.GetInt32(21) == 0)
-                    id.Ai_uses_this_ideology = false;
-                else
-                    id.Ai_uses_this_ideology = true;
-
-                if (reader.GetInt32(22) == 0)
-                    id.Can_be_boosted = false;
-                else
-                    id.Can_be_boosted = true;
-
+                id.Ai_uses_this_ideology = GetBool(reader.GetInt32(21));
+                id.Can_be_boosted = GetBool(reader.GetInt32(22));
                 id.War_impact_on_world_tension = reader.GetInt32(23);
-
-                if (reader.GetInt32(23) == 0)
-                    id.Can_collaborate = false;
-                else
-                    id.Can_collaborate = true;
-
-                if (reader.GetInt32(24) == 0)
-                    id.Can_host_government_in_exile = false;
-                else
-                    id.Can_host_government_in_exile = true;
+                id.Can_collaborate = GetBool(reader.GetInt32(24));
+                id.Can_host_government_in_exile = GetBool(reader.GetInt32(25));
             }
+        }
+
+        private bool GetBool(int value)
+        {
+            if (value == 0)
+                return false;
+            else
+                return true;
         }
 
         /// <summary>
@@ -195,11 +153,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="cd">クラスインスタンス</param>
-        public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd, DataBaseConnector dbc)
+        public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd)
         {
-            dbc.ConnectionDataBase(dbFile, tableName);
-            ReadCountryData(tableName, colmn, cd, dbc.sqlc);
-            dbc.Dispose();
+            using (var dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile, tableName);
+                ReadCountryData(tableName, colmn, cd, dbc.sqlc);
+            }
         }
 
         /// <summary>
@@ -208,11 +168,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd, DataBaseConnector dbc)
+        public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd)
         {
-            dbc.ConnectionDataBase(dbFile, tableName);
-            ReadProjectData(tableName, pd, dbc.sqlc);
-            dbc.Dispose();
+            using (var dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile, tableName);
+                ReadProjectData(tableName, pd, dbc.sqlc);
+            }
         }
 
         /// <summary>
@@ -222,11 +184,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         /// <param name="tableName">テーブル名</param>
         /// <param name="colmn">取得したい列番号(0~)</param>
         /// <param name="id">クラスインスタンス</param>
-        public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id, DataBaseConnector dbc)
+        public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id)
         {
-            dbc.ConnectionDataBase(dbFile, tableName);
-            ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
-            dbc.Dispose();
+            using (var dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile, tableName);
+                ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
+            }
         }
     }
 }
