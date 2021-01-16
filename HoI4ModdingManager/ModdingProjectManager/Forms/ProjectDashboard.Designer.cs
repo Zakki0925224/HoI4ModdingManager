@@ -103,7 +103,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "プロジェクトを開く(&O)...";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -176,14 +176,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.reloadDashBoardToolStripMenuItem.Name = "reloadDashBoardToolStripMenuItem";
             this.reloadDashBoardToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.reloadDashBoardToolStripMenuItem.Text = "ダッシュボードの再読み込み(&R)";
-            this.reloadDashBoardToolStripMenuItem.Click += new System.EventHandler(this.reloadDashBoardToolStripMenuItem_Click);
+            this.reloadDashBoardToolStripMenuItem.Click += new System.EventHandler(this.ReloadDashBoardToolStripMenuItem_Click);
             // 
             // projectSettingsToolStripMenuItem
             // 
             this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
             this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.projectSettingsToolStripMenuItem.Text = "プロジェクト設定(&P)...";
-            this.projectSettingsToolStripMenuItem.Click += new System.EventHandler(this.projectSettingsToolStripMenuItem_Click);
+            this.projectSettingsToolStripMenuItem.Click += new System.EventHandler(this.ProjectSettingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -233,7 +233,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.settingsToolStripMenuItem.Text = "アプリケーション設定(&S)...";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 

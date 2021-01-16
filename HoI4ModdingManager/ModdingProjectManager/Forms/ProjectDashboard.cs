@@ -17,7 +17,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private string[] filePathArguments;
+        private readonly string[] filePathArguments;
 
         // データコンテナ
         private DataContainer mainContainer;
@@ -42,13 +42,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <summary>
         /// ウィンドウタイトルを設定
         /// </summary>
-        /// <param name="notSet"></param>
-        private void SetWindowTitle(bool notSet)
+        /// <param name="windowTitle"></param>
+        private void SetWindowTitle(string windowTitle)
         {
-            if (notSet)
-                this.Text = "HoI4ModdingManager";
-            else
-                this.Text = $"{filePathArguments[0]} - HoI4ModdingManager";
+            this.Text = $"{filePathArguments[0]} - HoI4ModdingManager";
         }
 
         /// <summary>
@@ -56,21 +53,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void SetProjectData()
         {
+            mainContainer.Initialize();
+            OpeningProject = false;
+            SetWindowTitle("HoI4ModdingManager");
+
             if (filePathArguments.Length != 1)
-            {
-                SetWindowTitle(true);
                 return;
-            }
 
             if (!new EXIM().ImportProject(filePathArguments[0], mainContainer))
-            {
-                SetWindowTitle(true);
                 return;
-            }
 
             UpdateUI(mainContainer);
+
             OpeningProject = true;
-            SetWindowTitle(false);
+            SetWindowTitle($"{filePathArguments[0]} - HoI4ModdingManager");
         }
 
         /// <summary>
@@ -104,6 +100,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             InitializedBrowser = true;
         }
 
+        /// <summary>
+        /// Countrydataを指定してブラウザを設定
+        /// </summary>
+        /// <param name="thisBrowserCountryData"></param>
+        /// <returns></returns>
         private ChromiumWebBrowser SetBrowser(CountryDataHanger thisBrowserCountryData)
         {
             ChromiumWebBrowser browser;
@@ -176,7 +177,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             e.Graphics.DrawString(title, page.Font, foreBrush, e.Bounds, sf);
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string filePath = new DialogProvider().ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
 
@@ -184,7 +185,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 new ProcessCreater().CreateNewProcess(filePath);
         }
 
-        private void createProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CreateProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new StartWindow().ShowDialog();
         }
@@ -194,7 +195,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             Application.Exit();
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AppSettings().ShowDialog();
         }
@@ -205,15 +206,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 Cef.Shutdown();
         }
 
-        private void reloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ReloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateUI(mainContainer);
         }
 
-        private void projectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ProjectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ps = new ProjectSettings(mainContainer.ProjectData);
-            ps.ShowDialog();
+            var ps = new ProjectSettings(mainContainer.ProjectData).ShowDialog();
         }
     }
 }
