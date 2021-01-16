@@ -17,7 +17,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private readonly string[] filePathArguments;
+        private readonly string filePath;
 
         // データコンテナ
         private DataContainer mainContainer;
@@ -30,7 +30,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         public ProjectDashBoard(params string[] filePathArguments)
         {
-            this.filePathArguments = filePathArguments;
+            this.filePath = filePathArguments[0];
             OpeningProject = false;
             mainContainer = new DataContainer();
 
@@ -45,7 +45,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <param name="windowTitle"></param>
         private void SetWindowTitle(string windowTitle)
         {
-            this.Text = $"{filePathArguments[0]} - HoI4ModdingManager";
+            this.Text = $"{filePath} - HoI4ModdingManager";
         }
 
         /// <summary>
@@ -57,16 +57,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             OpeningProject = false;
             SetWindowTitle("HoI4ModdingManager");
 
-            if (filePathArguments.Length != 1)
-                return;
-
-            if (!new EXIM().ImportProject(filePathArguments[0], mainContainer))
+            if (!new EXIM().ImportProject(filePath, mainContainer))
                 return;
 
             UpdateUI(mainContainer);
 
             OpeningProject = true;
-            SetWindowTitle($"{filePathArguments[0]} - HoI4ModdingManager");
+            SetWindowTitle($"{filePath} - HoI4ModdingManager");
         }
 
         /// <summary>
@@ -190,7 +187,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             new StartWindow().ShowDialog();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
