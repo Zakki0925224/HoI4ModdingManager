@@ -14,11 +14,11 @@ namespace HoI4ModdingManager.Tests
             exim.ImportProject(filePath, data);
 
             Console.WriteLine("----Project Data----");
-            Console.WriteLine(data.ProjectData[0].Project_name);
-            Console.WriteLine(data.ProjectData[0].Created_at);
-            Console.WriteLine(data.ProjectData[0].Updated_at);
-            Console.WriteLine(data.ProjectData[0].Number_of_countries);
-            Console.WriteLine(data.ProjectData[0].Number_of_ideologies);
+            Console.WriteLine(data.ProjectData.Project_name);
+            Console.WriteLine(data.ProjectData.Created_at);
+            Console.WriteLine(data.ProjectData.Updated_at);
+            Console.WriteLine(data.ProjectData.Number_of_countries);
+            Console.WriteLine(data.ProjectData.Number_of_ideologies);
 
             Console.WriteLine("----Country Data----");
             

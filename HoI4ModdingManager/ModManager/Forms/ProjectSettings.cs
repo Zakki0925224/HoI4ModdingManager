@@ -8,10 +8,10 @@ namespace HoI4ModdingManager.ModManager.Forms
     {
         private ProjectDataHanger ProjectDataContainer {get; set;}
 
-        public ProjectSettings(List<ProjectDataHanger> projectData)
+        public ProjectSettings(ProjectDataHanger projectData)
         {
             InitializeComponent();
-            ProjectDataContainer = projectData[0];
+            ProjectDataContainer = projectData;
             textBox1.Text = ProjectDataContainer.Project_name;
         }
     }

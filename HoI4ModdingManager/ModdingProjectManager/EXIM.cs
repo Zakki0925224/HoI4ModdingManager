@@ -1,7 +1,6 @@
 ﻿using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
-using HoI4ModdingManager.ModdingProjectManager.SQLite;
 
 namespace HoI4ModdingManager.ModdingProjectManager
 {
@@ -24,7 +23,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
             // プロジェクトデータの取得
             var projectData = new ProjectDataHanger();
             sd.ImportProjectData(dbFile, "project_data", projectData);
-            dc.ProjectData.Add(projectData);
+            dc.ProjectData = projectData;
 
             // 国家データの取得
             for (int colmn = 0; colmn < projectData.Number_of_countries; colmn++)

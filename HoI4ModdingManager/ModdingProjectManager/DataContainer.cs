@@ -13,7 +13,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
 
         public List<IdeologyDataHanger> IdeologyData { get; set; }
 
-        public List<ProjectDataHanger> ProjectData { get; set; }
+        public ProjectDataHanger ProjectData { get; set; }
 
         public DataContainer()
         {
@@ -27,7 +27,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
         {
             CountryData = new List<CountryDataHanger>();
             IdeologyData = new List<IdeologyDataHanger>();
-            ProjectData = new List<ProjectDataHanger>();
+            ProjectData = new ProjectDataHanger();
         }
     }
 }
