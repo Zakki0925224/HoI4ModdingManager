@@ -43,10 +43,10 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -66,7 +66,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 12);
+            this.textBox1.Location = new System.Drawing.Point(132, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 23);
             this.textBox1.TabIndex = 1;
@@ -74,7 +74,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkedListBox1);
-            this.groupBox1.Location = new System.Drawing.Point(308, 12);
+            this.groupBox1.Location = new System.Drawing.Point(288, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(144, 225);
             this.groupBox1.TabIndex = 2;
@@ -104,30 +104,33 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(215, 289);
+            this.button1.Location = new System.Drawing.Point(195, 246);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(296, 289);
+            this.button2.Location = new System.Drawing.Point(276, 246);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
             this.button2.Text = "キャンセル";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(377, 289);
+            this.button3.Location = new System.Drawing.Point(357, 246);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
             this.button3.Text = "適用";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
@@ -140,7 +143,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(152, 41);
+            this.numericUpDown1.Location = new System.Drawing.Point(132, 41);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(36, 23);
             this.numericUpDown1.TabIndex = 7;
@@ -152,7 +155,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(209, 41);
+            this.numericUpDown2.Location = new System.Drawing.Point(189, 41);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(36, 23);
             this.numericUpDown2.TabIndex = 8;
@@ -164,7 +167,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(266, 41);
+            this.numericUpDown3.Location = new System.Drawing.Point(246, 41);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(36, 23);
             this.numericUpDown3.TabIndex = 9;
@@ -178,7 +181,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(194, 51);
+            this.label4.Location = new System.Drawing.Point(174, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(9, 13);
             this.label4.TabIndex = 11;
@@ -188,7 +191,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(251, 51);
+            this.label5.Location = new System.Drawing.Point(231, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(9, 13);
             this.label5.TabIndex = 12;
@@ -200,29 +203,22 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Location = new System.Drawing.Point(192, 70);
+            this.groupBox2.Location = new System.Drawing.Point(172, 70);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(110, 167);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "画像";
             // 
-            // button4
+            // button5
             // 
-            this.button4.Location = new System.Drawing.Point(6, 138);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "参照";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 21);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.button5.Location = new System.Drawing.Point(81, 138);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(23, 23);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "✕";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // label3
             // 
@@ -233,20 +229,32 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.label3.TabIndex = 14;
             this.label3.Text = "???x??? pixel";
             // 
-            // button5
+            // pictureBox1
             // 
-            this.button5.Location = new System.Drawing.Point(81, 138);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(23, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "✕";
-            this.button5.UseVisualStyleBackColor = true;
+            this.pictureBox1.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 138);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "参照";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // ProjectSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 324);
+            this.ClientSize = new System.Drawing.Size(440, 281);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

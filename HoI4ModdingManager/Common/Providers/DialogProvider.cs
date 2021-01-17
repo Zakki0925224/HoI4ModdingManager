@@ -51,7 +51,7 @@ namespace HoI4ModdingManager.Common.Providers
                 if (sfd.ShowDialog() == DialogResult.OK)
                     return sfd.FileName;
                 else
-                    return null;
+                    return "";
             }
         }
     }

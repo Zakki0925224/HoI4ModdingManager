@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
@@ -9,6 +10,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
         public DateTime Updated_at { get; set; }
         public int Number_of_countries { get; set; }
         public int Number_of_ideologies { get; set; }
+        public List<string> Tags { get; set; }
+        public string Game_version { get; set; }
+        public string Thumbnail_picture_path { get; set; }
 
         public ProjectDataHanger()
         {
@@ -25,6 +29,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
             Updated_at = DateTime.MinValue;
             Number_of_countries = 0;
             Number_of_ideologies = 0;
+            Tags = new List<string>();
+            Game_version = "";
+            Thumbnail_picture_path = "";
         }
     }
 }

@@ -47,6 +47,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             FileIO.CreateNewDataBaseFile(projectPlaceTextBox.Text);
             FileIO.OpenDataBaseFile(false, projectPlaceTextBox.Text);
+            this.Close();
             
         }
 

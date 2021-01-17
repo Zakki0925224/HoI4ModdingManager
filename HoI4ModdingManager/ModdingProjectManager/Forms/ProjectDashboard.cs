@@ -1,27 +1,28 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
-using HoI4ModdingManager.Common;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.Common.Utils;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+using HoI4ModdingManager.ModManager.Forms;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using HoI4ModdingManager.ModManager.Forms;
-using HoI4ModdingManager.Common.Utils;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private readonly string filePath;
+        private readonly string filePath = "";
 
         // データコンテナ
-        private DataContainer mainContainer;
+        private FileStream fileStream = null;
+        private DataContainer mainContainer = null;
         private CefSettings settings;
 
         // フラグ
@@ -32,18 +33,45 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         public ProjectDashBoard(params string[] filePathArguments)
         {
             InitializeComponent();
+            InitializeWindowTitle();
             InitializeBrowser();
 
             if (filePathArguments.Length == 0)
             {
-                OpeningProject = false;
+                this.OpeningProject = false;
+                return;
+            }
+            
+            this.filePath = filePathArguments[0];
+            
+            if (FileChecker.IsThisFileCanUse(this.filePath))
+            {
+                try
+                {
+                    this.fileStream = new FileStream(this.filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                }
+                catch (Exception e) when (e is ArgumentNullException ||
+                                          e is ArgumentException ||
+                                          e is NotSupportedException ||
+                                          e is FileNotFoundException ||
+                                          e is IOException ||
+                                          e is System.Security.SecurityException ||
+                                          e is DirectoryNotFoundException ||
+                                          e is UnauthorizedAccessException ||
+                                          e is PathTooLongException ||
+                                          e is ArgumentOutOfRangeException)
+                {
+                    MessageBoxProvider.ShowErrorMessageBox(e.Message);
+                    return;
+                }
+
+                this.OpeningProject = true;
+                mainContainer = new DataContainer();
+                SetProjectData();
             }
             else
             {
-                this.filePath = filePathArguments[0];
-                OpeningProject = true;
-                mainContainer = new DataContainer();
-                SetProjectData();
+                this.OpeningProject = false;
             }
         }
 
@@ -53,7 +81,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <param name="windowTitle"></param>
         private void SetWindowTitle(string windowTitle)
         {
-            this.Text = $"{filePath} - HoI4ModdingManager";
+            this.Text = $"{this.filePath} - HoI4ModdingManager";
+        }
+
+        /// <summary>
+        /// ウィンドウタイトルの初期化
+        /// </summary>
+        private void InitializeWindowTitle()
+        {
+            this.Text = $"HoI4ModdingManager";
         }
 
         /// <summary>
@@ -61,17 +97,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void SetProjectData()
         {
+            if (fileStream == null && mainContainer == null)
+                throw new Exception("ファイルが読み込まれていません。");
+
             mainContainer.Initialize();
             OpeningProject = false;
             SetWindowTitle("HoI4ModdingManager");
 
-            if (!new EXIM().ImportProject(filePath, mainContainer))
+            if (!new EXIM().ImportProject(this.filePath, mainContainer))
                 return;
 
             UpdateUI(mainContainer);
 
             OpeningProject = true;
-            SetWindowTitle($"{filePath} - HoI4ModdingManager");
+            SetWindowTitle($"{this.filePath} - HoI4ModdingManager");
         }
 
         /// <summary>
@@ -206,6 +245,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             if (Cef.IsInitialized && InitializedBrowser)
                 Cef.Shutdown();
+
+            if (this.fileStream != null)
+                this.fileStream.Close();
         }
 
         private void ReloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -215,7 +257,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ps = new ProjectSettings(mainContainer.ProjectData).ShowDialog();
+            using (var ps = new ProjectSettings(mainContainer.ProjectData))
+            {
+                ps.ShowDialog();
+                mainContainer.ProjectData = ps.ProjectDataContainer;
+                UpdateUI(mainContainer);
+            }
+            
+            
         }
 
         private void MenuStrip_Layout(object sender, LayoutEventArgs e)

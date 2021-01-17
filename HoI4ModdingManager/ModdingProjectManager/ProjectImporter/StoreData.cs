@@ -1,6 +1,7 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.SQLite;
 using System.Data.SQLite;
+using System.Collections.Generic;
 
 namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 {
@@ -92,6 +93,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
                 pd.Updated_at = reader.GetDateTime(2);
                 pd.Number_of_countries = reader.GetInt32(3);
                 pd.Number_of_ideologies = reader.GetInt32(4);
+                pd.Tags = new List<string>(reader.GetString(5).Split(','));
+                pd.Game_version = reader.GetString(6);
+                pd.Thumbnail_picture_path = GetEmpty(reader.GetString(7));
             }
         }
 
@@ -138,12 +142,30 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             }
         }
 
+        /// <summary>
+        /// bool値を取得(0 -> false それ以外 -> true)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private bool GetBool(int value)
         {
             if (value == 0)
                 return false;
             else
                 return true;
+        }
+
+        /// <summary>
+        /// 空文字を取得("[empty]" -> "")
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        private string GetEmpty(string text)
+        {
+            if (text == "[empty]")
+                return "";
+            else
+                return text;
         }
 
         /// <summary>
