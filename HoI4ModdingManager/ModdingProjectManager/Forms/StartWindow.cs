@@ -39,7 +39,17 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            
+            if (projectNameTextBox.Text == "")
+            {
+                MessageBoxProvider.ShowErrorMessageBox("プロジェクト名が入力されていません。");
+                return;
+            }
+
+            if (projectPlaceTextBox.Text == "")
+            {
+                MessageBoxProvider.ShowErrorMessageBox("プロジェクトの場所が入力されていません。");
+                return;
+            }
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)

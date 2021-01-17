@@ -107,12 +107,13 @@
     <Compile Include="Common\Providers\MessageBoxProvider.cs" />
     <Compile Include="Common\Providers\DialogProvider.cs" />
     <Compile Include="Common\ProcessCreater.cs" />
+    <Compile Include="Common\Utils\FileChecker.cs" />
+    <Compile Include="Common\Utils\StringChecker.cs" />
     <Compile Include="ModdingProjectManager\DataContainer.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\CountryDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
     <Compile Include="ModdingProjectManager\EXIM.cs" />
-    <Compile Include="ModdingProjectManager\ProjectImporter\FileChecker.cs" />
     <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NotConnectingException.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.cs">
