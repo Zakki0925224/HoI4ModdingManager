@@ -2,6 +2,7 @@
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Responders;
+using HoI4ModdingManager.Common.Utils;
 using System;
 using System.Windows.Forms;
 
@@ -17,14 +18,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void OpenProjectButton_Click(object sender, EventArgs e)
         {
-            // 新しいプロセスで開始
-            string result = new DialogProvider().ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
-
-            if (result != null)
-            {
-                new ProcessCreater().CreateNewProcess(result);
-                this.Close();
-            }
+            FileIO.OpenDataBaseFile(true);
         }
 
         private void CreateProjectButton_Click(object sender, EventArgs e)
@@ -50,6 +44,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 MessageBoxProvider.ShowErrorMessageBox("プロジェクトの場所が入力されていません。");
                 return;
             }
+
+            FileIO.CreateNewDataBaseFile(projectPlaceTextBox.Text);
+            FileIO.OpenDataBaseFile(false, projectPlaceTextBox.Text);
+            
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)

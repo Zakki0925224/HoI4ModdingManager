@@ -9,7 +9,7 @@ namespace HoI4ModdingManager.Common
         /// 引数を指定して新規プロセスを開始
         /// </summary>
         /// <param name="filePath">開きたいファイルパス</param>
-        public void CreateNewProcess(string filePath)
+        public static void CreateNewProcess(string filePath)
         {
             var psi = new ProcessStartInfo()
             {

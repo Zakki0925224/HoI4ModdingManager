@@ -159,6 +159,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.projectPlaceTextBox.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.projectPlaceTextBox.Location = new System.Drawing.Point(6, 79);
             this.projectPlaceTextBox.Name = "projectPlaceTextBox";
+            this.projectPlaceTextBox.ReadOnly = true;
             this.projectPlaceTextBox.Size = new System.Drawing.Size(260, 25);
             this.projectPlaceTextBox.TabIndex = 7;
             // 

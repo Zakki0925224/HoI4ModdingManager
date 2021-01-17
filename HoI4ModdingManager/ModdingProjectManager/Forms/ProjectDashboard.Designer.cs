@@ -72,10 +72,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(1);
             this.menuStrip.Size = new System.Drawing.Size(873, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.Layout += new System.Windows.Forms.LayoutEventHandler(this.MenuStrip_Layout);
             // 
             // fileToolStripMenuItem
             // 
@@ -88,7 +89,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             this.fileToolStripMenuItem.Text = "ファイル(&F)";
             // 
             // startToolStripMenuItem
@@ -137,7 +138,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
             this.editToolStripMenuItem.Text = "編集(&E)";
             // 
             // viewToolStripMenuItem
@@ -145,7 +146,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chromiumDevToolToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.viewToolStripMenuItem.Text = "表示(&V)";
             // 
             // chromiumDevToolToolStripMenuItem
@@ -168,7 +169,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.focusManagerToolStripMenuItem,
             this.eventManagerToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.projectToolStripMenuItem.Text = "プロジェクト(&P)";
             // 
             // reloadDashBoardToolStripMenuItem
@@ -225,7 +226,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.toolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem});
             this.toolToolStripMenuItem.Name = "toolToolStripMenuItem";
-            this.toolToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.toolToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
             this.toolToolStripMenuItem.Text = "ツール(&T)";
             // 
             // settingsToolStripMenuItem
@@ -240,7 +241,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 22);
             this.helpToolStripMenuItem.Text = "ヘルプ(&H)";
             // 
             // aboutToolStripMenuItem

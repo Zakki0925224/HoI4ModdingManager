@@ -108,6 +108,7 @@
     <Compile Include="Common\Providers\DialogProvider.cs" />
     <Compile Include="Common\ProcessCreater.cs" />
     <Compile Include="Common\Utils\FileChecker.cs" />
+    <Compile Include="Common\Utils\FileIO.cs" />
     <Compile Include="Common\Utils\StringChecker.cs" />
     <Compile Include="ModdingProjectManager\DataContainer.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\CountryDataHanger.cs" />

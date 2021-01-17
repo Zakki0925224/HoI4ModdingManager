@@ -21,7 +21,7 @@ namespace HoI4ModdingManager
                 Application.Run(new ProjectDashBoard());
             else
             {
-                ProjectImportTest.ImportProject(args[0]);
+                //ProjectImportTest.ImportProject(args[0]);
                 Application.Run(new ProjectDashBoard(args[0]));
             }
         }

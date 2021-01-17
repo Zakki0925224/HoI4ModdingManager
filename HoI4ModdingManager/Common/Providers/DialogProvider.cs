@@ -15,7 +15,7 @@ namespace HoI4ModdingManager.Common.Providers
         /// <param name="restoreDirectory"></param>
         /// <param name="filterIndex"></param>
         /// <returns>ファイルパスを返す</returns>
-        public string ShowOpenFileDialog(string filter, string title, bool restoreDirectory, int filterIndex = 0)
+        public static string ShowOpenFileDialog(string filter, string title, bool restoreDirectory, int filterIndex = 0)
         {
             using (var ofd = new OpenFileDialog())
             {
@@ -27,7 +27,7 @@ namespace HoI4ModdingManager.Common.Providers
                 if (ofd.ShowDialog() == DialogResult.OK)
                     return ofd.FileName;
                 else
-                    return null;
+                    return "";
             }
         }
 

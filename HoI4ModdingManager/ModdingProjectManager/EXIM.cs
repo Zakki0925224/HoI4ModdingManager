@@ -14,13 +14,6 @@ namespace HoI4ModdingManager.ModdingProjectManager
         {
             var sd = new StoreData();
 
-            // 整合性確認
-            if (!FileChecker.IsThisFileCanUse(dbFile))
-            {
-                MessageBoxProvider.ShowErrorMessageBox("指定されたファイルは使用できません。");
-                return false;
-            }
-
             // プロジェクトデータの取得
             var projectData = new ProjectDataHanger();
             sd.ImportProjectData(dbFile, "project_data", projectData);

@@ -16,6 +16,9 @@ namespace HoI4ModdingManager.Common.Utils
         /// <returns></returns>
         public static bool IsThisFileCanUse(string filePath)
         {
+            if (!StringChecker.IsThisFilePath(filePath))
+                return false;
+
             // 拡張子
             string extension = ".hmp";
 

@@ -29,6 +29,9 @@ namespace HoI4ModdingManager.Common.Utils
         /// <returns></returns>
         public static bool IsUsingUnusableCharsInFileName(string fullPath)
         {
+            if (!IsThisFilePath(fullPath))
+                return true;
+
             string fileName = Path.GetFileNameWithoutExtension(Path.GetFullPath(fullPath));
 
             foreach (char unusableChar in UnusableChars)
@@ -38,6 +41,28 @@ namespace HoI4ModdingManager.Common.Utils
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// 引数がファイルパスかどうかを判定
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static bool IsThisFilePath(string filePath)
+        {
+            try
+            {
+                Path.GetFullPath(filePath);
+                return true;
+            }
+            catch (Exception e) when (e is ArgumentException ||
+                                      e is System.Security.SecurityException ||
+                                      e is ArgumentException ||
+                                      e is NotSupportedException ||
+                                      e is PathTooLongException)
+            {
+                return false;
+            }
         }
     }
 }

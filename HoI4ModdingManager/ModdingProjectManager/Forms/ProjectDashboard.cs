@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using HoI4ModdingManager.ModManager.Forms;
+using HoI4ModdingManager.Common.Utils;
 
 namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
@@ -30,13 +31,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         public ProjectDashBoard(params string[] filePathArguments)
         {
-            this.filePath = filePathArguments[0];
-            OpeningProject = false;
-            mainContainer = new DataContainer();
-
             InitializeComponent();
             InitializeBrowser();
-            SetProjectData();
+
+            if (filePathArguments.Length == 0)
+            {
+                OpeningProject = false;
+            }
+            else
+            {
+                this.filePath = filePathArguments[0];
+                OpeningProject = true;
+                mainContainer = new DataContainer();
+                SetProjectData();
+            }
         }
 
         /// <summary>
@@ -176,10 +184,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filePath = new DialogProvider().ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
-
-            if (filePath != null)
-                new ProcessCreater().CreateNewProcess(filePath);
+            FileIO.OpenDataBaseFile(true);
         }
 
         private void CreateProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,6 +216,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void ProjectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var ps = new ProjectSettings(mainContainer.ProjectData).ShowDialog();
+        }
+
+        private void MenuStrip_Layout(object sender, LayoutEventArgs e)
+        {
+            saveToolStripMenuItem.Enabled =
+            closeToolStripMenuItem.Enabled =
+            chromiumDevToolToolStripMenuItem.Enabled = 
+            projectToolStripMenuItem.Enabled = 
+            this.OpeningProject;
         }
     }
 }
