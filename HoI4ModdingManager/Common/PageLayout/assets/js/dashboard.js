@@ -179,7 +179,6 @@ function AddPartyCard(thisCountryData, ideologyData)
         supportValue.appendChild(document.createTextNode(partySupport + "%"));
         tr3.appendChild(supportValue);
 
-        // last
         container.appendChild(card);
     }
 }
