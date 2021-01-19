@@ -24,6 +24,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private FileStream fileStream = null;
         private DataContainer mainContainer = null;
         private CefSettings settings;
+        private ProjectSettings projectSettingsForm;
 
         // フラグ
         private bool InitializedBrowser { get; set; }
@@ -100,7 +101,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (fileStream == null && mainContainer == null)
                 throw new Exception("ファイルが読み込まれていません。");
 
-            mainContainer.Initialize();
+            this.mainContainer.Initialize();
             OpeningProject = false;
             SetWindowTitle("HoI4ModdingManager");
 
@@ -118,7 +119,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void UpdateUI(DataContainer container)
         {
-            mainTab.TabPages.Clear();
+            this.mainTab.TabPages.Clear();
 
             foreach (CountryDataHanger data in container.CountryData)
             {
@@ -129,7 +130,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 };
 
                 tabPage.Controls.Add(SetBrowser(data));
-                mainTab.TabPages.Add(tabPage);
+                this.mainTab.TabPages.Add(tabPage);
             }
         }
 
@@ -171,9 +172,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             var browser = (ChromiumWebBrowser)sender;
             string thisCountryData = JsonConvert.SerializeObject((CountryDataHanger)browser.Tag);
-            string countryData = JsonConvert.SerializeObject(mainContainer.CountryData);
-            string projectData = JsonConvert.SerializeObject(mainContainer.ProjectData);
-            string ideologyData = JsonConvert.SerializeObject(mainContainer.IdeologyData);
+            string countryData = JsonConvert.SerializeObject(this.mainContainer.CountryData);
+            string projectData = JsonConvert.SerializeObject(this.mainContainer.ProjectData);
+            string ideologyData = JsonConvert.SerializeObject(this.mainContainer.IdeologyData);
 
             if (!e.IsLoading)
                 browser.ExecuteScriptAsync($"GetCountryData({thisCountryData}, {countryData}, {projectData}, {ideologyData})");
@@ -181,8 +182,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            if (chromiumDevToolToolStripMenuItem.Checked)
-                ((ChromiumWebBrowser)sender).ShowDevTools();
+            //if (chromiumDevToolToolStripMenuItem.Checked)
+            //    ((ChromiumWebBrowser)sender).ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -257,22 +258,35 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var ps = new ProjectSettings(mainContainer.ProjectData))
+            if (this.projectSettingsForm == null || this.projectSettingsForm.IsDisposed)
             {
-                ps.ShowDialog();
-                mainContainer.ProjectData = ps.ProjectDataContainer;
+                this.projectSettingsForm = new ProjectSettings(this.mainContainer.ProjectData);
+                this.projectSettingsForm.FormClosed += new FormClosedEventHandler(ProjectSettings_FormClosed);
+                this.projectSettingsForm.Show();
+            }
+            else
+                this.projectSettingsForm.Focus();
+        }
+
+        private void ProjectSettings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var formSender = (ProjectSettings)sender;
+
+            if (formSender.DialogResult == DialogResult.OK)
+            {
+                this.mainContainer.ProjectData = formSender.ProjectDataContainer;
                 UpdateUI(mainContainer);
             }
-            
-            
+
+            this.projectSettingsForm.Dispose();
         }
 
         private void MenuStrip_Layout(object sender, LayoutEventArgs e)
         {
-            saveToolStripMenuItem.Enabled =
-            closeToolStripMenuItem.Enabled =
-            chromiumDevToolToolStripMenuItem.Enabled = 
-            projectToolStripMenuItem.Enabled = 
+            this.saveToolStripMenuItem.Enabled =
+            this.closeToolStripMenuItem.Enabled =
+            this.chromiumDevToolToolStripMenuItem.Enabled = 
+            this.projectToolStripMenuItem.Enabled = 
             this.OpeningProject;
         }
     }

@@ -121,12 +121,16 @@ namespace HoI4ModdingManager.ModManager.Forms
         private void button2_Click(object sender, System.EventArgs e)
         {
             this.Close();
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
             if (ReflectData())
+            {
+                this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
         }
     }
 }
