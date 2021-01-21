@@ -29,63 +29,63 @@ namespace HoI4ModdingManager.ModManager.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.modNameLabel = new System.Windows.Forms.Label();
+            this.modNameTextBox = new System.Windows.Forms.TextBox();
+            this.modTagGroupBox = new System.Windows.Forms.GroupBox();
+            this.modTagListBox = new System.Windows.Forms.CheckedListBox();
+            this.OKButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.applyButton = new System.Windows.Forms.Button();
+            this.targetGameVersionLabel = new System.Windows.Forms.Label();
+            this.targetGameVersionMajor = new System.Windows.Forms.NumericUpDown();
+            this.targetGameVersionMinor = new System.Windows.Forms.NumericUpDown();
+            this.targetGameVersionRevision = new System.Windows.Forms.NumericUpDown();
+            this.dotLabel1 = new System.Windows.Forms.Label();
+            this.dotLabel2 = new System.Windows.Forms.Label();
+            this.modPictureGroupBox = new System.Windows.Forms.GroupBox();
+            this.modPictureRemoveButton = new System.Windows.Forms.Button();
+            this.modPictureInfoLabel = new System.Windows.Forms.Label();
+            this.modPictureBox = new System.Windows.Forms.PictureBox();
+            this.modPictureReferenceButton = new System.Windows.Forms.Button();
+            this.modTagGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMajor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMinor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionRevision)).BeginInit();
+            this.modPictureGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.modPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // modNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mod名：";
+            this.modNameLabel.AutoSize = true;
+            this.modNameLabel.Location = new System.Drawing.Point(12, 15);
+            this.modNameLabel.Name = "modNameLabel";
+            this.modNameLabel.Size = new System.Drawing.Size(56, 15);
+            this.modNameLabel.TabIndex = 0;
+            this.modNameLabel.Text = "Mod名：";
             // 
-            // textBox1
+            // modNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(132, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 23);
-            this.textBox1.TabIndex = 1;
+            this.modNameTextBox.Location = new System.Drawing.Point(132, 12);
+            this.modNameTextBox.Name = "modNameTextBox";
+            this.modNameTextBox.Size = new System.Drawing.Size(150, 23);
+            this.modNameTextBox.TabIndex = 1;
             // 
-            // groupBox1
+            // modTagGroupBox
             // 
-            this.groupBox1.Controls.Add(this.checkedListBox1);
-            this.groupBox1.Location = new System.Drawing.Point(288, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(144, 225);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "タグ";
+            this.modTagGroupBox.Controls.Add(this.modTagListBox);
+            this.modTagGroupBox.Location = new System.Drawing.Point(288, 12);
+            this.modTagGroupBox.Name = "modTagGroupBox";
+            this.modTagGroupBox.Size = new System.Drawing.Size(144, 225);
+            this.modTagGroupBox.TabIndex = 2;
+            this.modTagGroupBox.TabStop = false;
+            this.modTagGroupBox.Text = "タグ";
             // 
-            // checkedListBox1
+            // modTagListBox
             // 
-            this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.modTagListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modTagListBox.FormattingEnabled = true;
+            this.modTagListBox.Items.AddRange(new object[] {
             "Alternative Historey",
             "Events",
             "Gameplay",
@@ -97,190 +97,190 @@ namespace HoI4ModdingManager.ModManager.Forms
             "Technologies",
             "Sound",
             "Translation"});
-            this.checkedListBox1.Location = new System.Drawing.Point(3, 19);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(138, 203);
-            this.checkedListBox1.TabIndex = 0;
+            this.modTagListBox.Location = new System.Drawing.Point(3, 19);
+            this.modTagListBox.Name = "modTagListBox";
+            this.modTagListBox.Size = new System.Drawing.Size(138, 203);
+            this.modTagListBox.TabIndex = 0;
             // 
-            // button1
+            // OKButton
             // 
-            this.button1.Location = new System.Drawing.Point(195, 246);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.OKButton.Location = new System.Drawing.Point(195, 246);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(75, 23);
+            this.OKButton.TabIndex = 3;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.Location = new System.Drawing.Point(276, 246);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "キャンセル";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.Location = new System.Drawing.Point(276, 246);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 4;
+            this.cancelButton.Text = "キャンセル";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // applyButton
             // 
-            this.button3.Location = new System.Drawing.Point(357, 246);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "適用";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.applyButton.Location = new System.Drawing.Point(357, 246);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(75, 23);
+            this.applyButton.TabIndex = 5;
+            this.applyButton.Text = "適用";
+            this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label2
+            // targetGameVersionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "対象ゲームバージョン：";
+            this.targetGameVersionLabel.AutoSize = true;
+            this.targetGameVersionLabel.Location = new System.Drawing.Point(12, 43);
+            this.targetGameVersionLabel.Name = "targetGameVersionLabel";
+            this.targetGameVersionLabel.Size = new System.Drawing.Size(114, 15);
+            this.targetGameVersionLabel.TabIndex = 6;
+            this.targetGameVersionLabel.Text = "対象ゲームバージョン：";
             // 
-            // numericUpDown1
+            // targetGameVersionMajor
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(132, 41);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(36, 23);
-            this.numericUpDown1.TabIndex = 7;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.targetGameVersionMajor.Location = new System.Drawing.Point(132, 41);
+            this.targetGameVersionMajor.Name = "targetGameVersionMajor";
+            this.targetGameVersionMajor.Size = new System.Drawing.Size(36, 23);
+            this.targetGameVersionMajor.TabIndex = 7;
+            this.targetGameVersionMajor.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // targetGameVersionMinor
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(189, 41);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(36, 23);
-            this.numericUpDown2.TabIndex = 8;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.targetGameVersionMinor.Location = new System.Drawing.Point(189, 41);
+            this.targetGameVersionMinor.Name = "targetGameVersionMinor";
+            this.targetGameVersionMinor.Size = new System.Drawing.Size(36, 23);
+            this.targetGameVersionMinor.TabIndex = 8;
+            this.targetGameVersionMinor.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // numericUpDown3
+            // targetGameVersionRevision
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(246, 41);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(36, 23);
-            this.numericUpDown3.TabIndex = 9;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.targetGameVersionRevision.Location = new System.Drawing.Point(246, 41);
+            this.targetGameVersionRevision.Name = "targetGameVersionRevision";
+            this.targetGameVersionRevision.Size = new System.Drawing.Size(36, 23);
+            this.targetGameVersionRevision.TabIndex = 9;
+            this.targetGameVersionRevision.Value = new decimal(new int[] {
             3,
             0,
             0,
             0});
             // 
-            // label4
+            // dotLabel1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(174, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(9, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = ".";
+            this.dotLabel1.AutoSize = true;
+            this.dotLabel1.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dotLabel1.Location = new System.Drawing.Point(174, 51);
+            this.dotLabel1.Name = "dotLabel1";
+            this.dotLabel1.Size = new System.Drawing.Size(9, 13);
+            this.dotLabel1.TabIndex = 11;
+            this.dotLabel1.Text = ".";
             // 
-            // label5
+            // dotLabel2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(231, 51);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(9, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = ".";
+            this.dotLabel2.AutoSize = true;
+            this.dotLabel2.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dotLabel2.Location = new System.Drawing.Point(231, 51);
+            this.dotLabel2.Name = "dotLabel2";
+            this.dotLabel2.Size = new System.Drawing.Size(9, 13);
+            this.dotLabel2.TabIndex = 12;
+            this.dotLabel2.Text = ".";
             // 
-            // groupBox2
+            // modPictureGroupBox
             // 
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Location = new System.Drawing.Point(172, 70);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(110, 167);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "画像";
+            this.modPictureGroupBox.Controls.Add(this.modPictureRemoveButton);
+            this.modPictureGroupBox.Controls.Add(this.modPictureInfoLabel);
+            this.modPictureGroupBox.Controls.Add(this.modPictureBox);
+            this.modPictureGroupBox.Controls.Add(this.modPictureReferenceButton);
+            this.modPictureGroupBox.Location = new System.Drawing.Point(172, 70);
+            this.modPictureGroupBox.Name = "modPictureGroupBox";
+            this.modPictureGroupBox.Size = new System.Drawing.Size(110, 167);
+            this.modPictureGroupBox.TabIndex = 13;
+            this.modPictureGroupBox.TabStop = false;
+            this.modPictureGroupBox.Text = "画像";
             // 
-            // button5
+            // modPictureRemoveButton
             // 
-            this.button5.Location = new System.Drawing.Point(81, 138);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(23, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "✕";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            this.modPictureRemoveButton.Location = new System.Drawing.Point(81, 138);
+            this.modPictureRemoveButton.Name = "modPictureRemoveButton";
+            this.modPictureRemoveButton.Size = new System.Drawing.Size(23, 23);
+            this.modPictureRemoveButton.TabIndex = 14;
+            this.modPictureRemoveButton.Text = "✕";
+            this.modPictureRemoveButton.UseVisualStyleBackColor = true;
+            this.modPictureRemoveButton.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // label3
+            // modPictureInfoLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 15);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "???x??? pixel";
+            this.modPictureInfoLabel.AutoSize = true;
+            this.modPictureInfoLabel.Location = new System.Drawing.Point(6, 114);
+            this.modPictureInfoLabel.Name = "modPictureInfoLabel";
+            this.modPictureInfoLabel.Size = new System.Drawing.Size(71, 15);
+            this.modPictureInfoLabel.TabIndex = 14;
+            this.modPictureInfoLabel.Text = "???x??? pixel";
             // 
-            // pictureBox1
+            // modPictureBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 21);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.modPictureBox.BackColor = System.Drawing.Color.Silver;
+            this.modPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.modPictureBox.Location = new System.Drawing.Point(6, 21);
+            this.modPictureBox.Name = "modPictureBox";
+            this.modPictureBox.Size = new System.Drawing.Size(90, 90);
+            this.modPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.modPictureBox.TabIndex = 1;
+            this.modPictureBox.TabStop = false;
             // 
-            // button4
+            // modPictureReferenceButton
             // 
-            this.button4.Location = new System.Drawing.Point(6, 138);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "参照";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.modPictureReferenceButton.Location = new System.Drawing.Point(6, 138);
+            this.modPictureReferenceButton.Name = "modPictureReferenceButton";
+            this.modPictureReferenceButton.Size = new System.Drawing.Size(75, 23);
+            this.modPictureReferenceButton.TabIndex = 0;
+            this.modPictureReferenceButton.Text = "参照";
+            this.modPictureReferenceButton.UseVisualStyleBackColor = true;
+            this.modPictureReferenceButton.Click += new System.EventHandler(this.Button4_Click);
             // 
             // ProjectSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 281);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.modPictureGroupBox);
+            this.Controls.Add(this.dotLabel2);
+            this.Controls.Add(this.dotLabel1);
+            this.Controls.Add(this.targetGameVersionRevision);
+            this.Controls.Add(this.targetGameVersionMinor);
+            this.Controls.Add(this.targetGameVersionMajor);
+            this.Controls.Add(this.targetGameVersionLabel);
+            this.Controls.Add(this.applyButton);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.OKButton);
+            this.Controls.Add(this.modTagGroupBox);
+            this.Controls.Add(this.modNameTextBox);
+            this.Controls.Add(this.modNameLabel);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "ProjectSettings";
             this.Text = "ProjectSettings - HoI4ModdingManager";
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.modTagGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMajor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMinor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionRevision)).EndInit();
+            this.modPictureGroupBox.ResumeLayout(false);
+            this.modPictureGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.modPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,23 +288,23 @@ namespace HoI4ModdingManager.ModManager.Forms
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label modNameLabel;
+        private System.Windows.Forms.TextBox modNameTextBox;
+        private System.Windows.Forms.GroupBox modTagGroupBox;
+        private System.Windows.Forms.CheckedListBox modTagListBox;
+        private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button applyButton;
+        private System.Windows.Forms.Label targetGameVersionLabel;
+        private System.Windows.Forms.NumericUpDown targetGameVersionMajor;
+        private System.Windows.Forms.NumericUpDown targetGameVersionMinor;
+        private System.Windows.Forms.NumericUpDown targetGameVersionRevision;
+        private System.Windows.Forms.Label dotLabel1;
+        private System.Windows.Forms.Label dotLabel2;
+        private System.Windows.Forms.GroupBox modPictureGroupBox;
+        private System.Windows.Forms.Label modPictureInfoLabel;
+        private System.Windows.Forms.PictureBox modPictureBox;
+        private System.Windows.Forms.Button modPictureReferenceButton;
+        private System.Windows.Forms.Button modPictureRemoveButton;
     }
 }
