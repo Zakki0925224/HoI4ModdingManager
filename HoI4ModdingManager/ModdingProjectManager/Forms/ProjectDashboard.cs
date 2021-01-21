@@ -18,13 +18,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private readonly string filePath = "";
+        private readonly string FilePath = "";
 
         // データコンテナ
-        private FileStream fileStream = null;
-        private DataContainer mainContainer = null;
-        private CefSettings settings;
-        private ProjectSettings projectSettingsForm;
+        private FileStream FileStream = null;
+        private DataContainer MainContainer = null;
+        private CefSettings Settings;
+        private ProjectSettings ProjectSettingsForm;
 
         // フラグ
         private bool InitializedBrowser { get; set; }
@@ -43,13 +43,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 return;
             }
             
-            this.filePath = filePathArguments[0];
+            this.FilePath = filePathArguments[0];
             
-            if (FileChecker.IsThisFileCanUse(this.filePath))
+            if (FileChecker.IsThisFileCanUse(this.FilePath))
             {
                 try
                 {
-                    this.fileStream = new FileStream(this.filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    this.FileStream = new FileStream(this.FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 }
                 catch (Exception e) when (e is ArgumentNullException ||
                                           e is ArgumentException ||
@@ -67,7 +67,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 }
 
                 this.OpeningProject = true;
-                mainContainer = new DataContainer();
+                this.MainContainer = new DataContainer();
                 SetProjectData();
             }
             else
@@ -82,7 +82,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <param name="windowTitle"></param>
         private void SetWindowTitle(string windowTitle)
         {
-            this.Text = $"{this.filePath} - HoI4ModdingManager";
+            this.Text = $"{this.FilePath} - HoI4ModdingManager";
         }
 
         /// <summary>
@@ -98,20 +98,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void SetProjectData()
         {
-            if (fileStream == null && mainContainer == null)
+            if (this.FileStream == null && this.MainContainer == null)
                 throw new Exception("ファイルが読み込まれていません。");
 
-            this.mainContainer.Initialize();
-            OpeningProject = false;
+            this.MainContainer.Initialize();
+            this.OpeningProject = false;
             SetWindowTitle("HoI4ModdingManager");
 
-            if (!new EXIM().ImportProject(this.filePath, mainContainer))
+            if (!new EXIM().ImportProject(this.FilePath, this.MainContainer))
                 return;
 
-            UpdateUI(mainContainer);
+            UpdateUI(this.MainContainer);
 
-            OpeningProject = true;
-            SetWindowTitle($"{this.filePath} - HoI4ModdingManager");
+            this.OpeningProject = true;
+            SetWindowTitle($"{this.FilePath} - HoI4ModdingManager");
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void UpdateUI(DataContainer container)
         {
-            this.mainTab.TabPages.Clear();
+            mainTab.TabPages.Clear();
 
             foreach (CountryDataHanger data in container.CountryData)
             {
@@ -130,7 +130,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 };
 
                 tabPage.Controls.Add(SetBrowser(data));
-                this.mainTab.TabPages.Add(tabPage);
+                mainTab.TabPages.Add(tabPage);
             }
         }
 
@@ -139,10 +139,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void InitializeBrowser()
         {
-            settings = new CefSettings();
-            Cef.Initialize(settings);
+            this.Settings = new CefSettings();
+            Cef.Initialize(Settings);
 
-            InitializedBrowser = true;
+            this.InitializedBrowser = true;
         }
 
         /// <summary>
@@ -167,14 +167,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            if (!OpeningProject)
+            if (!this.OpeningProject)
                 return;
 
             var browser = (ChromiumWebBrowser)sender;
             string thisCountryData = JsonConvert.SerializeObject((CountryDataHanger)browser.Tag);
-            string countryData = JsonConvert.SerializeObject(this.mainContainer.CountryData);
-            string projectData = JsonConvert.SerializeObject(this.mainContainer.ProjectData);
-            string ideologyData = JsonConvert.SerializeObject(this.mainContainer.IdeologyData);
+            string countryData = JsonConvert.SerializeObject(this.MainContainer.CountryData);
+            string projectData = JsonConvert.SerializeObject(this.MainContainer.ProjectData);
+            string ideologyData = JsonConvert.SerializeObject(this.MainContainer.IdeologyData);
 
             if (!e.IsLoading)
                 browser.ExecuteScriptAsync($"GetCountryData({thisCountryData}, {countryData}, {projectData}, {ideologyData})");
@@ -244,28 +244,28 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectDashBoard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Cef.IsInitialized && InitializedBrowser)
+            if (Cef.IsInitialized && this.InitializedBrowser)
                 Cef.Shutdown();
 
-            if (this.fileStream != null)
-                this.fileStream.Close();
+            if (this.FileStream != null)
+                this.FileStream.Close();
         }
 
         private void ReloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateUI(mainContainer);
+            UpdateUI(this.MainContainer);
         }
 
         private void ProjectSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.projectSettingsForm == null || this.projectSettingsForm.IsDisposed)
+            if (this.ProjectSettingsForm == null || this.ProjectSettingsForm.IsDisposed)
             {
-                this.projectSettingsForm = new ProjectSettings(this.mainContainer.ProjectData);
-                this.projectSettingsForm.FormClosed += new FormClosedEventHandler(ProjectSettings_FormClosed);
-                this.projectSettingsForm.Show();
+                this.ProjectSettingsForm = new ProjectSettings(this.MainContainer.ProjectData);
+                this.ProjectSettingsForm.FormClosed += new FormClosedEventHandler(ProjectSettings_FormClosed);
+                this.ProjectSettingsForm.Show();
             }
             else
-                this.projectSettingsForm.Focus();
+                this.ProjectSettingsForm.Focus();
         }
 
         private void ProjectSettings_FormClosed(object sender, FormClosedEventArgs e)
@@ -274,19 +274,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             if (formSender.DialogResult == DialogResult.OK)
             {
-                this.mainContainer.ProjectData = formSender.ProjectDataContainer;
-                UpdateUI(mainContainer);
+                this.MainContainer.ProjectData = formSender.ProjectDataContainer;
+                UpdateUI(MainContainer);
             }
 
-            this.projectSettingsForm.Dispose();
+            this.ProjectSettingsForm.Dispose();
         }
 
         private void MenuStrip_Layout(object sender, LayoutEventArgs e)
         {
-            this.saveToolStripMenuItem.Enabled =
-            this.closeToolStripMenuItem.Enabled =
-            this.chromiumDevToolToolStripMenuItem.Enabled = 
-            this.projectToolStripMenuItem.Enabled = 
+            saveToolStripMenuItem.Enabled =
+            closeToolStripMenuItem.Enabled =
+            chromiumDevToolToolStripMenuItem.Enabled = 
+            projectToolStripMenuItem.Enabled = 
             this.OpeningProject;
         }
     }
