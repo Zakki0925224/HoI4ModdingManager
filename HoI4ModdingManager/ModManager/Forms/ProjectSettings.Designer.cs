@@ -110,7 +110,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.OKButton.TabIndex = 3;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.button1_Click);
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // cancelButton
             // 
@@ -120,7 +120,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "キャンセル";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // applyButton
             // 
@@ -130,7 +130,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.applyButton.TabIndex = 5;
             this.applyButton.Text = "適用";
             this.applyButton.UseVisualStyleBackColor = true;
-            this.applyButton.Click += new System.EventHandler(this.button3_Click);
+            this.applyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
             // targetGameVersionLabel
             // 
@@ -218,7 +218,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.modPictureRemoveButton.TabIndex = 14;
             this.modPictureRemoveButton.Text = "✕";
             this.modPictureRemoveButton.UseVisualStyleBackColor = true;
-            this.modPictureRemoveButton.Click += new System.EventHandler(this.Button5_Click);
+            this.modPictureRemoveButton.Click += new System.EventHandler(this.ModPictureRemoveButton_Click);
             // 
             // modPictureInfoLabel
             // 
@@ -248,7 +248,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             this.modPictureReferenceButton.TabIndex = 0;
             this.modPictureReferenceButton.Text = "参照";
             this.modPictureReferenceButton.UseVisualStyleBackColor = true;
-            this.modPictureReferenceButton.Click += new System.EventHandler(this.Button4_Click);
+            this.modPictureReferenceButton.Click += new System.EventHandler(this.ModPictureReferenceButton_Click);
             // 
             // ProjectSettings
             // 

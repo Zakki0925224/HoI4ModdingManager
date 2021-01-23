@@ -94,14 +94,14 @@ namespace HoI4ModdingManager.ModManager.Forms
             return true;
         }
 
-        private void Button5_Click(object sender, System.EventArgs e)
+        private void ModPictureRemoveButton_Click(object sender, System.EventArgs e)
         {
             modPictureBox.Image = null;
             modPictureBox.ImageLocation = null;
             modPictureInfoLabel.Text = "";
         }
 
-        private void Button4_Click(object sender, System.EventArgs e)
+        private void ModPictureReferenceButton_Click(object sender, System.EventArgs e)
         {
             string filePath = DialogProvider.ShowOpenFileDialog("PNG画像 (*.png)|*.png", "画像を開く...", true);
 
@@ -113,18 +113,18 @@ namespace HoI4ModdingManager.ModManager.Forms
             modPictureInfoLabel.Text = $"{modPictureBox.Image.Width}x{modPictureBox.Image.Height} pixel";
         }
 
-        private void button3_Click(object sender, System.EventArgs e)
+        private void ApplyButton_Click(object sender, System.EventArgs e)
         {
             ReflectData();
         }
 
-        private void button2_Click(object sender, System.EventArgs e)
+        private void CancelButton_Click(object sender, System.EventArgs e)
         {
             this.Close();
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void OKButton_Click(object sender, System.EventArgs e)
         {
             if (ReflectData())
             {
