@@ -4,6 +4,7 @@ using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Utils;
+using HoI4ModdingManager.CountryManager.Forms;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModManager.Forms;
 using Newtonsoft.Json;
@@ -25,6 +26,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private DataContainer MainContainer = null;
         private CefSettings Settings;
         private ProjectSettings ProjectSettingsForm;
+        private CountryDataEditor CountryDataEditorForm;
 
         // フラグ
         private bool InitializedBrowser { get; set; }
@@ -182,8 +184,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CefBrowser_IsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            //if (chromiumDevToolToolStripMenuItem.Checked)
-            //    ((ChromiumWebBrowser)sender).ShowDevTools();
+            if (chromiumDevToolToolStripMenuItem.Checked)
+                ((ChromiumWebBrowser)sender).ShowDevTools();
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -275,7 +277,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (formSender.DialogResult == DialogResult.OK)
             {
                 this.MainContainer.ProjectData = formSender.ProjectDataContainer;
-                UpdateUI(MainContainer);
+                UpdateUI(this.MainContainer);
             }
 
             this.ProjectSettingsForm.Dispose();
@@ -288,6 +290,39 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             chromiumDevToolToolStripMenuItem.Enabled = 
             projectToolStripMenuItem.Enabled = 
             this.OpeningProject;
+        }
+
+        private void ChromiumDevToolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (chromiumDevToolToolStripMenuItem.Checked)
+                chromiumDevToolToolStripMenuItem.Checked = false;
+            else
+                chromiumDevToolToolStripMenuItem.Checked = true;
+        }
+
+        private void CountryManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.CountryDataEditorForm == null || this.CountryDataEditorForm.IsDisposed)
+            {
+                this.CountryDataEditorForm = new CountryDataEditor(this.MainContainer);
+                this.CountryDataEditorForm.FormClosed += new FormClosedEventHandler(CountryDataEditor_FormClosed);
+                this.CountryDataEditorForm.Show();
+            }
+            else
+                this.CountryDataEditorForm.Focus();
+        }
+
+        private void CountryDataEditor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var formSender = (CountryDataEditor)sender;
+
+            if (formSender.DialogResult == DialogResult.OK)
+            {
+                this.MainContainer = formSender.DataContainer;
+                UpdateUI(this.MainContainer);
+            }
+
+            this.CountryDataEditorForm.Dispose();
         }
     }
 }

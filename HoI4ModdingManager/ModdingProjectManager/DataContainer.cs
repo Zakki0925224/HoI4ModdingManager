@@ -7,7 +7,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
     /// データコンテナ
     /// ファイルから取得したデータを保持
     /// </summary>
-    class DataContainer
+    public class DataContainer
     {
         public List<CountryDataHanger> CountryData { get; set; }
 

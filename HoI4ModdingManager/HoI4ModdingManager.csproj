@@ -110,6 +110,12 @@
     <Compile Include="Common\Utils\FileChecker.cs" />
     <Compile Include="Common\Utils\FileIO.cs" />
     <Compile Include="Common\Utils\StringChecker.cs" />
+    <Compile Include="CountryManager\Forms\CountryDataEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountryManager\Forms\CountryDataEditor.Designer.cs">
+      <DependentUpon>CountryDataEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModdingProjectManager\DataContainer.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\CountryDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
@@ -142,6 +148,9 @@
     <Compile Include="Tests\ProjectImportTest.cs" />
     <EmbeddedResource Include="Common\Forms\AppSettings.resx">
       <DependentUpon>AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountryManager\Forms\CountryDataEditor.resx">
+      <DependentUpon>CountryDataEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModdingProjectManager\Forms\ProjectDashboard.resx">
       <DependentUpon>ProjectDashboard.cs</DependentUpon>

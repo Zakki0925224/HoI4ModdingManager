@@ -1,6 +1,6 @@
 ﻿using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
-using System.Collections.Generic;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,7 +8,7 @@ namespace HoI4ModdingManager.ModManager.Forms
 {
     public partial class ProjectSettings : Form
     {
-        public ProjectDataHanger ProjectDataContainer {get; set;}
+        public ProjectDataHanger ProjectDataContainer { get; set; }
 
         public ProjectSettings(ProjectDataHanger projectData)
         {
@@ -94,14 +94,14 @@ namespace HoI4ModdingManager.ModManager.Forms
             return true;
         }
 
-        private void ModPictureRemoveButton_Click(object sender, System.EventArgs e)
+        private void ModPictureRemoveButton_Click(object sender, EventArgs e)
         {
             modPictureBox.Image = null;
             modPictureBox.ImageLocation = null;
             modPictureInfoLabel.Text = "";
         }
 
-        private void ModPictureReferenceButton_Click(object sender, System.EventArgs e)
+        private void ModPictureReferenceButton_Click(object sender, EventArgs e)
         {
             string filePath = DialogProvider.ShowOpenFileDialog("PNG画像 (*.png)|*.png", "画像を開く...", true);
 
@@ -113,18 +113,18 @@ namespace HoI4ModdingManager.ModManager.Forms
             modPictureInfoLabel.Text = $"{modPictureBox.Image.Width}x{modPictureBox.Image.Height} pixel";
         }
 
-        private void ApplyButton_Click(object sender, System.EventArgs e)
+        private void ApplyButton_Click(object sender, EventArgs e)
         {
             ReflectData();
         }
 
-        private void CancelButton_Click(object sender, System.EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
             this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
-        private void OKButton_Click(object sender, System.EventArgs e)
+        private void OKButton_Click(object sender, EventArgs e)
         {
             if (ReflectData())
             {
