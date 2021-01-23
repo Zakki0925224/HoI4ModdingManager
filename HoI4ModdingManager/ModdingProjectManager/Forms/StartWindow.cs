@@ -67,7 +67,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             }
         }
 
-        private void referenceButton_Click(object sender, EventArgs e)
+        private void ReferenceButton_Click(object sender, EventArgs e)
         {
             projectPlaceTextBox.Text = new DialogProvider().ShowSaveFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを保存", true);
         }
