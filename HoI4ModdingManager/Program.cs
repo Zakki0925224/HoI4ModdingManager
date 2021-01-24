@@ -1,5 +1,4 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.Forms;
-using HoI4ModdingManager.Tests;
 using System;
 using System.Windows.Forms;
 
@@ -20,10 +19,7 @@ namespace HoI4ModdingManager
             if (args.Length == 0)
                 Application.Run(new ProjectDashBoard());
             else
-            {
-                //ProjectImportTest.ImportProject(args[0]);
                 Application.Run(new ProjectDashBoard(args[0]));
-            }
         }
     }
 }
