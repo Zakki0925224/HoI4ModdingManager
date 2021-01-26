@@ -1,6 +1,4 @@
-﻿using HoI4ModdingManager.Common.Providers;
-using HoI4ModdingManager.Common.Utils;
-using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 
 namespace HoI4ModdingManager.ModdingProjectManager
@@ -10,9 +8,10 @@ namespace HoI4ModdingManager.ModdingProjectManager
     /// </summary>
     class EXIM
     {
-        public bool ImportProject(string dbFile, DataContainer dc)
+        public DataContainer ImportProject(string dbFile)
         {
             var sd = new StoreData();
+            var dc = new DataContainer();
 
             // プロジェクトデータの取得
             var projectData = new ProjectDataHanger();
@@ -36,7 +35,7 @@ namespace HoI4ModdingManager.ModdingProjectManager
                 dc.IdeologyData.Add(ideologyData);
             }
 
-            return true;
+            return dc;
         }
     }
 }

@@ -107,8 +107,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.OpeningProject = false;
             SetWindowTitle("HoI4ModdingManager");
 
-            if (!new EXIM().ImportProject(this.FilePath, this.MainContainer))
-                return;
+            this.MainContainer = new EXIM().ImportProject(this.FilePath);
 
             UpdateUI(this.MainContainer);
 
