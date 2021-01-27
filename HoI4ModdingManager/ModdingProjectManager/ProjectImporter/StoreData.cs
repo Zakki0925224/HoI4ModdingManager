@@ -169,50 +169,70 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         }
 
         /// <summary>
-        /// データベースから国家データを取得
+        /// データベースから国家データリストを取得し返す
         /// </summary>
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
-        /// <param name="colmn">取得したい列番号(0~)</param>
-        /// <param name="cd">クラスインスタンス</param>
-        public void ImportCountryData(string dbFile, string tableName, int colmn, CountryDataHanger cd)
+        public List<CountryDataHanger> GetCountriesData(string dbFile, string tableName)
         {
+            var cdList = new List<CountryDataHanger>();
+
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile, tableName);
-                ReadCountryData(tableName, colmn, cd, dbc.sqlc);
+
+                for (int i = 0; i < CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
+                {
+                    var cd = new CountryDataHanger();
+                    ReadCountryData(tableName, i, cd, dbc.sqlc);
+                    cdList.Add(cd);
+                }
             }
+
+            return cdList;
         }
 
         /// <summary>
-        /// データベースからプロジェクトデータを取得
+        /// データベースからプロジェクトデータを取得し返す
         /// </summary>
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
         /// <param name="pd">クラスインスタンス</param>
-        public void ImportProjectData(string dbFile, string tableName, ProjectDataHanger pd)
+        public ProjectDataHanger GetProjectData(string dbFile, string tableName)
         {
+            var pd = new ProjectDataHanger();
+
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile, tableName);
                 ReadProjectData(tableName, pd, dbc.sqlc);
             }
+
+            return pd;
         }
 
         /// <summary>
-        /// データベースからイデオロギーデータを取得
+        /// データベースからイデオロギーデータリストを取得し返す
         /// </summary>
         /// <param name="dbFile">ファイルパス</param>
         /// <param name="tableName">テーブル名</param>
-        /// <param name="colmn">取得したい列番号(0~)</param>
-        /// <param name="id">クラスインスタンス</param>
-        public void ImportIdeologyData(string dbFile, string tableName, int colmn, IdeologyDataHanger id)
+        public List<IdeologyDataHanger> GetIdeologiesData(string dbFile, string tableName)
         {
+            var idList = new List<IdeologyDataHanger>();
+
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile, tableName);
-                ReadIdeologyData(tableName, colmn, id, dbc.sqlc);
+
+                for (int i = 0; i < CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
+                {
+                    var id = new IdeologyDataHanger();
+                    ReadIdeologyData(tableName, i, id, dbc.sqlc);
+                    idList.Add(id);
+                }
             }
+
+            return idList;
         }
     }
 }
