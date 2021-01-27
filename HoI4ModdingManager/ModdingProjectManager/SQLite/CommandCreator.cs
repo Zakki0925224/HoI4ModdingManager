@@ -23,14 +23,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
             return cmd;
         }
 
-        public static int GetDataCount(SQLiteConnection connection, string tableName)
+        public static long GetDataCount(SQLiteConnection connection, string tableName)
         {
             CreateNotConnectingException(connection);
 
             var cmd = connection.CreateCommand();
             cmd.CommandText = $"SELECT COUNT(*) FROM {tableName}";
 
-            return (int)cmd.ExecuteScalar();
+            return (long)cmd.ExecuteScalar();
         }
     }
 }

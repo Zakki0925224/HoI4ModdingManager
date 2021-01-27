@@ -181,7 +181,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 dbc.ConnectionDataBase(dbFile, tableName);
 
-                for (int i = 0; i < CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
+                for (int i = 0; i < (int)CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
                 {
                     var cd = new CountryDataHanger();
                     ReadCountryData(tableName, i, cd, dbc.sqlc);
@@ -224,7 +224,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 dbc.ConnectionDataBase(dbFile, tableName);
 
-                for (int i = 0; i < CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
+                for (int i = 0; i < (int)CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
                 {
                     var id = new IdeologyDataHanger();
                     ReadIdeologyData(tableName, i, id, dbc.sqlc);
