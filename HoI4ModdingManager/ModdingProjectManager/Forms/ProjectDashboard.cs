@@ -86,7 +86,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (this.FileStream == null && this.MainContainer == null)
                 throw new Exception("ファイルが読み込まれていません。");
 
-            this.MainContainer.Initialize();
             this.OpeningProject = false;
             SetWindowTitle("HoI4ModdingManager");
 
