@@ -4,7 +4,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
 {
     static class CommandCreator
     {
-        private static void CreateNotConnectingException(SQLiteConnection connection)
+        private static void CheckNotConnectingException(SQLiteConnection connection)
         {
             if (connection == null)
                 throw new NotConnectingException();
@@ -12,7 +12,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
 
         public static SQLiteCommand GetDataByTable(SQLiteConnection connection, string tableName, bool isGetWithColmn, int colmn = 0)
         {
-            CreateNotConnectingException(connection);
+            CheckNotConnectingException(connection);
 
             var cmd = connection.CreateCommand();
             cmd.CommandText = $"SELECT * FROM {tableName}";
@@ -25,7 +25,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
 
         public static long GetDataCount(SQLiteConnection connection, string tableName)
         {
-            CreateNotConnectingException(connection);
+            CheckNotConnectingException(connection);
 
             var cmd = connection.CreateCommand();
             cmd.CommandText = $"SELECT COUNT(*) FROM {tableName}";

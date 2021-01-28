@@ -53,18 +53,9 @@ namespace HoI4ModdingManager.Common.Utils
             {
                 fs = new FileStream(filePath, fileMode, fileAccess);
             }
-            catch (Exception e) when (e is ArgumentNullException ||
-                                          e is ArgumentException ||
-                                          e is NotSupportedException ||
-                                          e is FileNotFoundException ||
-                                          e is IOException ||
-                                          e is System.Security.SecurityException ||
-                                          e is DirectoryNotFoundException ||
-                                          e is UnauthorizedAccessException ||
-                                          e is PathTooLongException ||
-                                          e is ArgumentOutOfRangeException)
+            catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw e;
             }
 
             return fs;

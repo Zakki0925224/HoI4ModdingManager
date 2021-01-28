@@ -25,6 +25,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
             catch (Exception e)
             {
                 Console.WriteLine($"[SQLite][Path:\"{dbFile}\"][Table:\"{tableName}\"]: " + e.Message);
+                throw e;
             }
         }
 

@@ -55,12 +55,9 @@ namespace HoI4ModdingManager.Common.Utils
                 Path.GetFullPath(filePath);
                 return true;
             }
-            catch (Exception e) when (e is ArgumentException ||
-                                      e is System.Security.SecurityException ||
-                                      e is ArgumentException ||
-                                      e is NotSupportedException ||
-                                      e is PathTooLongException)
+            catch (Exception e)
             {
+                //throw e;
                 return false;
             }
         }
