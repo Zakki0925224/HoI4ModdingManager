@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using HoI4ModdingManager.Common.Providers;
+using System;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HoI4ModdingManager.Common.Utils
 {
@@ -57,7 +54,9 @@ namespace HoI4ModdingManager.Common.Utils
             }
             catch (Exception e)
             {
+
                 //throw e;
+                MessageBoxProvider.ShowErrorMessageBox(e.Message);
                 return false;
             }
         }

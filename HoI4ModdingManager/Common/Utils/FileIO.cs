@@ -21,6 +21,7 @@ namespace HoI4ModdingManager.Common.Utils
             }
             catch (Exception e)
             {
+                MessageBoxProvider.ShowErrorMessageBox(e.Message);
                 throw e;
             }
         }
@@ -55,6 +56,7 @@ namespace HoI4ModdingManager.Common.Utils
             }
             catch (Exception e)
             {
+                MessageBoxProvider.ShowErrorMessageBox(e.Message);
                 throw e;
             }
 
