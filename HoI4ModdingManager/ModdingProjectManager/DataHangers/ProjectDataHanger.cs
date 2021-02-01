@@ -1,37 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
+﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
 {
     public class ProjectDataHanger
     {
-        public string Project_name { get; set; }
-        public DateTime Created_at { get; set; }
-        public DateTime Updated_at { get; set; }
-        public int Number_of_countries { get; set; }
-        public int Number_of_ideologies { get; set; }
-        public List<string> Tags { get; set; }
-        public string Game_version { get; set; }
-        public string Thumbnail_picture_path { get; set; }
-
         public ProjectDataHanger()
         {
             Initialize();
         }
 
-        /// <summary>
-        /// データをすべて初期化
-        /// </summary>
+        public string ProjectName { get; set; }
+        public string ModVersion { get; set; }
+        public string SupportedGameVersion { get; set; }
+        public string[] Tags { get; set; }
+        public string ThumbnailPicturePath { get; set; }
+        public string[] ReplacePaths { get; set; }
+        public string ModPath { get; set; }
+        public string UserDir { get; set; }
+        public string RemoteFileID { get; set; }
+        public string[] DepondencyMods { get; set; }
+        public string[] DepondencyDLCs { get; set; }
+
         public void Initialize()
         {
-            Project_name = "";
-            Created_at = DateTime.MinValue;
-            Updated_at = DateTime.MinValue;
-            Number_of_countries = 0;
-            Number_of_ideologies = 0;
-            Tags = new List<string>();
-            Game_version = "";
-            Thumbnail_picture_path = "";
+            this.ProjectName = "";
+            this.ModVersion = "";
+            this.SupportedGameVersion = "";
+            this.Tags = new string[] { };
+            this.ThumbnailPicturePath = "";
+            this.ReplacePaths = new string[] { };
+            this.ModPath = "";
+            this.UserDir = "";
+            this.RemoteFileID = "";
+            this.DepondencyMods = new string[] { };
+            this.DepondencyDLCs = new string[] { };
         }
+
     }
 }

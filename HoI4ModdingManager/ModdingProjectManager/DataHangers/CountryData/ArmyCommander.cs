@@ -1,6 +1,6 @@
-﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.WillBeReplaced.CountryData
+﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.CountryData
 {
-    class ArmyCommander
+    public class ArmyCommander
     {
         public ArmyCommander()
         {

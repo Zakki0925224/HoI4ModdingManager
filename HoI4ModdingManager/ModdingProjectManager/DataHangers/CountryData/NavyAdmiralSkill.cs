@@ -1,6 +1,6 @@
-﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.WillBeReplaced.CountryData
+﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.CountryData
 {
-    class NavyAdmiralSkill
+    public class NavyAdmiralSkill
     {
         public NavyAdmiralSkill()
         {

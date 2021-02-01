@@ -2,75 +2,78 @@
 {
     public class IdeologyDataHanger
     {
-        public string Ideology_name { get; set; }
-        public string[] Small_ideologies { get; set; }
-        public int Color_r { get; set; }
-        public int Color_g { get; set; }
-        public int Color_b { get; set; }
-
-        // ideology rules
-        public bool Rule_can_force_government { get; set; }
-        public bool Rule_can_puppet { get; set; }
-        public bool Rule_can_join_factions { get; set; }
-        public bool Rule_can_create_factions { get; set; }
-        public bool Rule_can_send_volunteers { get; set; }
-        public bool Rule_can_lower_tension { get; set; }
-
-        // ideology modifier
-        public int Modifier_generate_wargoal_tension { get; set; }
-        public int Modifier_guarantee_tension { get; set; }
-        public int Modifier_civilian_intel_to_others { get; set; }
-        public int Modifier_army_intel_to_others { get; set; }
-        public int Modifier_navy_intel_to_others { get; set; }
-        public int Modifier_airforce_intel_to_others { get; set; }
-        public int Modifier_justify_war_goal_when_in_major_war_time { get; set; }
-        public int Modifier_join_faction_tension { get; set; }
-        public int Modifier_lend_lease_tension { get; set; }
-        public int Modifier_annex_cost_factor { get; set; }
-
-        public bool Ai_uses_this_ideology { get; set; }
-        public bool Can_be_boosted { get; set; }
-        public int War_impact_on_world_tension { get; set; }
-        public bool Can_collaborate { get; set; }
-        public bool Can_host_government_in_exile { get; set; }
-
         public IdeologyDataHanger()
         {
             Initialize();
         }
 
-        /// <summary>
-        /// データをすべて初期化
-        /// </summary>
+        public string Name { get; set; }
+        public string[] SmallIdeologies { get; set; }
+        public int[] RGBIdeologyColor { get; set; }
+        public int ID { get; set; }
+        public bool Rule_CanForceGovernment { get; set; }
+        public bool Rule_CanPuppet { get; set; }
+        public bool Rule_CanSendVolunteers { get; set; }
+        public bool Rule_CanLowerTension { get; set; }
+        public bool Rule_CanCreateCollaborationGovernment { get; set; }
+        public bool Rule_CanDeclareWarOnSameIdeology { get; set; }
+        public bool Rule_CanOnlyJustifyWarOnThreatCountry { get; set; }
+        public bool Rule_CanGuaranteeOtherIdeologies { get; set; }
+        public float Modifier_GenerateWargoalTension { get; set; }
+        public float Modifier_GuaranteeTension { get; set; }
+        public int Modifier_CivilianIntelToOthers { get; set; }
+        public int Modifier_ArmyIntelToOthers { get; set; }
+        public int Modifier_NavyIntelToOthers { get; set; }
+        public int Modifier_AirforceIntelToOthers { get; set; }
+        public float Modifier_JustifyWarGoalWhenInMajorWarTime { get; set; }
+        public float Modifier_JoinFactionTension { get; set; }
+        public float Modifier_LendLeaseTension { get; set; }
+        public float Modifier_AnnexCostFactor { get; set; }
+        public float Modifier_SendVolunteersTension { get; set; }
+        public float Modifier_TakeStatesCostFactor { get; set; }
+        public float Modifier_DriftDefenceFactor { get; set; }
+        public float Modifier_PuppetCostFactor { get; set; }
+        public bool CanAIUse { get; set; }
+        public bool CanBeBoosted { get; set; }
+        public float WarImpactOnWorldTension { get; set; }
+        public float FactionImpactOnWorldTension { get; set; }
+        public bool CanCollaborate { get; set; }
+        public bool CanHostGovernmentInExile { get; set; }
+
         public void Initialize()
         {
-            Ideology_name = "";
-            Small_ideologies = new string[] { };
-            Color_r = 0;
-            Color_g = 0;
-            Color_b = 0;
-            Rule_can_force_government = false;
-            Rule_can_puppet = false;
-            Rule_can_join_factions = false;
-            Rule_can_create_factions = false;
-            Rule_can_send_volunteers = false;
-            Rule_can_lower_tension = false;
-            Modifier_generate_wargoal_tension = 0;
-            Modifier_guarantee_tension = 0;
-            Modifier_civilian_intel_to_others = 0;
-            Modifier_army_intel_to_others = 0;
-            Modifier_navy_intel_to_others = 0;
-            Modifier_airforce_intel_to_others = 0;
-            Modifier_justify_war_goal_when_in_major_war_time = 0;
-            Modifier_join_faction_tension = 0;
-            Modifier_lend_lease_tension = 0;
-            Modifier_annex_cost_factor = 0;
-            Ai_uses_this_ideology = false;
-            Can_be_boosted = false;
-            War_impact_on_world_tension = 0;
-            Can_collaborate = false;
-            Can_host_government_in_exile = false;
-
+            this.Name = "";
+            this.SmallIdeologies = new string[] { };
+            this.RGBIdeologyColor = new int[] { };
+            this.ID = 0;
+            this.Rule_CanForceGovernment = false;
+            this.Rule_CanPuppet = false;
+            this.Rule_CanSendVolunteers = false;
+            this.Rule_CanLowerTension = false;
+            this.Rule_CanCreateCollaborationGovernment = false;
+            this.Rule_CanDeclareWarOnSameIdeology = false;
+            this.Rule_CanOnlyJustifyWarOnThreatCountry = false;
+            this.Rule_CanGuaranteeOtherIdeologies = false;
+            this.Modifier_GenerateWargoalTension = 0;
+            this.Modifier_GuaranteeTension = 0;
+            this.Modifier_CivilianIntelToOthers = 0;
+            this.Modifier_ArmyIntelToOthers = 0;
+            this.Modifier_NavyIntelToOthers = 0;
+            this.Modifier_AirforceIntelToOthers = 0;
+            this.Modifier_JustifyWarGoalWhenInMajorWarTime = 0;
+            this.Modifier_JoinFactionTension = 0;
+            this.Modifier_LendLeaseTension = 0;
+            this.Modifier_AnnexCostFactor = 0;
+            this.Modifier_SendVolunteersTension = 0;
+            this.Modifier_TakeStatesCostFactor = 0;
+            this.Modifier_DriftDefenceFactor = 0;
+            this.Modifier_PuppetCostFactor = 0;
+            this.CanAIUse = false;
+            this.CanBeBoosted = false;
+            this.WarImpactOnWorldTension = 0;
+            this.FactionImpactOnWorldTension = 0;
+            this.CanCollaborate = false;
+            this.CanHostGovernmentInExile = false;
         }
     }
 }

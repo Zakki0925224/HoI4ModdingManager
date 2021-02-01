@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.WillBeReplaced.CountryData
+namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.CountryData
 {
-    class CountryLeader
+    public class CountryLeader
     {
         public CountryLeader()
         {

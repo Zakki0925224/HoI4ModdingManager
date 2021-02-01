@@ -117,16 +117,13 @@
     </Compile>
     <Compile Include="ModdingProjectManager\DataContainer.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\CountryDataHanger.cs" />
+    <Compile Include="ModdingProjectManager\DataHangers\CountryData\ArmyCommander.cs" />
+    <Compile Include="ModdingProjectManager\DataHangers\CountryData\ArmyCommanderSkill.cs" />
+    <Compile Include="ModdingProjectManager\DataHangers\CountryData\CountryLeader.cs" />
+    <Compile Include="ModdingProjectManager\DataHangers\CountryData\NavyAdmiral.cs" />
+    <Compile Include="ModdingProjectManager\DataHangers\CountryData\NavyAdmiralSkill.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\CountryDataHanger.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\CountryData\ArmyCommander.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\CountryData\ArmyCommanderSkill.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\CountryData\CountryLeader.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\CountryData\NavyAdmiral.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\CountryData\NavyAdmiralSkill.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\IdeologyDataHanger.cs" />
-    <Compile Include="ModdingProjectManager\DataHangers\WillBeReplaced\ProjectDataHanger.cs" />
     <Compile Include="ModdingProjectManager\EXIM.cs" />
     <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NotConnectingException.cs" />

@@ -1,6 +1,6 @@
-﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.WillBeReplaced.CountryData
+﻿namespace HoI4ModdingManager.ModdingProjectManager.DataHangers.CountryData
 {
-    class ArmyCommanderSkill
+    public class ArmyCommanderSkill
     {
         public ArmyCommanderSkill()
         {
@@ -19,7 +19,5 @@
             this.PlanningSkill = 0;
             this.LogisticsSkill = 0;
         }
-
-
     }
 }
