@@ -88,14 +88,17 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 reader.Read();
 
-                pd.Project_name = reader.GetString(0);
-                pd.Created_at = reader.GetDateTime(1);
-                pd.Updated_at = reader.GetDateTime(2);
-                pd.Number_of_countries = reader.GetInt32(3);
-                pd.Number_of_ideologies = reader.GetInt32(4);
-                pd.Tags = new List<string>(reader.GetString(5).Split(','));
-                pd.Game_version = reader.GetString(6);
-                pd.Thumbnail_picture_path = GetEmpty(reader.GetString(7));
+                pd.ProjectName = reader.GetString(0);
+                pd.ModVersion = reader.GetString(1);
+                pd.SupportedGameVersion = reader.GetString(2);
+                pd.Tags = reader.GetString(3).Split(',');
+                pd.ThumbnailPicturePath = reader.GetString(4);
+                pd.ReplacePaths = reader.GetString(5).Split(',');
+                pd.ModPath = reader.GetString(6);
+                pd.UserDir = reader.GetString(7);
+                pd.RemoteFileID = reader.GetString(8);
+                pd.DepondencyMods = reader.GetString(9).Split(',');
+                pd.DepondencyDLCs = reader.GetString(10).Split(',');
             }
         }
 
