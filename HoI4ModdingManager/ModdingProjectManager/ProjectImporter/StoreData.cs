@@ -2,6 +2,7 @@
 using HoI4ModdingManager.ModdingProjectManager.SQLite;
 using System.Data.SQLite;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 {
@@ -115,33 +116,39 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 reader.Read();
 
-                id.Ideology_name = reader.GetString(0);
-                // コンマで区切る（スペースは含めない）
-                id.Small_ideologies = reader.GetString(1).Split(',');
-                id.Color_r = reader.GetInt32(2);
-                id.Color_g = reader.GetInt32(3);
-                id.Color_b = reader.GetInt32(4);
-                id.Rule_can_force_government = GetBool(reader.GetInt32(5));
-                id.Rule_can_puppet = GetBool(reader.GetInt32(6));
-                id.Rule_can_join_factions = GetBool(reader.GetInt32(7));
-                id.Rule_can_create_factions = GetBool(reader.GetInt32(8));
-                id.Rule_can_send_volunteers = GetBool(reader.GetInt32(9));
-                id.Rule_can_lower_tension = GetBool(reader.GetInt32(10));
-                id.Modifier_generate_wargoal_tension = reader.GetInt32(11);
-                id.Modifier_guarantee_tension = reader.GetInt32(12);
-                id.Modifier_civilian_intel_to_others = reader.GetInt32(13);
-                id.Modifier_army_intel_to_others = reader.GetInt32(14);
-                id.Modifier_navy_intel_to_others = reader.GetInt32(15);
-                id.Modifier_airforce_intel_to_others = reader.GetInt32(16);
-                id.Modifier_justify_war_goal_when_in_major_war_time = reader.GetInt32(17);
-                id.Modifier_join_faction_tension = reader.GetInt32(18);
-                id.Modifier_lend_lease_tension = reader.GetInt32(19);
-                id.Modifier_annex_cost_factor = reader.GetInt32(20);
-                id.Ai_uses_this_ideology = GetBool(reader.GetInt32(21));
-                id.Can_be_boosted = GetBool(reader.GetInt32(22));
-                id.War_impact_on_world_tension = reader.GetInt32(23);
-                id.Can_collaborate = GetBool(reader.GetInt32(24));
-                id.Can_host_government_in_exile = GetBool(reader.GetInt32(25));
+                id.Name = reader.GetString(0);
+                id.SmallIdeologies = reader.GetString(1).Split(',');
+                id.RGBIdeologyColor = reader.GetString(2).Split(',').Select(x => int.Parse(x)).ToArray();
+                id.ID = reader.GetInt32(3);
+                id.Rule_CanForceGovernment = GetBool(reader.GetInt32(4));
+                id.Rule_CanPuppet = GetBool(reader.GetInt32(5));
+                id.Rule_CanSendVolunteers = GetBool(reader.GetInt32(6));
+                id.Rule_CanLowerTension = GetBool(reader.GetInt32(7));
+                id.Rule_CanCreateCollaborationGovernment = GetBool(reader.GetInt32(8));
+                id.Rule_CanDeclareWarOnSameIdeology = GetBool(reader.GetInt32(9));
+                id.Rule_CanOnlyJustifyWarOnThreatCountry = GetBool(reader.GetInt32(10));
+                id.Rule_CanGuaranteeOtherIdeologies = GetBool(reader.GetInt32(10));
+                id.Modifier_GenerateWargoalTension = reader.GetFloat(11);
+                id.Modifier_GuaranteeTension = reader.GetFloat(12);
+                id.Modifier_CivilianIntelToOthers = reader.GetInt32(13);
+                id.Modifier_ArmyIntelToOthers = reader.GetInt32(14);
+                id.Modifier_NavyIntelToOthers = reader.GetInt32(15);
+                id.Modifier_AirforceIntelToOthers = reader.GetInt32(16);
+                id.Modifier_JustifyWarGoalWhenInMajorWarTime = reader.GetFloat(17);
+                id.Modifier_JoinFactionTension = reader.GetFloat(18);
+                id.Modifier_LendLeaseTension = reader.GetFloat(19);
+                id.Modifier_AnnexCostFactor = reader.GetFloat(20);
+                id.Modifier_SendVolunteersTension = reader.GetFloat(21);
+                id.Modifier_TakeStatesCostFactor = reader.GetFloat(22);
+                id.Modifier_DriftDefenceFactor = reader.GetFloat(23);
+                id.Modifier_PuppetCostFactor = reader.GetFloat(24);
+                id.CanAIUse = GetBool(reader.GetInt32(25));
+                id.CanBeBoosted = GetBool(reader.GetInt32(26));
+                id.WarImpactOnWorldTension = reader.GetFloat(27);
+                id.FactionImpactOnWorldTension = reader.GetFloat(28);
+                id.CanCollaborate = GetBool(reader.GetInt32(29));
+                id.CanHostGovernmentInExile = GetBool(reader.GetInt32(30));
+
             }
         }
 
