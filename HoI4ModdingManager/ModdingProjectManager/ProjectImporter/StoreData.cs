@@ -21,59 +21,27 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             {
                 reader.Read();
 
-                cd.Id = reader.GetInt32(0);
-                cd.Country_tag = reader.GetString(1);
-                cd.Country_name = reader.GetString(2);
-                cd.Country_name_neutrality = reader.GetString(3);
-                cd.Country_name_neutrality_def = reader.GetString(4);
-                cd.Country_name_neutrality_adj = reader.GetString(5);
-                cd.Country_name_democratic = reader.GetString(6);
-                cd.Country_name_democratic_def = reader.GetString(7);
-                cd.Country_name_democratic_adj = reader.GetString(8);
-                cd.Country_name_fascism = reader.GetString(9);
-                cd.Country_name_fascism_def = reader.GetString(10);
-                cd.Country_name_fascism_adj = reader.GetString(11);
-                cd.Country_name_communism = reader.GetString(12);
-                cd.Country_name_communism_def = reader.GetString(13);
-                cd.Country_name_communism_adj = reader.GetString(14);
-                cd.Party_name_neutrality = reader.GetString(15);
-                cd.Party_name_neutrality_long = reader.GetString(16);
-                cd.Party_name_democratic = reader.GetString(17);
-                cd.Party_name_democratic_long = reader.GetString(18);
-                cd.Party_name_fascism = reader.GetString(19);
-                cd.Party_name_fascism_long = reader.GetString(20);
-                cd.Party_name_communism = reader.GetString(21);
-                cd.Party_name_communism_long = reader.GetString(22);
-                cd.Capital_state_id = reader.GetInt32(23);
-                cd.Initial_teach_slot = reader.GetInt32(24);
-                cd.Initial_stability = reader.GetInt32(25);
-                cd.Initial_war_coop = reader.GetInt32(26);
-                cd.Initial_political_power = reader.GetInt32(27);
-                cd.Initial_transport = reader.GetInt32(28);
-                cd.Graphic_culture = reader.GetString(29);
-                cd.Initial_ideology = reader.GetString(30);
-                cd.Last_election_at = reader.GetDateTime(31);
-                cd.Election_interval = reader.GetInt32(32);
-                cd.Is_no_election = GetBool(reader.GetInt32(33));
-                cd.Color_r = reader.GetInt32(34);
-                cd.Color_g = reader.GetInt32(35);
-                cd.Color_b = reader.GetInt32(36);
-                cd.Country_flag_path_neutrality = reader.GetString(37);
-                cd.Country_flag_path_neutrality_medium = reader.GetString(38);
-                cd.Country_flag_path_neutrality_small = reader.GetString(39);
-                cd.Country_flag_path_democratic = reader.GetString(40);
-                cd.Country_flag_path_democratic_medium = reader.GetString(41);
-                cd.Country_flag_path_democratic_small = reader.GetString(42);
-                cd.Country_flag_path_fascism = reader.GetString(43);
-                cd.Country_flag_path_fascism_medium = reader.GetString(44);
-                cd.Country_flag_path_fascism_small = reader.GetString(45);
-                cd.Country_flag_path_communism = reader.GetString(46);
-                cd.Country_flag_path_communism_medium = reader.GetString(47);
-                cd.Country_flag_path_communism_small = reader.GetString(48);
-                cd.Party_support_neutrality = reader.GetInt32(49);
-                cd.Party_support_democratic = reader.GetInt32(50);
-                cd.Party_support_fascism = reader.GetInt32(51);
-                cd.Party_support_communism = reader.GetInt32(52);
+                cd.Name = reader.GetString(0);
+                cd.CountryTag = reader.GetString(1);
+                cd.CapitalStateID = reader.GetInt32(2);
+                cd.Stability = reader.GetFloat(3);
+                cd.WarSupport = reader.GetFloat(4);
+                cd.PoliticalPower = reader.GetInt32(5);
+                cd.ResearchSlots = reader.GetInt32(6);
+                cd.Convoys = reader.GetInt32(7);
+                cd.UnitFileID = reader.GetString(8);
+                cd.Technologies = reader.GetString(9).Split(',');
+                cd.Ideas = reader.GetString(10).Split(',');
+                cd.RulingPartyIdeology = reader.GetString(11);
+                cd.LastElectionAt = reader.GetDateTime(12);
+                cd.IsAllowElection = GetBool(reader.GetInt32(13));
+                cd.PartySupports = reader.GetString(14).Split(',').Select(x => float.Parse(x)).ToArray();
+                cd.RGBCountryColor = reader.GetString(15).Split(',').Select(x => int.Parse(x)).ToArray();
+                cd.GraphicCulture = reader.GetString(16);
+                // 17-19は一旦保留
+                cd.CountryNames = reader.GetString(20).Split(',');
+                cd.PartyNames = reader.GetString(21).Split(',');
+                cd.CountryFlagPaths = reader.GetString(22).Split(',');
             }
         }
 
@@ -163,19 +131,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
                 return false;
             else
                 return true;
-        }
-
-        /// <summary>
-        /// 空文字を取得("[empty]" -> "")
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        private string GetEmpty(string text)
-        {
-            if (text == "[empty]")
-                return "";
-            else
-                return text;
         }
 
         /// <summary>

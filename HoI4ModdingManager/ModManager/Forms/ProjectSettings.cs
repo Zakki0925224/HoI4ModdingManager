@@ -23,9 +23,9 @@ namespace HoI4ModdingManager.ModManager.Forms
         /// </summary>
         private void SetData()
         {
-            modNameTextBox.Text = this.ProjectDataContainer.Project_name;
+            modNameTextBox.Text = this.ProjectDataContainer.ProjectName;
 
-            string[] game_version = this.ProjectDataContainer.Game_version.Split('.');
+            string[] game_version = this.ProjectDataContainer.SupportedGameVersion.Split('.');
             targetGameVersionMajor.Value = int.Parse(game_version[0]);
             targetGameVersionMinor.Value = int.Parse(game_version[1]);
             targetGameVersionRevision.Value = int.Parse(game_version[2]);
@@ -36,10 +36,10 @@ namespace HoI4ModdingManager.ModManager.Forms
                 modTagListBox.SetItemChecked(id, true);
             }
 
-            if (this.ProjectDataContainer.Thumbnail_picture_path != "")
+            if (this.ProjectDataContainer.ThumbnailPicturePath != "")
             {
-                modPictureBox.Image = new Bitmap(this.ProjectDataContainer.Thumbnail_picture_path);
-                modPictureBox.ImageLocation = this.ProjectDataContainer.Thumbnail_picture_path;
+                modPictureBox.Image = new Bitmap(this.ProjectDataContainer.ThumbnailPicturePath);
+                modPictureBox.ImageLocation = this.ProjectDataContainer.ThumbnailPicturePath;
             }
         }
 
@@ -64,7 +64,7 @@ namespace HoI4ModdingManager.ModManager.Forms
             if (!CanUseThisValues())
                 return false;
 
-            this.ProjectDataContainer.Project_name = modNameTextBox.Text;
+            this.ProjectDataContainer.ProjectName = modNameTextBox.Text;
             // created_at, updated_at, number_of_countries, number_of_ideologiesはまだ反映させない
             this.ProjectDataContainer.Tags.Clear();
             foreach (string item in modTagListBox.CheckedItems)
