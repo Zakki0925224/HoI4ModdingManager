@@ -80,6 +80,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
@@ -125,6 +126,8 @@
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
     <Compile Include="ModdingProjectManager\EXIM.cs" />
+    <Compile Include="ModdingProjectManager\ProjectExporter\ProjectDataTable.cs" />
+    <Compile Include="ModdingProjectManager\ProjectExporter\WriteData.cs" />
     <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NotConnectingException.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.cs">
@@ -188,9 +191,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModdingProjectManager\ProjectExporter\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
