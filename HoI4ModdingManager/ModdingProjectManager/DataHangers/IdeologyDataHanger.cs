@@ -19,7 +19,7 @@
         public bool Rule_CanDeclareWarOnSameIdeology { get; set; }
         public bool Rule_CanOnlyJustifyWarOnThreatCountry { get; set; }
         public bool Rule_CanGuaranteeOtherIdeologies { get; set; }
-        public float Modifier_GenerateWargoalTension { get; set; }
+        public float Modifier_GenerateWarGoalTension { get; set; }
         public float Modifier_GuaranteeTension { get; set; }
         public int Modifier_CivilianIntelToOthers { get; set; }
         public int Modifier_ArmyIntelToOthers { get; set; }
@@ -54,7 +54,7 @@
             this.Rule_CanDeclareWarOnSameIdeology = false;
             this.Rule_CanOnlyJustifyWarOnThreatCountry = false;
             this.Rule_CanGuaranteeOtherIdeologies = false;
-            this.Modifier_GenerateWargoalTension = 0;
+            this.Modifier_GenerateWarGoalTension = 0;
             this.Modifier_GuaranteeTension = 0;
             this.Modifier_CivilianIntelToOthers = 0;
             this.Modifier_ArmyIntelToOthers = 0;

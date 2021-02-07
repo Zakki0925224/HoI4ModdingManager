@@ -96,7 +96,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
                 id.Rule_CanDeclareWarOnSameIdeology = GetBool(reader.GetInt32(9));
                 id.Rule_CanOnlyJustifyWarOnThreatCountry = GetBool(reader.GetInt32(10));
                 id.Rule_CanGuaranteeOtherIdeologies = GetBool(reader.GetInt32(10));
-                id.Modifier_GenerateWargoalTension = reader.GetFloat(11);
+                id.Modifier_GenerateWarGoalTension = reader.GetFloat(11);
                 id.Modifier_GuaranteeTension = reader.GetFloat(12);
                 id.Modifier_CivilianIntelToOthers = reader.GetInt32(13);
                 id.Modifier_ArmyIntelToOthers = reader.GetInt32(14);

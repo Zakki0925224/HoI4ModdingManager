@@ -16,10 +16,10 @@ namespace HoI4ModdingManager.ModdingProjectManager
             dc.ProjectData = sd.GetProjectData(dbFile, "project_data"); ;
 
             // 国家データの取得
-            dc.CountryData = sd.GetCountriesData(dbFile, "countries_data");
+            dc.CountryData = sd.GetCountriesData(dbFile, "country_data");
 
             // イデオロギーデータの取得
-            dc.IdeologyData = sd.GetIdeologiesData(dbFile, "ideologies_data");
+            dc.IdeologyData = sd.GetIdeologiesData(dbFile, "ideology_data");
 
             return dc;
         }
