@@ -17,33 +17,33 @@ function GetCountryData(thisCountryData,countryData,projectData,ideologyData)
 
 function SetStatus(thisCountryData)
 {
-    document.getElementById("country_name").textContent = thisCountryData.Country_name;
-    document.getElementById("political_power_count").textContent = thisCountryData.Initial_political_power;
-    document.getElementById("stability_count").textContent = thisCountryData.Initial_stability + "%";
-    document.getElementById("war_coop_count").textContent = thisCountryData.Initial_war_coop + "%";
-    document.getElementById("transport_count").textContent = thisCountryData.Initial_transport;
-    document.getElementById("ideology_text").textContent = thisCountryData.Initial_ideology;
+    document.getElementById("country_name").textContent = thisCountryData.Name;
+    document.getElementById("political_power_count").textContent = thisCountryData.PoliticalPower;
+    document.getElementById("stability_count").textContent = thisCountryData.Stability + "%";
+    document.getElementById("war_coop_count").textContent = thisCountryData.WarSupport + "%";
+    document.getElementById("transport_count").textContent = thisCountryData.Convoys;
+    document.getElementById("ideology_text").textContent = thisCountryData.RulingPartyIdeology;
 }
 
 function SetPartySupportGraph(thisCountryData, ideologyData)
 {
     // neutrality party support count
-    const nPartySupportCount = thisCountryData.Party_support_neutrality;
+    const nPartySupportCount = thisCountryData.PartySupports[0];
     // democratic party support count
-    const dPartySupportCount = thisCountryData.Party_support_democratic;
+    const dPartySupportCount = thisCountryData.PartySupports[1];
     // fascism party support count
-    const fPartySupportCount = thisCountryData.Party_support_fascism;
+    const fPartySupportCount = thisCountryData.PartySupports[2];
     // communism party support count
-    const cPartySupportCount = thisCountryData.Party_support_communism;
+    const cPartySupportCount = thisCountryData.PartySupports[3];
 
     // neutrality party name (long)
-    const nPartyName = thisCountryData.Party_name_neutrality_long;
+    const nPartyName = thisCountryData.PartyNames[1];
     // democratic party name (long)
-    const dPartyName = thisCountryData.Party_name_democratic_long;
+    const dPartyName = thisCountryData.PartyNames[3];
     // fascism party name (long)
-    const fPartyName = thisCountryData.Party_name_fascism_long;
+    const fPartyName = thisCountryData.PartyNames[5];
     // communism party name (long)
-    const cPartyName = thisCountryData.Party_name_communism_long;
+    const cPartyName = thisCountryData.PartyNames[7];
 
     var ctx = document.getElementById("party_support_graph");
     var party_support_graph = new Chart
@@ -84,33 +84,33 @@ function AddPartyCard(thisCountryData, ideologyData)
 
     for (let i = 0; i < cardsCount; i++)
     {
-        const ideologyName = ideologyData[i].Ideology_name;
+        const ideologyName = ideologyData[i].Name;
         let partyName;
         let partySupport;
         const partyLeaderName = "Donald Trump"; // temporary
 
         if (ideologyName == "neutrality")
         {
-            partyName = thisCountryData.Party_name_neutrality_long;
-            partySupport = thisCountryData.Party_support_neutrality;
+            partyName = thisCountryData.PartyNames[1];
+            partySupport = thisCountryData.PartySupports[0];
         }
 
         else if (ideologyName == "democratic")
         {
-            partyName = thisCountryData.Party_name_democratic_long;
-            partySupport = thisCountryData.Party_support_democratic;
+            partyName = thisCountryData.PartyNames[3];
+            partySupport = thisCountryData.PartySupports[1];
         }
 
         else if (ideologyName == "fascism")
         {
-            partyName = thisCountryData.Party_name_fascism_long;
-            partySupport = thisCountryData.Party_support_fascism;
+            partyName = thisCountryData.PPartyNames[5];
+            partySupport = thisCountryData.PartySupports[2];
         }
 
         else if (ideologyName == "communism")
         {
-            partyName = thisCountryData.Party_name_communism_long;
-            partySupport = thisCountryData.Party_support_communism;
+            partyName = thisCountryData.PartyNames[7];
+            partySupport = thisCountryData.PartySupports[3];
         }
         else
         {
