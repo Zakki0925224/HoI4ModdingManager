@@ -126,6 +126,7 @@
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
     <Compile Include="ModdingProjectManager\EXIM.cs" />
+    <Compile Include="ModdingProjectManager\ProjectExporter\CountryDataTable.cs" />
     <Compile Include="ModdingProjectManager\ProjectExporter\ProjectDataTable.cs" />
     <Compile Include="ModdingProjectManager\ProjectExporter\WriteData.cs" />
     <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
@@ -144,6 +145,7 @@
     </Compile>
     <Compile Include="ModdingProjectManager\ProjectImporter\StoreData.cs" />
     <Compile Include="ModdingProjectManager\SQLite\DataBaseConnector.cs" />
+    <Compile Include="ModdingProjectManager\SQLite\Utils.cs" />
     <Compile Include="ModManager\Forms\ProjectSettings.cs">
       <SubType>Form</SubType>
     </Compile>
