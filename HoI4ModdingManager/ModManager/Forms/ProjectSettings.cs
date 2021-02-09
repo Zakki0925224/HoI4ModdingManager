@@ -65,17 +65,14 @@ namespace HoI4ModdingManager.ModManager.Forms
                 return false;
 
             this.ProjectDataContainer.ProjectName = modNameTextBox.Text;
-            // created_at, updated_at, number_of_countries, number_of_ideologiesはまだ反映させない
-            this.ProjectDataContainer.Tags.Clear();
-            foreach (string item in modTagListBox.CheckedItems)
-                this.ProjectDataContainer.Tags.Add(item);
+            modTagListBox.CheckedItems.CopyTo(this.ProjectDataContainer.Tags, 0);
 
-            this.ProjectDataContainer.Game_version = $"{targetGameVersionMajor.Value}.{targetGameVersionMinor.Value}.{targetGameVersionRevision.Value}";
+            this.ProjectDataContainer.SupportedGameVersion = $"{targetGameVersionMajor.Value}.{targetGameVersionMinor.Value}.{targetGameVersionRevision.Value}";
 
             if (modPictureBox.Image == null)
-                this.ProjectDataContainer.Thumbnail_picture_path = "";
+                this.ProjectDataContainer.ThumbnailPicturePath = "";
             else
-                this.ProjectDataContainer.Thumbnail_picture_path = modPictureBox.ImageLocation;
+                this.ProjectDataContainer.ThumbnailPicturePath = modPictureBox.ImageLocation;
 
             return true;
         }

@@ -11,8 +11,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
         /// データベース接続
         /// </summary>
         /// <param name="dbFile">ファイルパス</param>
-        /// <param name="tableName">テーブル名</param>
-        public void ConnectionDataBase(string dbFile, string tableName)
+        public void ConnectionDataBase(string dbFile)
         {
             sqlc = new SQLiteConnection($"Data Source={dbFile}");
 
@@ -20,11 +19,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
             {
                 sqlc.Open();
                 // debug log
-                Console.WriteLine($"[SQLite][Path:\"{dbFile}\"][Table:\"{tableName}\"]: Connenction successfull.");
+                Console.WriteLine($"[SQLite][Path:\"{dbFile}\"]: Connenction successfull.");
             }
             catch (Exception e)
             {
-                Console.WriteLine($"[SQLite][Path:\"{dbFile}\"][Table:\"{tableName}\"]: " + e.Message);
+                Console.WriteLine($"[SQLite][Path:\"{dbFile}\"]: " + e.Message);
                 throw e;
             }
         }

@@ -108,8 +108,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             {
                 var tabPage = new TabPage()
                 {
-                    Name = $"{data.Country_name}-Tab",
-                    Text = data.Country_name
+                    Name = $"{data.Name}-Tab",
+                    Text = data.Name
                 };
 
                 tabPage.Controls.Add(SetBrowser(data));

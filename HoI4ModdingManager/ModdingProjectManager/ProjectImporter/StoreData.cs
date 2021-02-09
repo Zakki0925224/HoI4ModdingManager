@@ -131,7 +131,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 
             using (var dbc = new DataBaseConnector())
             {
-                dbc.ConnectionDataBase(dbFile, tableName);
+                dbc.ConnectionDataBase(dbFile);
 
                 for (int i = 0; i < (int)CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
                 {
@@ -156,7 +156,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 
             using (var dbc = new DataBaseConnector())
             {
-                dbc.ConnectionDataBase(dbFile, tableName);
+                dbc.ConnectionDataBase(dbFile);
                 ReadProjectData(tableName, pd, dbc.sqlc);
             }
 
@@ -174,7 +174,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 
             using (var dbc = new DataBaseConnector())
             {
-                dbc.ConnectionDataBase(dbFile, tableName);
+                dbc.ConnectionDataBase(dbFile);
 
                 for (int i = 0; i < (int)CommandCreator.GetDataCount(dbc.sqlc, tableName); i++)
                 {
