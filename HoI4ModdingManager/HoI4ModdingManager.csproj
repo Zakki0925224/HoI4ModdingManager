@@ -131,6 +131,7 @@
     <Compile Include="ModdingProjectManager\ProjectExporter\ProjectDataTable.cs" />
     <Compile Include="ModdingProjectManager\ProjectExporter\WriteData.cs" />
     <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
+    <Compile Include="ModdingProjectManager\SQLite\NameDefinition.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NotConnectingException.cs" />
     <Compile Include="ModdingProjectManager\Forms\ProjectDashboard.cs">
       <SubType>Form</SubType>

@@ -2,7 +2,6 @@
 using CefSharp.WinForms;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.PageLayout;
-using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Utils;
 using HoI4ModdingManager.CountryManager.Forms;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
@@ -19,7 +18,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private readonly string FilePath = "";
+        private string FilePath = "";
 
         // データコンテナ
         private FileStream FileStream = null;
@@ -118,6 +117,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         }
 
         /// <summary>
+        /// データをファイルに保存
+        /// </summary>
+        private void SaveData()
+        {
+            new EXIM().ExportProject(this.FilePath, this.MainContainer);
+        }
+
+        /// <summary>
         /// ブラウザを初期化
         /// </summary>
         private void InitializeBrowser()
@@ -174,10 +181,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             new StartWindow().ShowDialog();
         }
 
-        private void ProjectEditor_Load(object sender, EventArgs e)
-        {
-        }
-
         /// <summary>
         /// タブの描画
         /// </summary>
@@ -207,7 +210,17 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileIO.OpenDataBaseFile(true);
+            string path = FileIO.OpenDataBaseFile(true);
+
+            if (path != "")
+            {
+                this.FilePath = path;
+                if (this.FileStream != null)
+                    this.FileStream.Close();
+
+                this.FileStream = FileIO.CreateFileStream(this.FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                SetProjectData();
+            }
         }
 
         private void CreateProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -304,6 +317,11 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             }
 
             this.CountryDataEditorForm.Dispose();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveData();
         }
     }
 }

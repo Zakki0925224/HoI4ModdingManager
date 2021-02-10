@@ -8,10 +8,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectExporter
 {
     class WriteData
     {
-        private void WriteCountryData(List<CountryDataHanger> data, SQLiteConnection sqlc, string tableName)
+        private void WriteCountryData(List<CountryDataHanger> data, SQLiteConnection sqlc)
         {
             // 一度テーブル上のデータを全て削除
-            CommandCreator.DeleteAllDataOnTable(sqlc, tableName);
+            CommandCreator.DeleteAllDataOnTable(sqlc, NameDefinition.CountryDataTableName);
 
             using (var content = new DataContext(sqlc))
             {
@@ -45,10 +45,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectExporter
             }
         }
 
-        private void WriteIdeologyData(List<IdeologyDataHanger> data, SQLiteConnection sqlc, string tableName)
+        private void WriteIdeologyData(List<IdeologyDataHanger> data, SQLiteConnection sqlc)
         {
             // 一度テーブル上のデータを全て削除
-            CommandCreator.DeleteAllDataOnTable(sqlc, tableName);
+            CommandCreator.DeleteAllDataOnTable(sqlc, NameDefinition.IdeologyDataTableName);
 
             using (var content = new DataContext(sqlc))
             {
@@ -94,10 +94,10 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectExporter
             }
         }
 
-        private void WriteProjectData(ProjectDataHanger data, SQLiteConnection sqlc, string tableName)
+        private void WriteProjectData(ProjectDataHanger data, SQLiteConnection sqlc)
         {
             // 一度テーブル上のデータを全て削除
-            CommandCreator.DeleteAllDataOnTable(sqlc, tableName);
+            CommandCreator.DeleteAllDataOnTable(sqlc, NameDefinition.ProjectDataTableName);
 
             using (var content = new DataContext(sqlc))
             {
@@ -119,20 +119,35 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectExporter
             }
         }
 
-        public void WriteDataToDataBase(DataContainer data, string dbFile, string projectDataTableName, string countryDataTableName, string ideologyDataTableName)
+        public void WriteDataToDataBase(DataContainer data, string dbFile)
         {
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile);
 
                 // テーブルが存在しなければ作成する
-                CommandCreator.CreateCountryDataTable(dbc.sqlc, countryDataTableName);
-                CommandCreator.CreateIdeologyDataTable(dbc.sqlc, ideologyDataTableName);
-                CommandCreator.CreateProjectDataTable(dbc.sqlc, projectDataTableName);
+                CreateTable(dbc.sqlc);
 
-                WriteCountryData(data.CountryData, dbc.sqlc, countryDataTableName);
-                WriteIdeologyData(data.IdeologyData, dbc.sqlc, ideologyDataTableName);
-                WriteProjectData(data.ProjectData, dbc.sqlc, projectDataTableName);
+                WriteCountryData(data.CountryData, dbc.sqlc);
+                WriteIdeologyData(data.IdeologyData, dbc.sqlc);
+                WriteProjectData(data.ProjectData, dbc.sqlc);
+            }
+        }
+
+        private void CreateTable(SQLiteConnection sqlc)
+        {
+            CommandCreator.CreateCountryDataField(sqlc);
+            CommandCreator.CreateIdeologyDataField(sqlc);
+            CommandCreator.CreateProjectDataField(sqlc);
+        }
+
+        public void CreateTableToDataBase(string dbFile)
+        {
+            using (var dbc = new DataBaseConnector())
+            {
+                dbc.ConnectionDataBase(dbFile);
+
+                CreateTable(dbc.sqlc);
             }
         }
     }

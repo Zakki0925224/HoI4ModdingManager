@@ -26,22 +26,23 @@ namespace HoI4ModdingManager.Common.Utils
             }
         }
 
-        public static void OpenDataBaseFile(bool useDialog, string filePath = "")
+        public static string OpenDataBaseFile(bool useDialog, string filePath = "")
         {
             if (useDialog)
                 filePath = DialogProvider.ShowOpenFileDialog("HoI4 Modding Project (*.hmp)|*.hmp", "プロジェクトを開く...", true);
 
             if (filePath == "")
-                return;
+                return "";
 
             if (!FileChecker.IsThisFileCanUse(filePath))
             {
                 MessageBoxProvider.ShowErrorMessageBox("指定されたファイルは使用できません。");
-                return;
+                return "";
             }
             else
             {
-                ProcessCreater.CreateNewProcess(filePath);
+                //ProcessCreater.CreateNewProcess(filePath);
+                return filePath;
             }
 
         }

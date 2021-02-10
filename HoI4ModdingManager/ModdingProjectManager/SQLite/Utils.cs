@@ -30,5 +30,16 @@
             else
                 return 0;
         }
+
+        public static string[] GetArray(string data)
+        {
+            if (data == "" || data == null)
+                return new string[] { "" };
+
+            if (data.IndexOf(',') == -1)
+                return new string[] {data};
+
+            return data.Split(',');
+        }
     }
 }

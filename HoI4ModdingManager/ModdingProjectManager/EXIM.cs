@@ -8,28 +8,31 @@ namespace HoI4ModdingManager.ModdingProjectManager
     /// </summary>
     class EXIM
     {
-        readonly string[] TableNames = { "project_data", "country_data", "ideology_data" };
-
         public DataContainer ImportProject(string dbFile)
         {
             var sd = new StoreData();
             var dc = new DataContainer();
 
             // プロジェクトデータの取得
-            dc.ProjectData = sd.GetProjectData(dbFile, TableNames[0]);
+            dc.ProjectData = sd.GetProjectData(dbFile);
 
             // 国家データの取得
-            dc.CountryData = sd.GetCountriesData(dbFile, TableNames[1]);
+            dc.CountryData = sd.GetCountriesData(dbFile);
 
             // イデオロギーデータの取得
-            dc.IdeologyData = sd.GetIdeologiesData(dbFile, TableNames[2]);
+            dc.IdeologyData = sd.GetIdeologiesData(dbFile);
 
             return dc;
         }
 
         public void ExportProject(string dbFile, DataContainer data)
         {
-            new WriteData().WriteDataToDataBase(data, dbFile, TableNames[0], TableNames[1], TableNames[2]);
+            new WriteData().WriteDataToDataBase(data, dbFile);
+        }
+
+        public void CreateDataTable(string dbFile)
+        {
+            new WriteData().CreateTableToDataBase(dbFile);
         }
     }
 }

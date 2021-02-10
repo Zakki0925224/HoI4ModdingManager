@@ -14,15 +14,13 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
         {
             CheckNotConnectingException(connection);
 
-            using (var cmd = connection.CreateCommand())
-            {
-                cmd.CommandText = $"SELECT * FROM {tableName}";
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {tableName}";
 
-                if (isGetWithColmn)
-                    cmd.CommandText = $"{cmd.CommandText} LIMIT {colmn}, 1";
+            if (isGetWithColmn)
+                cmd.CommandText = $"{cmd.CommandText} LIMIT {colmn}, 1";
 
-                return cmd;
-            }
+            return cmd;
         }
 
         public static long GetDataCount(SQLiteConnection connection, string tableName)
@@ -37,100 +35,103 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
             }
         }
         
-        public static void CreateCountryDataTable(SQLiteConnection connection, string countryDataTableName)
+        public static void CreateCountryDataField(SQLiteConnection connection)
         {
             CheckNotConnectingException(connection);
 
             using (var cmd = connection.CreateCommand())
             {
-                // テーブル作成
-                cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {countryDataTableName}" +
-                    "(name TEXT, " +
-                    "country_tag TEXT, " +
-                    "capital_state_id INTEGER, " +
-                    "stability REAL, " +
-                    "war_support REAL, " +
-                    "political_power INTEGER, " +
-                    "research_slots INTEGER, " +
-                    "convoys INTEGER, " +
-                    "technologies TEXT, " +
-                    "ideas TEXT, " +
-                    "ruling_party_ideology TEXT, " +
-                    "last_election_at BLOB, " +
-                    "is_allow_election INTEGER, " +
-                    "party_supports TEXT, " +
-                    "rgb_country_color TEXT, " +
-                    "graphic_culture TEXT, " +
-                    "country_names TEXT, " +
-                    "party_names TEXT, " +
-                    "country_flag_paths TEXT)";
+                string[] names = NameDefinition.CountryDataFieldNameList;
+
+                cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {NameDefinition.CountryDataTableName}" +
+                    $"({names[0]} TEXT, " +
+                    $"{names[1]} TEXT, " +
+                    $"{names[2]} INTEGER, " +
+                    $"{names[3]} REAL, " +
+                    $"{names[4]} REAL, " +
+                    $"{names[5]} INTEGER, " +
+                    $"{names[6]} INTEGER, " +
+                    $"{names[7]} INTEGER, " +
+                    $"{names[8]} TEXT, " +
+                    $"{names[9]} TEXT, " +
+                    $"{names[10]} TEXT, " +
+                    $"{names[11]} BLOB, " +
+                    $"{names[12]} INTEGER, " +
+                    $"{names[13]} TEXT, " +
+                    $"{names[14]} TEXT, " +
+                    $"{names[15]} TEXT, " +
+                    $"{names[16]} TEXT, " +
+                    $"{names[17]} TEXT, " +
+                    $"{names[18]} TEXT)";
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static void CreateIdeologyDataTable(SQLiteConnection connection, string ideologyDataTableName)
+        public static void CreateIdeologyDataField(SQLiteConnection connection)
         {
             CheckNotConnectingException(connection);
 
             using (var cmd = connection.CreateCommand())
             {
-                // テーブル作成
-                cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {ideologyDataTableName}" +
-                    "(name TEXT, " +
-                    "small_ideologies TEXT, " +
-                    "rgb_ideology_color TEXT, " +
-                    "id INTEGER, " +
-                    "rule_can_force_government INTEGER, " +
-                    "rule_can_puppet INTEGER, " +
-                    "rule_can_send_volunteers INTEGER, " +
-                    "rule_can_lower_tension INTEGER, " +
-                    "rule_can_create_collaboration_government INTEGER, " +
-                    "rule_can_declare_war_on_same_ideology INTEGER, " +
-                    "rule_can_only_justify_war_on_threat_country INTEGER, " +
-                    "rule_can_guarantee_other_ideologies INTEGER, " +
-                    "modifier_generate_war_goal_tension REAL, " +
-                    "modifier_guarantee_tension REAL, " +
-                    "modifier_civilian_intel_to_others INTEGER, " +
-                    "modifier_army_intel_to_others INTEGER, " +
-                    "modifier_navy_intel_to_others INTEGER, " +
-                    "modifier_airforce_intel_to_others INTEGER, " +
-                    "modifier_justify_war_goal_when_in_major_war_time REAL, " +
-                    "modifier_join_faction_tension REAL, " +
-                    "modifier_lend_lease_tension REAL, " +
-                    "modifier_annex_cost_factor REAL, " +
-                    "modifier_send_volunteers_tension REAL, " +
-                    "modifier_take_states_cost_factor REAL, " +
-                    "modifier_drift_defence_factor REAL, " +
-                    "modifier_puppet_cost_factor REAL, " +
-                    "can_ai_use INTEGER, " +
-                    "can_be_boosted INTEGER, " +
-                    "war_impact_on_world_tension REAL, " +
-                    "faction_impact_on_world_tension REAL, " +
-                    "can_collaborate INTEGER, " +
-                    "can_host_government_in_exile INTEGER)";
+                string[] names = NameDefinition.IdeologyDataFieldNameList;
+
+                cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {NameDefinition.IdeologyDataTableName}" +
+                    $"({names[0]} TEXT, " +
+                    $"{names[1]} TEXT, " +
+                    $"{names[2]} TEXT, " +
+                    $"{names[3]} INTEGER, " +
+                    $"{names[4]} INTEGER, " +
+                    $"{names[5]} INTEGER, " +
+                    $"{names[6]} INTEGER, " +
+                    $"{names[7]} INTEGER, " +
+                    $"{names[8]} INTEGER, " +
+                    $"{names[9]} INTEGER, " +
+                    $"{names[10]} INTEGER, " +
+                    $"{names[11]} INTEGER, " +
+                    $"{names[12]} REAL, " +
+                    $"{names[13]} REAL, " +
+                    $"{names[14]} INTEGER, " +
+                    $"{names[15]} INTEGER, " +
+                    $"{names[16]} INTEGER, " +
+                    $"{names[17]} INTEGER, " +
+                    $"{names[18]} REAL, " +
+                    $"{names[19]} REAL, " +
+                    $"{names[20]} REAL, " +
+                    $"{names[21]} REAL, " +
+                    $"{names[22]} REAL, " +
+                    $"{names[23]} REAL, " +
+                    $"{names[24]} REAL, " +
+                    $"{names[25]} REAL, " +
+                    $"{names[26]} INTEGER, " +
+                    $"{names[27]} INTEGER, " +
+                    $"{names[28]} REAL, " +
+                    $"{names[29]} REAL, " +
+                    $"{names[30]} INTEGER, " +
+                    $"{names[31]} INTEGER)";
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static void CreateProjectDataTable(SQLiteConnection connection, string projectDataTableName)
+        public static void CreateProjectDataField(SQLiteConnection connection)
         {
             CheckNotConnectingException(connection);
 
             using (var cmd = connection.CreateCommand())
             {
-                // テーブル作成
-                cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {projectDataTableName} " +
-                    $"(project_name TEXT, " +
-                    $"mod_version TEXT, " +
-                    $"supported_game_version TEXT, " +
-                    $"tags TEXT, " +
-                    $"thumbnail_picture_path TEXT, " +
-                    $"replace_paths TEXT, " +
-                    $"mod_path TEXT, " +
-                    $"user_dir TEXT, " +
-                    $"remote_file_id TEXT, " +
-                    $"depondency_mods TEXT, " +
-                    $"depondency_dlcs TEXT)";
+                string[] names = NameDefinition.ProjectDataFieldNameList;
+
+                cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {NameDefinition.ProjectDataTableName} " +
+                    $"({names[0]} TEXT, " +
+                    $"{names[1]} TEXT, " +
+                    $"{names[2]} TEXT, " +
+                    $"{names[3]} TEXT, " +
+                    $"{names[4]} TEXT, " +
+                    $"{names[5]} TEXT, " +
+                    $"{names[6]} TEXT, " +
+                    $"{names[7]} TEXT, " +
+                    $"{names[8]} TEXT, " +
+                    $"{names[9]} TEXT, " +
+                    $"{names[10]} TEXT)";
                 cmd.ExecuteNonQuery();
             }
         }
