@@ -88,21 +88,27 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             UpdateMenuStrip();
         }
 
-        private void CloseFile()
+        /// <summary>
+        /// ファイルを閉じる
+        /// </summary>
+        /// <returns>正常に閉じることができなければfalseを返す</returns>
+        private bool CloseFile()
         {
             if (this.FileStream == null || this.FilePath == "")
-                return;
+                return true;
 
             var result = MessageBoxProvider.SaveMessageBox(this.FilePath);
             if (result == DialogResult.Yes)
                 SaveData();
             else if (result == DialogResult.Cancel)
-                return;
+                return false;
 
             this.FileStream.Close();
             this.FileStream = null;
             InitializeWindowTitle();
             UpdateMenuStrip();
+
+            return true;
         }
 
         /// <summary>
@@ -332,7 +338,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectDashBoard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CloseFile();
+            if (!CloseFile())
+                e.Cancel = true;
         }
     }
 }
