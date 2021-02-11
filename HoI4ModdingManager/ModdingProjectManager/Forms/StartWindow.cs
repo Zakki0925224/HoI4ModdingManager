@@ -18,7 +18,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void OpenProjectButton_Click(object sender, EventArgs e)
         {
-            FileIO.OpenDataBaseFile(true);
+            ProcessCreater.CreateNewProcess(FileIO.OpenDataBaseFile(true));
         }
 
         private void CreateProjectButton_Click(object sender, EventArgs e)

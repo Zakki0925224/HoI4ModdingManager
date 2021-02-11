@@ -21,7 +21,7 @@ namespace HoI4ModdingManager.Common.Utils
             }
             catch (Exception e)
             {
-                MessageBoxProvider.ShowErrorMessageBox(e.Message);
+                Console.WriteLine(e.Message);
                 throw e;
             }
         }
@@ -36,7 +36,7 @@ namespace HoI4ModdingManager.Common.Utils
 
             if (!FileChecker.IsThisFileCanUse(filePath))
             {
-                MessageBoxProvider.ShowErrorMessageBox("指定されたファイルは使用できません。");
+                Console.WriteLine("指定されたファイルは使用できません。");
                 return "";
             }
             else
@@ -46,17 +46,17 @@ namespace HoI4ModdingManager.Common.Utils
 
         }
 
-        public static FileStream CreateFileStream(string filePath, FileMode fileMode, FileAccess fileAccess)
+        public static FileStream CreateFileStream(string filePath)
         {
             FileStream fs;
 
             try
             {
-                fs = new FileStream(filePath, fileMode, fileAccess);
+                fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             }
             catch (Exception e)
             {
-                MessageBoxProvider.ShowErrorMessageBox(e.Message);
+                Console.WriteLine(e.Message);
                 throw e;
             }
 

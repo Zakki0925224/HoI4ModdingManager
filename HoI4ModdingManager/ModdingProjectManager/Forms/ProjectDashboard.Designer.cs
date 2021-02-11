@@ -122,7 +122,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "プロジェクトを閉じる(&C)";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -290,6 +290,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.MinimumSize = new System.Drawing.Size(889, 502);
             this.Name = "ProjectDashBoard";
             this.Text = "ProjectDashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectDashBoard_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectDashBoard_FormClosed);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

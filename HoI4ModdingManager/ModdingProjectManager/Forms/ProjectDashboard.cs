@@ -2,6 +2,7 @@
 using CefSharp.WinForms;
 using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.PageLayout;
+using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Utils;
 using HoI4ModdingManager.CountryManager.Forms;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
@@ -27,36 +28,19 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private ProjectSettings ProjectSettingsForm;
         private CountryDataEditor CountryDataEditorForm;
 
-        // フラグ
-        private bool InitializedBrowser { get; set; }
-        private bool OpeningProject { get; set; }
-
 
         public ProjectDashBoard(params string[] filePathArguments)
         {
             InitializeComponent();
             InitializeWindowTitle();
             InitializeBrowser();
+            UpdateMenuStrip();
 
             if (filePathArguments.Length == 0)
-            {
-                this.OpeningProject = false;
                 return;
-            }
             
             this.FilePath = filePathArguments[0];
-            
-            if (FileChecker.IsThisFileCanUse(this.FilePath))
-            {
-                this.FileStream = FileIO.CreateFileStream(this.FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                SetProjectData();
-            }
-            else
-            {
-                this.OpeningProject = false;
-            }
-
-            UpdateMenuStrip();
+            OpenFile(false);
         }
 
         /// <summary>
@@ -77,20 +61,47 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         }
 
         /// <summary>
-        /// データを取得して反映
+        /// ファイルを開く
         /// </summary>
-        private void SetProjectData()
+        private void OpenFile(bool useDialog)
         {
-            this.OpeningProject = false;
-            InitializeWindowTitle();
+            string path;
 
+            if (useDialog)
+                path = FileIO.OpenDataBaseFile(useDialog);
+            else
+                path = this.FilePath;
+
+            if (path == "")
+                return;
+
+            // 編集中のファイルをどうするか
+            if (this.FileStream != null)
+                CloseFile();
+
+            this.FilePath = path;
+            this.FileStream = FileIO.CreateFileStream(this.FilePath);
             this.MainContainer = new EXIM().ImportProject(this.FilePath);
 
             UpdateUI(this.MainContainer);
-
-            this.OpeningProject = true;
             SetWindowTitle($"{this.FilePath} - HoI4ModdingManager");
+            UpdateMenuStrip();
+        }
 
+        private void CloseFile()
+        {
+            if (this.FileStream == null || this.FilePath == "")
+                return;
+
+            var result = MessageBoxProvider.SaveMessageBox(this.FilePath);
+            if (result == DialogResult.Yes)
+                SaveData();
+            else if (result == DialogResult.Cancel)
+                return;
+
+            this.FileStream.Close();
+            this.FileStream = null;
+            InitializeWindowTitle();
             UpdateMenuStrip();
         }
 
@@ -129,8 +140,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         {
             this.Settings = new CefSettings();
             Cef.Initialize(Settings);
-
-            this.InitializedBrowser = true;
         }
 
         /// <summary>
@@ -155,16 +164,23 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void UpdateMenuStrip()
         {
+            bool menuEnable;
+
+            if (this.FileStream == null)
+                menuEnable = false;
+            else
+                menuEnable = true;
+
             saveToolStripMenuItem.Enabled =
             closeToolStripMenuItem.Enabled =
             chromiumDevToolToolStripMenuItem.Enabled =
             projectToolStripMenuItem.Enabled =
-            this.OpeningProject;
+            menuEnable;
         }
 
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            if (!this.OpeningProject)
+            if (this.FileStream == null)
                 return;
 
             var browser = (ChromiumWebBrowser)sender;
@@ -217,17 +233,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string path = FileIO.OpenDataBaseFile(true);
-
-            if (path != "")
-            {
-                this.FilePath = path;
-                if (this.FileStream != null)
-                    this.FileStream.Close();
-
-                this.FileStream = FileIO.CreateFileStream(this.FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                SetProjectData();
-            }
+            OpenFile(true);
         }
 
         private void CreateProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,11 +253,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void ProjectDashBoard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Cef.IsInitialized && this.InitializedBrowser)
+            if (Cef.IsInitialized)
                 Cef.Shutdown();
-
-            if (this.FileStream != null)
-                this.FileStream.Close();
         }
 
         private void ReloadDashBoardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -322,11 +325,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             SaveData();
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.FileStream.Close();
-            this.OpeningProject = false;
-            UpdateMenuStrip();
+            CloseFile();
+        }
+
+        private void ProjectDashBoard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseFile();
         }
     }
 }

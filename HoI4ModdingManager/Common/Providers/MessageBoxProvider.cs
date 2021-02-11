@@ -24,5 +24,15 @@ namespace HoI4ModdingManager.Common.Providers
         {
             MessageBox.Show(message, "Info - HoI4 Modding Supporter", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        /// <summary>
+        /// セーブするかどうか
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static DialogResult SaveMessageBox(string filePath)
+        {
+            return MessageBox.Show($"\"{filePath}\"を保存しますか?", "Save", MessageBoxButtons.YesNoCancel);
+        }
     }
 }
