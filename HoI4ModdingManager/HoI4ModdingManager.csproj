@@ -190,7 +190,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Tests\new-test-mod.hmp" />
+    <None Include="Tests\define.hmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
