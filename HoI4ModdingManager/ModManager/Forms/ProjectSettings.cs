@@ -3,6 +3,7 @@ using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace HoI4ModdingManager.ModManager.Forms
 {
@@ -25,10 +26,13 @@ namespace HoI4ModdingManager.ModManager.Forms
         {
             modNameTextBox.Text = this.ProjectDataContainer.ProjectName;
 
-            string[] game_version = this.ProjectDataContainer.SupportedGameVersion.Split('.');
-            targetGameVersionMajor.Value = int.Parse(game_version[0]);
-            targetGameVersionMinor.Value = int.Parse(game_version[1]);
-            targetGameVersionRevision.Value = int.Parse(game_version[2]);
+            if (this.ProjectDataContainer.SupportedGameVersion != "")
+            {
+                string[] game_version = this.ProjectDataContainer.SupportedGameVersion.Split('.');
+                targetGameVersionMajor.Value = int.Parse(game_version[0]);
+                targetGameVersionMinor.Value = int.Parse(game_version[1]);
+                targetGameVersionRevision.Value = int.Parse(game_version[2]);
+            }
 
             foreach (string tag in this.ProjectDataContainer.Tags)
             {
@@ -65,7 +69,7 @@ namespace HoI4ModdingManager.ModManager.Forms
                 return false;
 
             this.ProjectDataContainer.ProjectName = modNameTextBox.Text;
-            modTagListBox.CheckedItems.CopyTo(this.ProjectDataContainer.Tags, 0);
+            this.ProjectDataContainer.Tags = modTagListBox.CheckedItems.OfType<string>().ToArray();
 
             this.ProjectDataContainer.SupportedGameVersion = $"{targetGameVersionMajor.Value}.{targetGameVersionMinor.Value}.{targetGameVersionRevision.Value}";
 

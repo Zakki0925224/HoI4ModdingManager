@@ -49,15 +49,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             if (FileChecker.IsThisFileCanUse(this.FilePath))
             {
                 this.FileStream = FileIO.CreateFileStream(this.FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-
-                this.OpeningProject = true;
-                this.MainContainer = new DataContainer();
                 SetProjectData();
             }
             else
             {
                 this.OpeningProject = false;
             }
+
+            UpdateMenuStrip();
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void InitializeWindowTitle()
         {
-            this.Text = $"HoI4ModdingManager";
+            this.Text = "HoI4ModdingManager";
         }
 
         /// <summary>
@@ -82,11 +81,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// </summary>
         private void SetProjectData()
         {
-            if (this.FileStream == null && this.MainContainer == null)
-                throw new Exception("ファイルが読み込まれていません。");
-
             this.OpeningProject = false;
-            SetWindowTitle("HoI4ModdingManager");
+            InitializeWindowTitle();
 
             this.MainContainer = new EXIM().ImportProject(this.FilePath);
 
@@ -94,6 +90,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             this.OpeningProject = true;
             SetWindowTitle($"{this.FilePath} - HoI4ModdingManager");
+
+            UpdateMenuStrip();
         }
 
         /// <summary>
@@ -153,6 +151,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             browser.LoadHtml(pageSource, "http://hmm", Encoding.UTF8);
 
             return browser;
+        }
+
+        private void UpdateMenuStrip()
+        {
+            saveToolStripMenuItem.Enabled =
+            closeToolStripMenuItem.Enabled =
+            chromiumDevToolToolStripMenuItem.Enabled =
+            projectToolStripMenuItem.Enabled =
+            this.OpeningProject;
         }
 
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
@@ -277,15 +284,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.ProjectSettingsForm.Dispose();
         }
 
-        private void MenuStrip_Layout(object sender, LayoutEventArgs e)
-        {
-            saveToolStripMenuItem.Enabled =
-            closeToolStripMenuItem.Enabled =
-            chromiumDevToolToolStripMenuItem.Enabled = 
-            projectToolStripMenuItem.Enabled = 
-            this.OpeningProject;
-        }
-
         private void ChromiumDevToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (chromiumDevToolToolStripMenuItem.Checked)
@@ -319,9 +317,16 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.CountryDataEditorForm.Dispose();
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveData();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.FileStream.Close();
+            this.OpeningProject = false;
+            UpdateMenuStrip();
         }
     }
 }

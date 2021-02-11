@@ -41,7 +41,6 @@ namespace HoI4ModdingManager.Common.Utils
             }
             else
             {
-                //ProcessCreater.CreateNewProcess(filePath);
                 return filePath;
             }
 

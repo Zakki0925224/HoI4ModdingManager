@@ -76,7 +76,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.menuStrip.Size = new System.Drawing.Size(873, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
-            this.menuStrip.Layout += new System.Windows.Forms.LayoutEventHandler(this.MenuStrip_Layout);
             // 
             // fileToolStripMenuItem
             // 
@@ -116,13 +115,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "プロジェクトの保存(&S)";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "プロジェクトを閉じる(&C)";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 

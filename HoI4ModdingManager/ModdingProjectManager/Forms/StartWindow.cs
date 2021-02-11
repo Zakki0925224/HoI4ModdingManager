@@ -48,6 +48,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             FileIO.CreateNewDataBaseFile(projectPlaceTextBox.Text);
             FileIO.OpenDataBaseFile(false, projectPlaceTextBox.Text);
             new EXIM().CreateDataTable(projectPlaceTextBox.Text);
+            ProcessCreater.CreateNewProcess(projectPlaceTextBox.Text);
             this.Close();
             
         }
