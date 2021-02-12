@@ -1,8 +1,7 @@
 ﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using HoI4ModdingManager.ModdingProjectManager.SQLite;
-using System.Data.SQLite;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data.SQLite;
 
 namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
 {
@@ -19,34 +18,29 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         {
             using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, true, colmn).ExecuteReader())
             {
-                reader.Read();
-                //cd.Name = reader.GetString(0);
-                //cd.CountryTag = reader.GetString(1);
-                //cd.CapitalStateID = reader.GetInt32(2);
-                //cd.Stability = reader.GetFloat(3);
-                //cd.WarSupport = reader.GetFloat(4);
-                //cd.PoliticalPower = reader.GetInt32(5);
-                //cd.ResearchSlots = reader.GetInt32(6);
-                //cd.Convoys = reader.GetInt32(7);
-                //cd.UnitFileID = reader.GetString(8);
-                //cd.Technologies = Utils.GetArray(reader.GetString(9));
-                //cd.Ideas = Utils.GetArray(reader.GetString(10));
-                //cd.RulingPartyIdeology = reader.GetString(11);
-                //cd.LastElectionAt = reader.GetDateTime(12);
-                //cd.IsAllowElection = Utils.GetBool(reader.GetInt32(13));
-                //cd.PartySupports = Utils.GetArray(reader.GetString(14)).Select(x => float.Parse(x)).ToArray();
-                //cd.RGBCountryColor = Utils.GetArray(reader.GetString(15)).Select(x => int.Parse(x)).ToArray();
-                //cd.GraphicCulture = reader.GetString(16);
-                //// 17-19は一旦保留
-                //cd.CountryNames = Utils.GetArray(reader.GetString(20));
-                //cd.PartyNames = Utils.GetArray(reader.GetString(21));
-                //cd.CountryFlagPaths = Utils.GetArray(reader.GetString(22));
+                var tn = NameDefinition.CountryDataFieldNameList;
 
-                var test = new List<object>();
-                foreach (string name in NameDefinition.CountryDataFieldNameList)
-                {
-                    test.Add(reader[name]);
-                }
+                reader.Read();
+                cd.ImportFromDataBase((string)reader[tn["Name"]],
+                                      (string)reader[tn["CountryTag"]],
+                                      (string)reader[tn["CapitalStateID"]],
+                                      (string)reader[tn["Stability"]],
+                                      (string)reader[tn["WarSupport"]],
+                                      (string)reader[tn["PoliticalPower"]],
+                                      (string)reader[tn["ResearchSlots"]],
+                                      (string)reader[tn["Convoys"]],
+                                      (string)reader[tn["UnitFileID"]],
+                                      (string)reader[tn["Technologies"]],
+                                      (string)reader[tn["Ideas"]],
+                                      (string)reader[tn["RulingPartyIdeology"]],
+                                      (string)reader[tn["LastElectionAt"]],
+                                      (string)reader[tn["IsAllowElection"]],
+                                      (string)reader[tn["PartySupports"]],
+                                      (string)reader[tn["RGBCountryColor"]],
+                                      (string)reader[tn["GraphicCulture"]],
+                                      (string)reader[tn["CountryNames"]],
+                                      (string)reader[tn["PartyNames"]],
+                                      (string)reader[tn["CountryFlagPaths"]]);
             }
         }
 
@@ -60,19 +54,20 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         {
             using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, false).ExecuteReader())
             {
-                reader.Read();
+                var tn = NameDefinition.ProjectDataFieldNameList;
 
-                //pd.ProjectName = reader.GetString(0);
-                //pd.ModVersion = reader.GetString(1);
-                //pd.SupportedGameVersion = reader.GetString(2);
-                //pd.Tags = Utils.GetArray(reader.GetString(3));
-                //pd.ThumbnailPicturePath = reader.GetString(4);
-                //pd.ReplacePaths = Utils.GetArray(reader.GetString(5));
-                //pd.ModPath = reader.GetString(6);
-                //pd.UserDir = reader.GetString(7);
-                //pd.RemoteFileID = reader.GetString(8);
-                //pd.DepondencyMods = Utils.GetArray(reader.GetString(9));
-                //pd.DepondencyDLCs = Utils.GetArray(reader.GetString(10));
+                reader.Read();
+                pd.ImportFromDataBase((string)reader[tn["ProjectName"]],
+                                      (string)reader[tn["ModVersion"]],
+                                      (string)reader[tn["SupportedGameVersion"]],
+                                      (string)reader[tn["Tags"]],
+                                      (string)reader[tn["ThumbnailPicturePath"]],
+                                      (string)reader[tn["ReplacePaths"]],
+                                      (string)reader[tn["ModPath"]],
+                                      (string)reader[tn["UserDir"]],
+                                      (string)reader[tn["RemoteFileID"]],
+                                      (string)reader[tn["DepondencyMods"]],
+                                      (string)reader[tn["DepondencyDLCs"]]);
             }
         }
 
@@ -87,41 +82,41 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
         {
             using (var reader = CommandCreator.GetDataByTable(sqlc, tableName, true, colmn).ExecuteReader())
             {
+                var tn = NameDefinition.IdeologyDataFieldNameList;
+
                 reader.Read();
-
-                //id.Name = reader.GetString(0);
-                //id.SmallIdeologies = Utils.GetArray(reader.GetString(1));
-                //id.RGBIdeologyColor = Utils.GetArray(reader.GetString(2)).Select(x => int.Parse(x)).ToArray();
-                //id.ID = reader.GetInt32(3);
-                //id.Rule_CanForceGovernment = Utils.GetBool(reader.GetInt32(4));
-                //id.Rule_CanPuppet = Utils.GetBool(reader.GetInt32(5));
-                //id.Rule_CanSendVolunteers = Utils.GetBool(reader.GetInt32(6));
-                //id.Rule_CanLowerTension = Utils.GetBool(reader.GetInt32(7));
-                //id.Rule_CanCreateCollaborationGovernment = Utils.GetBool(reader.GetInt32(8));
-                //id.Rule_CanDeclareWarOnSameIdeology = Utils.GetBool(reader.GetInt32(9));
-                //id.Rule_CanOnlyJustifyWarOnThreatCountry = Utils.GetBool(reader.GetInt32(10));
-                //id.Rule_CanGuaranteeOtherIdeologies = Utils.GetBool(reader.GetInt32(10));
-                //id.Modifier_GenerateWarGoalTension = reader.GetFloat(11);
-                //id.Modifier_GuaranteeTension = reader.GetFloat(12);
-                //id.Modifier_CivilianIntelToOthers = reader.GetInt32(13);
-                //id.Modifier_ArmyIntelToOthers = reader.GetInt32(14);
-                //id.Modifier_NavyIntelToOthers = reader.GetInt32(15);
-                //id.Modifier_AirforceIntelToOthers = reader.GetInt32(16);
-                //id.Modifier_JustifyWarGoalWhenInMajorWarTime = reader.GetFloat(17);
-                //id.Modifier_JoinFactionTension = reader.GetFloat(18);
-                //id.Modifier_LendLeaseTension = reader.GetFloat(19);
-                //id.Modifier_AnnexCostFactor = reader.GetFloat(20);
-                //id.Modifier_SendVolunteersTension = reader.GetFloat(21);
-                //id.Modifier_TakeStatesCostFactor = reader.GetFloat(22);
-                //id.Modifier_DriftDefenceFactor = reader.GetFloat(23);
-                //id.Modifier_PuppetCostFactor = reader.GetFloat(24);
-                //id.CanAIUse = Utils.GetBool(reader.GetInt32(25));
-                //id.CanBeBoosted = Utils.GetBool(reader.GetInt32(26));
-                //id.WarImpactOnWorldTension = reader.GetFloat(27);
-                //id.FactionImpactOnWorldTension = reader.GetFloat(28);
-                //id.CanCollaborate = Utils.GetBool(reader.GetInt32(29));
-                //id.CanHostGovernmentInExile = Utils.GetBool(reader.GetInt32(30));
-
+                id.ImportFromDataBase((string)reader[tn["Name"]],
+                                      (string)reader[tn["SmallIdeologies"]],
+                                      (string)reader[tn["RGBIdeologyColor"]],
+                                      (string)reader[tn["ID"]],
+                                      (string)reader[tn["Rule_CanForceGovernment"]],
+                                      (string)reader[tn["Rule_CanPuppet"]],
+                                      (string)reader[tn["Rule_CanSendVolunteers"]],
+                                      (string)reader[tn["Rule_CanLowerTension"]],
+                                      (string)reader[tn["Rule_CanCreateCollaborationGovernment"]],
+                                      (string)reader[tn["Rule_CanDeclareWarOnSameIdeology"]],
+                                      (string)reader[tn["Rule_CanOnlyJustifyWarOnThreatCountry"]],
+                                      (string)reader[tn["Rule_CanGuaranteeOtherIdeologies"]],
+                                      (string)reader[tn["Modifier_GenerateWarGoalTension"]],
+                                      (string)reader[tn["Modifier_GuaranteeTension"]],
+                                      (string)reader[tn["Modifier_CivilianIntelToOthers"]],
+                                      (string)reader[tn["Modifier_ArmyIntelToOthers"]],
+                                      (string)reader[tn["Modifier_NavyIntelToOthers"]],
+                                      (string)reader[tn["Modifier_AirforceIntelToOthers"]],
+                                      (string)reader[tn["Modifier_JustifyWarGoalWhenInMajorWarTime"]],
+                                      (string)reader[tn["Modifier_JoinFactionTension"]],
+                                      (string)reader[tn["Modifier_LendLeaseTension"]],
+                                      (string)reader[tn["Modifier_AnnexCostFactor"]],
+                                      (string)reader[tn["Modifier_SendVolunteersTension"]],
+                                      (string)reader[tn["Modifier_TakeStatesCostFactor"]],
+                                      (string)reader[tn["Modifier_DriftDefenceFactor"]],
+                                      (string)reader[tn["Modifier_PuppetCostFactor"]],
+                                      (string)reader[tn["CanAiUse"]],
+                                      (string)reader[tn["CanBeBoosted"]],
+                                      (string)reader[tn["WarImpactOnWorldTension"]],
+                                      (string)reader[tn["FactionImpactOnWorldTension"]],
+                                      (string)reader[tn["CanCollaborate"]],
+                                      (string)reader[tn["CanHostGovernmentInExile"]]);
             }
         }
 
@@ -137,12 +132,23 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile);
+                CommandCreator.CreateCountryDataTable(dbc.sqlc);
 
-                for (int i = 0; i < (int)CommandCreator.GetDataCount(dbc.sqlc, NameDefinition.CountryDataTableName); i++)
+                int dataCnt = (int)CommandCreator.GetDataCount(dbc.sqlc, NameDefinition.CountryDataTableName);
+
+                if (dataCnt == 0)
                 {
-                    var cd = new CountryDataHanger();
-                    ReadCountryData(NameDefinition.CountryDataTableName, i, cd, dbc.sqlc);
-                    cdList.Add(cd);
+                    // 空データをインサート
+                    cdList.Add(new CountryDataHanger());
+                }
+                else
+                {
+                    for (int i = 0; i < dataCnt; i++)
+                    {
+                        var cd = new CountryDataHanger();
+                        ReadCountryData(NameDefinition.CountryDataTableName, i, cd, dbc.sqlc);
+                        cdList.Add(cd);
+                    }
                 }
             }
 
@@ -162,7 +168,12 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile);
-                ReadProjectData(NameDefinition.ProjectDataTableName, pd, dbc.sqlc);
+                CommandCreator.CreateProjectDataTable(dbc.sqlc);
+
+                int dataCnt = (int)CommandCreator.GetDataCount(dbc.sqlc, NameDefinition.ProjectDataTableName);
+
+                if (dataCnt != 0)
+                    ReadProjectData(NameDefinition.ProjectDataTableName, pd, dbc.sqlc);
             }
 
             return pd;
@@ -180,12 +191,23 @@ namespace HoI4ModdingManager.ModdingProjectManager.ProjectImporter
             using (var dbc = new DataBaseConnector())
             {
                 dbc.ConnectionDataBase(dbFile);
+                CommandCreator.CreateIdeologyDataTable(dbc.sqlc);
 
-                for (int i = 0; i < (int)CommandCreator.GetDataCount(dbc.sqlc, NameDefinition.IdeologyDataTableName); i++)
+                int dataCnt = (int)CommandCreator.GetDataCount(dbc.sqlc, NameDefinition.IdeologyDataTableName);
+
+                if (dataCnt == 0)
                 {
-                    var id = new IdeologyDataHanger();
-                    ReadIdeologyData(NameDefinition.IdeologyDataTableName, i, id, dbc.sqlc);
-                    idList.Add(id);
+                    // 空データをインサート
+                    idList.Add(new IdeologyDataHanger());
+                }
+                else
+                {
+                    for (int i = 0; i < dataCnt; i++)
+                    {
+                        var id = new IdeologyDataHanger();
+                        ReadIdeologyData(NameDefinition.IdeologyDataTableName, i, id, dbc.sqlc);
+                        idList.Add(id);
+                    }
                 }
             }
 

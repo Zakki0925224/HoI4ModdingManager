@@ -41,5 +41,16 @@
 
             return data.Split(',');
         }
+
+        public static string ConvertArrayToString(string[] data)
+        {
+            if (data.Length == 0)
+                return "";
+
+            if (data.Length == 1)
+                return data[0];
+
+            return string.Join(",", data);
+        }
     }
 }

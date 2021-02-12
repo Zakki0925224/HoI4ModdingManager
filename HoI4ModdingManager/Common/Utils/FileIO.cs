@@ -45,22 +45,5 @@ namespace HoI4ModdingManager.Common.Utils
             }
 
         }
-
-        public static FileStream CreateFileStream(string filePath)
-        {
-            FileStream fs;
-
-            try
-            {
-                fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                throw e;
-            }
-
-            return fs;
-        }
     }
 }

@@ -34,104 +34,116 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
                 return (long)cmd.ExecuteScalar();
             }
         }
-        
-        public static void CreateCountryDataField(SQLiteConnection connection)
+
+        public static string[] GetTableList(SQLiteConnection connection)
         {
             CheckNotConnectingException(connection);
 
             using (var cmd = connection.CreateCommand())
             {
-                string[] names = NameDefinition.CountryDataFieldNameList;
+                cmd.CommandText = "SELECT NAME FROM sqlite_master WHERE TYPE='table'";
+                return (string[])cmd.ExecuteScalar();
+            }
+        }
+        
+        public static void CreateCountryDataTable(SQLiteConnection connection)
+        {
+            CheckNotConnectingException(connection);
+
+            using (var cmd = connection.CreateCommand())
+            {
+                var names = NameDefinition.CountryDataFieldNameList;
 
                 cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {NameDefinition.CountryDataTableName}" +
-                    $"({names[0]} TEXT, " +
-                    $"{names[1]} TEXT, " +
-                    $"{names[2]} INTEGER, " +
-                    $"{names[3]} REAL, " +
-                    $"{names[4]} REAL, " +
-                    $"{names[5]} INTEGER, " +
-                    $"{names[6]} INTEGER, " +
-                    $"{names[7]} INTEGER, " +
-                    $"{names[8]} TEXT, " +
-                    $"{names[9]} TEXT, " +
-                    $"{names[10]} TEXT, " +
-                    $"{names[11]} BLOB, " +
-                    $"{names[12]} INTEGER, " +
-                    $"{names[13]} TEXT, " +
-                    $"{names[14]} TEXT, " +
-                    $"{names[15]} TEXT, " +
-                    $"{names[16]} TEXT, " +
-                    $"{names[17]} TEXT, " +
-                    $"{names[18]} TEXT)";
+                    $"({names["Name"]} TEXT, " +
+                    $"{names["CountryTag"]} TEXT, " +
+                    $"{names["CapitalStateID"]} TEXT, " +
+                    $"{names["Stability"]} TEXT, " +
+                    $"{names["WarSupport"]} TEXT, " +
+                    $"{names["PoliticalPower"]} TEXT, " +
+                    $"{names["ResearchSlots"]} TEXT, " +
+                    $"{names["Convoys"]} TEXT, " +
+                    $"{names["UnitFileID"]} TEXT, " +
+                    $"{names["Technologies"]} TEXT, " +
+                    $"{names["Ideas"]} TEXT, " +
+                    $"{names["RulingPartyIdeology"]} TEXT, " +
+                    $"{names["LastElectionAt"]} TEXT, " +
+                    $"{names["IsAllowElection"]} TEXT, " +
+                    $"{names["PartySupports"]} TEXT, " +
+                    $"{names["RGBCountryColor"]} TEXT, " +
+                    $"{names["GraphicCulture"]} TEXT, " +
+                    $"{names["CountryNames"]} TEXT, " +
+                    $"{names["PartyNames"]} TEXT, " +
+                    $"{names["CountryFlagPaths"]} TEXT)";
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static void CreateIdeologyDataField(SQLiteConnection connection)
+        public static void CreateIdeologyDataTable(SQLiteConnection connection)
         {
             CheckNotConnectingException(connection);
 
             using (var cmd = connection.CreateCommand())
             {
-                string[] names = NameDefinition.IdeologyDataFieldNameList;
+                var names = NameDefinition.IdeologyDataFieldNameList;
 
                 cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {NameDefinition.IdeologyDataTableName}" +
-                    $"({names[0]} TEXT, " +
-                    $"{names[1]} TEXT, " +
-                    $"{names[2]} TEXT, " +
-                    $"{names[3]} INTEGER, " +
-                    $"{names[4]} INTEGER, " +
-                    $"{names[5]} INTEGER, " +
-                    $"{names[6]} INTEGER, " +
-                    $"{names[7]} INTEGER, " +
-                    $"{names[8]} INTEGER, " +
-                    $"{names[9]} INTEGER, " +
-                    $"{names[10]} INTEGER, " +
-                    $"{names[11]} INTEGER, " +
-                    $"{names[12]} REAL, " +
-                    $"{names[13]} REAL, " +
-                    $"{names[14]} INTEGER, " +
-                    $"{names[15]} INTEGER, " +
-                    $"{names[16]} INTEGER, " +
-                    $"{names[17]} INTEGER, " +
-                    $"{names[18]} REAL, " +
-                    $"{names[19]} REAL, " +
-                    $"{names[20]} REAL, " +
-                    $"{names[21]} REAL, " +
-                    $"{names[22]} REAL, " +
-                    $"{names[23]} REAL, " +
-                    $"{names[24]} REAL, " +
-                    $"{names[25]} REAL, " +
-                    $"{names[26]} INTEGER, " +
-                    $"{names[27]} INTEGER, " +
-                    $"{names[28]} REAL, " +
-                    $"{names[29]} REAL, " +
-                    $"{names[30]} INTEGER, " +
-                    $"{names[31]} INTEGER)";
+                    $"({names["Name"]} TEXT, " +
+                    $"{names["SmallIdeologies"]} TEXT, " +
+                    $"{names["RGBIdeologyColor"]} TEXT, " +
+                    $"{names["ID"]} TEXT, " +
+                    $"{names["Rule_CanForceGovernment"]} TEXT, " +
+                    $"{names["Rule_CanPuppet"]} TEXT, " +
+                    $"{names["Rule_CanSendVolunteers"]} TEXT, " +
+                    $"{names["Rule_CanLowerTension"]} TEXT, " +
+                    $"{names["Rule_CanCreateCollaborationGovernment"]} TEXT, " +
+                    $"{names["Rule_CanDeclareWarOnSameIdeology"]} TEXT, " +
+                    $"{names["Rule_CanOnlyJustifyWarOnThreatCountry"]} TEXT, " +
+                    $"{names["Rule_CanGuaranteeOtherIdeologies"]} TEXT, " +
+                    $"{names["Modifier_GenerateWarGoalTension"]} TEXT, " +
+                    $"{names["Modifier_GuaranteeTension"]} TEXT, " +
+                    $"{names["Modifier_CivilianIntelToOthers"]} TEXT, " +
+                    $"{names["Modifier_ArmyIntelToOthers"]} TEXT, " +
+                    $"{names["Modifier_NavyIntelToOthers"]} TEXT, " +
+                    $"{names["Modifier_AirforceIntelToOthers"]} TEXT, " +
+                    $"{names["Modifier_JustifyWarGoalWhenInMajorWarTime"]} TEXT, " +
+                    $"{names["Modifier_JoinFactionTension"]} TEXT, " +
+                    $"{names["Modifier_LendLeaseTension"]} TEXT, " +
+                    $"{names["Modifier_AnnexCostFactor"]} TEXT, " +
+                    $"{names["Modifier_SendVolunteersTension"]} TEXT, " +
+                    $"{names["Modifier_TakeStatesCostFactor"]} TEXT, " +
+                    $"{names["Modifier_DriftDefenceFactor"]} TEXT, " +
+                    $"{names["Modifier_PuppetCostFactor"]} TEXT, " +
+                    $"{names["CanAiUse"]} TEXT, " +
+                    $"{names["CanBeBoosted"]} TEXT, " +
+                    $"{names["WarImpactOnWorldTension"]} TEXT, " +
+                    $"{names["FactionImpactOnWorldTension"]} TEXT, " +
+                    $"{names["CanCollaborate"]} TEXT, " +
+                    $"{names["CanHostGovernmentInExile"]} TEXT)";
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static void CreateProjectDataField(SQLiteConnection connection)
+        public static void CreateProjectDataTable(SQLiteConnection connection)
         {
             CheckNotConnectingException(connection);
 
             using (var cmd = connection.CreateCommand())
             {
-                string[] names = NameDefinition.ProjectDataFieldNameList;
+                var names = NameDefinition.ProjectDataFieldNameList;
 
                 cmd.CommandText = $"CREATE TABLE IF NOT EXISTS {NameDefinition.ProjectDataTableName} " +
-                    $"({names[0]} TEXT, " +
-                    $"{names[1]} TEXT, " +
-                    $"{names[2]} TEXT, " +
-                    $"{names[3]} TEXT, " +
-                    $"{names[4]} TEXT, " +
-                    $"{names[5]} TEXT, " +
-                    $"{names[6]} TEXT, " +
-                    $"{names[7]} TEXT, " +
-                    $"{names[8]} TEXT, " +
-                    $"{names[9]} TEXT, " +
-                    $"{names[10]} TEXT)";
+                    $"({names["ProjectName"]} TEXT, " +
+                    $"{names["ModVersion"]} TEXT, " +
+                    $"{names["SupportedGameVersion"]} TEXT, " +
+                    $"{names["Tags"]} TEXT, " +
+                    $"{names["ThumbnailPicturePath"]} TEXT, " +
+                    $"{names["ReplacePaths"]} TEXT, " +
+                    $"{names["ModPath"]} TEXT, " +
+                    $"{names["UserDir"]} TEXT, " +
+                    $"{names["RemoteFileID"]} TEXT, " +
+                    $"{names["DepondencyMods"]} TEXT, " +
+                    $"{names["DepondencyDLCs"]} TEXT)";
                 cmd.ExecuteNonQuery();
             }
         }
@@ -148,6 +160,26 @@ namespace HoI4ModdingManager.ModdingProjectManager.SQLite
             using (var cmd = connection.CreateCommand())
             {
                 cmd.CommandText = $"DELETE FROM {tableName}";
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void InsertValues(SQLiteConnection connection, string[] values, string tableName)
+        {
+            CheckNotConnectingException(connection);
+
+            using (var cmd = connection.CreateCommand())
+            {
+                string valuesText = "";
+                for (int cnt = 0; cnt < values.Length; cnt++)
+                {
+                    values[cnt].Replace("\'", "\'\'");
+                    valuesText += $"\'{values[cnt]}\'";
+                    if (cnt != values.Length - 1)
+                        valuesText += $",";
+                }
+
+                cmd.CommandText = $"INSERT INTO {tableName} VALUES({valuesText})";
                 cmd.ExecuteNonQuery();
             }
         }

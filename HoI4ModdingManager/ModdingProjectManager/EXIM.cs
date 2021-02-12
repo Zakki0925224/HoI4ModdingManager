@@ -29,10 +29,5 @@ namespace HoI4ModdingManager.ModdingProjectManager
         {
             new WriteData().WriteDataToDataBase(data, dbFile);
         }
-
-        public void CreateDataTable(string dbFile)
-        {
-            new WriteData().CreateTableToDataBase(dbFile);
-        }
     }
 }

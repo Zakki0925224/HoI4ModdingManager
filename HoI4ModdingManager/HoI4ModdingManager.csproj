@@ -126,9 +126,6 @@
     <Compile Include="ModdingProjectManager\DataHangers\IdeologyDataHanger.cs" />
     <Compile Include="ModdingProjectManager\DataHangers\ProjectDataHanger.cs" />
     <Compile Include="ModdingProjectManager\EXIM.cs" />
-    <Compile Include="ModdingProjectManager\ProjectExporter\CountryDataTable.cs" />
-    <Compile Include="ModdingProjectManager\ProjectExporter\IdeologyDataTable.cs" />
-    <Compile Include="ModdingProjectManager\ProjectExporter\ProjectDataTable.cs" />
     <Compile Include="ModdingProjectManager\ProjectExporter\WriteData.cs" />
     <Compile Include="ModdingProjectManager\SQLite\CommandCreator.cs" />
     <Compile Include="ModdingProjectManager\SQLite\NameDefinition.cs" />

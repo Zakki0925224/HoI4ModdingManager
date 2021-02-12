@@ -10,7 +10,6 @@ using HoI4ModdingManager.ModManager.Forms;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
-using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,14 +18,16 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectDashBoard : Form
     {
         // 引数（ファイルパス）
-        private string FilePath = "";
+        public string FilePath = "";
 
         // データコンテナ
-        private FileStream FileStream = null;
         private DataContainer MainContainer = null;
         private CefSettings Settings;
         private ProjectSettings ProjectSettingsForm;
         private CountryDataEditor CountryDataEditorForm;
+
+        // フラグ
+        private bool OpeningProject = false;
 
 
         public ProjectDashBoard(params string[] filePathArguments)
@@ -63,25 +64,25 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <summary>
         /// ファイルを開く
         /// </summary>
-        private void OpenFile(bool useDialog)
+        public void OpenFile(bool useDialog)
         {
             string path;
 
             if (useDialog)
-                path = FileIO.OpenDataBaseFile(useDialog);
+                path = FileIO.OpenDataBaseFile(true);
             else
-                path = this.FilePath;
+                path = FileIO.OpenDataBaseFile(false, this.FilePath);
 
             if (path == "")
                 return;
 
             // 編集中のファイルをどうするか
-            if (this.FileStream != null)
+            if (this.OpeningProject)
                 CloseFile();
 
             this.FilePath = path;
-            this.FileStream = FileIO.CreateFileStream(this.FilePath);
             this.MainContainer = new EXIM().ImportProject(this.FilePath);
+            this.OpeningProject = true;
 
             UpdateUI(this.MainContainer);
             SetWindowTitle($"{this.FilePath} - HoI4ModdingManager");
@@ -94,7 +95,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <returns>正常に閉じることができなければfalseを返す</returns>
         private bool CloseFile()
         {
-            if (this.FileStream == null || this.FilePath == "")
+            if (!this.OpeningProject || this.FilePath == "")
                 return true;
 
             var result = MessageBoxProvider.SaveMessageBox(this.FilePath);
@@ -103,8 +104,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             else if (result == DialogResult.Cancel)
                 return false;
 
-            this.FileStream.Close();
-            this.FileStream = null;
+            this.OpeningProject = false;
             InitializeWindowTitle();
             UpdateMenuStrip();
 
@@ -170,23 +170,16 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void UpdateMenuStrip()
         {
-            bool menuEnable;
-
-            if (this.FileStream == null)
-                menuEnable = false;
-            else
-                menuEnable = true;
-
             saveToolStripMenuItem.Enabled =
             closeToolStripMenuItem.Enabled =
             chromiumDevToolToolStripMenuItem.Enabled =
             projectToolStripMenuItem.Enabled =
-            menuEnable;
+            this.OpeningProject;
         }
 
         private void CefBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            if (this.FileStream == null)
+            if (!this.OpeningProject)
                 return;
 
             var browser = (ChromiumWebBrowser)sender;
@@ -207,7 +200,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new StartWindow().ShowDialog();
+            var sw = new StartWindow();
+            sw.Owner = this;
+            sw.ShowDialog();
         }
 
         /// <summary>
