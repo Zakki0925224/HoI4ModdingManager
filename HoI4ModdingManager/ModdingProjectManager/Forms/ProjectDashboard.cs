@@ -4,9 +4,7 @@ using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.Common.PageLayout;
 using HoI4ModdingManager.Common.Providers;
 using HoI4ModdingManager.Common.Utils;
-using HoI4ModdingManager.CountryManager.Forms;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
-using HoI4ModdingManager.ModManager.Forms;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
@@ -24,7 +22,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private DataContainer MainContainer = null;
         private CefSettings Settings;
         private ProjectSettings ProjectSettingsForm;
-        private CountryDataEditor CountryDataEditorForm;
 
         // フラグ
         private bool OpeningProject = false;
@@ -298,27 +295,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CountryManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.CountryDataEditorForm == null || this.CountryDataEditorForm.IsDisposed)
-            {
-                this.CountryDataEditorForm = new CountryDataEditor(this.MainContainer);
-                this.CountryDataEditorForm.FormClosed += new FormClosedEventHandler(CountryDataEditor_FormClosed);
-                this.CountryDataEditorForm.Show();
-            }
-            else
-                this.CountryDataEditorForm.Focus();
-        }
-
-        private void CountryDataEditor_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            var formSender = (CountryDataEditor)sender;
-
-            if (formSender.DialogResult == DialogResult.OK)
-            {
-                this.MainContainer = formSender.DataContainer;
-                UpdateUI(this.MainContainer);
-            }
-
-            this.CountryDataEditorForm.Dispose();
+            
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)

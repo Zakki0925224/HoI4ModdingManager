@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 
-namespace HoI4ModdingManager.ModManager.Forms
+namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     public partial class ProjectSettings : Form
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace HoI4ModdingManager.ModManager.Forms
+namespace HoI4ModdingManager.ModdingProjectManager.Forms
 {
     partial class ProjectSettings
     {
