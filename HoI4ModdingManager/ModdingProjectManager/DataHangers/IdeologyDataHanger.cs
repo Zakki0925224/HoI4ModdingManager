@@ -10,41 +10,363 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
             Initialize();
         }
 
-        public string Name { get; set; }
-        public string[] SmallIdeologies { get; set; }
-        public int[] RGBIdeologyColor { get; set; }
-        public int ID { get; set; }
-        public bool Rule_CanForceGovernment { get; set; }
-        public bool Rule_CanPuppet { get; set; }
-        public bool Rule_CanSendVolunteers { get; set; }
-        public bool Rule_CanLowerTension { get; set; }
-        public bool Rule_CanCreateCollaborationGovernment { get; set; }
-        public bool Rule_CanDeclareWarOnSameIdeology { get; set; }
-        public bool Rule_CanOnlyJustifyWarOnThreatCountry { get; set; }
-        public bool Rule_CanGuaranteeOtherIdeologies { get; set; }
-        public float Modifier_GenerateWarGoalTension { get; set; }
-        public float Modifier_GuaranteeTension { get; set; }
-        public int Modifier_CivilianIntelToOthers { get; set; }
-        public int Modifier_ArmyIntelToOthers { get; set; }
-        public int Modifier_NavyIntelToOthers { get; set; }
-        public int Modifier_AirforceIntelToOthers { get; set; }
-        public float Modifier_JustifyWarGoalWhenInMajorWarTime { get; set; }
-        public float Modifier_JoinFactionTension { get; set; }
-        public float Modifier_LendLeaseTension { get; set; }
-        public float Modifier_AnnexCostFactor { get; set; }
-        public float Modifier_SendVolunteersTension { get; set; }
-        public float Modifier_TakeStatesCostFactor { get; set; }
-        public float Modifier_DriftDefenceFactor { get; set; }
-        public float Modifier_PuppetCostFactor { get; set; }
-        public bool CanAIUse { get; set; }
-        public bool CanBeBoosted { get; set; }
-        public float WarImpactOnWorldTension { get; set; }
-        public float FactionImpactOnWorldTension { get; set; }
-        public bool CanCollaborate { get; set; }
-        public bool CanHostGovernmentInExile { get; set; }
+        public bool DataChanged { get; set; }
+
+        private string _name;
+        public string Name
+        {
+            get => this._name;
+            set
+            {
+                this._name = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _smallIdeologies;
+        public string[] SmallIdeologies
+        {
+            get => this._smallIdeologies;
+            set
+            {
+                this._smallIdeologies = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int[] _rgbIdeologyColor;
+        public int[] RGBIdeologyColor
+        {
+            get => this._rgbIdeologyColor;
+            set
+            {
+                this._rgbIdeologyColor = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _id;
+        public int ID
+        {
+            get => this._id;
+            set
+            {
+                this._id = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanForceGovernment;
+        public bool Rule_CanForceGovernment
+        {
+            get => this._rule_CanForceGovernment;
+            set
+            {
+                this._rule_CanForceGovernment = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanPuppet;
+        public bool Rule_CanPuppet
+        {
+            get => this._rule_CanPuppet;
+            set
+            {
+                this._rule_CanPuppet = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanSendVolunteers;
+        public bool Rule_CanSendVolunteers
+        {
+            get => this._rule_CanSendVolunteers;
+            set
+            {
+                this._rule_CanSendVolunteers = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanLowerTension;
+        public bool Rule_CanLowerTension
+        {
+            get => this._rule_CanLowerTension;
+            set
+            {
+                this._rule_CanLowerTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanCreateCollaborationGovernment;
+        public bool Rule_CanCreateCollaborationGovernment
+        {
+            get => this._rule_CanCreateCollaborationGovernment;
+            set
+            {
+                this._rule_CanCreateCollaborationGovernment = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanDeclareWarOnSameIdeology;
+        public bool Rule_CanDeclareWarOnSameIdeology
+        {
+            get => this._rule_CanDeclareWarOnSameIdeology;
+            set
+            {
+                this._rule_CanDeclareWarOnSameIdeology = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanOnlyJustifyWarOnThreatCountry;
+        public bool Rule_CanOnlyJustifyWarOnThreatCountry
+        {
+            get => this._rule_CanOnlyJustifyWarOnThreatCountry;
+            set
+            {
+                this._rule_CanOnlyJustifyWarOnThreatCountry = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _rule_CanGuaranteeOtherIdeologies;
+        public bool Rule_CanGuaranteeOtherIdeologies
+        {
+            get => this._rule_CanGuaranteeOtherIdeologies;
+            set
+            {
+                this._rule_CanGuaranteeOtherIdeologies = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_GenerateWarGoalTension;
+        public float Modifier_GenerateWarGoalTension
+        {
+            get => this._modifier_GenerateWarGoalTension;
+            set
+            {
+                this._modifier_GenerateWarGoalTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_GuaranteeTension;
+        public float Modifier_GuaranteeTension
+        {
+            get => this._modifier_GuaranteeTension;
+            set
+            {
+                this._modifier_GuaranteeTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _modifier_CivilianIntelToOthers;
+        public int Modifier_CivilianIntelToOthers
+        {
+            get => this._modifier_CivilianIntelToOthers;
+            set
+            {
+                this._modifier_CivilianIntelToOthers = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _modifier_ArmyIntelToOthers;
+        public int Modifier_ArmyIntelToOthers
+        {
+            get => this._modifier_ArmyIntelToOthers;
+            set
+            {
+                this._modifier_ArmyIntelToOthers = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _modifier_NavyIntelToOthers;
+        public int Modifier_NavyIntelToOthers
+        {
+            get => this._modifier_NavyIntelToOthers;
+            set
+            {
+                this._modifier_NavyIntelToOthers = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _modifier_AirforceIntelToOthers;
+        public int Modifier_AirforceIntelToOthers
+        {
+            get => this._modifier_AirforceIntelToOthers;
+            set
+            {
+                this._modifier_AirforceIntelToOthers = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_JustifyWarGoalWhenInMajorWarTime;
+        public float Modifier_JustifyWarGoalWhenInMajorWarTime
+        {
+            get => this._modifier_JustifyWarGoalWhenInMajorWarTime;
+            set
+            {
+                this._modifier_JustifyWarGoalWhenInMajorWarTime = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_JoinFactionTension;
+        public float Modifier_JoinFactionTension
+        {
+            get => this._modifier_JoinFactionTension;
+            set
+            {
+                this._modifier_JoinFactionTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_LendLeaseTension;
+        public float Modifier_LendLeaseTension
+        {
+            get => this._modifier_LendLeaseTension;
+            set
+            {
+                this._modifier_LendLeaseTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_AnnexCostFactor;
+        public float Modifier_AnnexCostFactor
+        {
+            get => this._modifier_AnnexCostFactor;
+            set
+            {
+                this._modifier_AnnexCostFactor = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_SendVolunteersTension;
+        public float Modifier_SendVolunteersTension
+        {
+            get => this._modifier_SendVolunteersTension;
+            set
+            {
+                this._modifier_SendVolunteersTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_TakeStatesCostFactor;
+        public float Modifier_TakeStatesCostFactor
+        {
+            get => this._modifier_TakeStatesCostFactor;
+            set
+            {
+                this._modifier_TakeStatesCostFactor = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_DriftDefenceFactor;
+        public float Modifier_DriftDefenceFactor
+        {
+            get => this._modifier_DriftDefenceFactor;
+            set
+            {
+                this._modifier_DriftDefenceFactor = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _modifier_PuppetCostFactor;
+        public float Modifier_PuppetCostFactor
+        {
+            get => this._modifier_PuppetCostFactor;
+            set
+            {
+                this._modifier_PuppetCostFactor = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _canAIUse;
+        public bool CanAIUse
+        {
+            get => this._canAIUse;
+            set
+            {
+                this._canAIUse = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _canBeBoosted;
+        public bool CanBeBoosted
+        {
+            get => this._canBeBoosted;
+            set
+            {
+                this._canBeBoosted = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _warImpactOnWorldTension;
+        public float WarImpactOnWorldTension
+        {
+            get => this._warImpactOnWorldTension;
+            set
+            {
+                this._warImpactOnWorldTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _factionImpactOnWorldTension;
+        public float FactionImpactOnWorldTension
+        {
+            get => this._factionImpactOnWorldTension;
+            set
+            {
+                this._factionImpactOnWorldTension = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _canCollaborate;
+        public bool CanCollaborate
+        {
+            get => this._canCollaborate;
+            set
+            {
+                this._canCollaborate = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _canHostGovernmentInExile;
+        public bool CanHostGovernmentInExile
+        {
+            get => this._canHostGovernmentInExile;
+            set
+            {
+                this._canHostGovernmentInExile = value;
+                this.DataChanged = true;
+            }
+        }
 
         public void Initialize()
         {
+            this.DataChanged = false;
             this.Name = "";
             this.SmallIdeologies = new string[] { };
             this.RGBIdeologyColor = new int[] { };

@@ -92,14 +92,36 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         /// <returns>正常に閉じることができなければfalseを返す</returns>
         private bool CloseFile()
         {
+            bool countryDataChanged = false;
+            bool ideologyDataChanged = false;
+
             if (!this.OpeningProject || this.FilePath == "")
                 return true;
 
-            var result = MessageBoxProvider.SaveMessageBox(this.FilePath);
-            if (result == DialogResult.Yes)
-                SaveData();
-            else if (result == DialogResult.Cancel)
-                return false;
+            foreach (CountryDataHanger cd in this.MainContainer.CountryData)
+            {
+                countryDataChanged = cd.DataChanged;
+                if (countryDataChanged)
+                    break;
+            }
+
+            foreach (IdeologyDataHanger id in this.MainContainer.IdeologyData)
+            {
+                ideologyDataChanged = id.DataChanged;
+                if (ideologyDataChanged)
+                    break;
+            }
+
+            if (countryDataChanged ||
+                ideologyDataChanged ||
+                this.MainContainer.ProjectData.DataChanged)
+            {
+                var result = MessageBoxProvider.SaveMessageBox(this.FilePath);
+                if (result == DialogResult.Yes)
+                    SaveData();
+                else if (result == DialogResult.Cancel)
+                    return false;
+            }
 
             this.OpeningProject = false;
             InitializeWindowTitle();

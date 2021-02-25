@@ -9,20 +9,132 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
             Initialize();
         }
 
-        public string ProjectName { get; set; }
-        public string ModVersion { get; set; }
-        public string SupportedGameVersion { get; set; }
-        public string[] Tags { get; set; }
-        public string ThumbnailPicturePath { get; set; }
-        public string[] ReplacePaths { get; set; }
-        public string ModPath { get; set; }
-        public string UserDir { get; set; }
-        public string RemoteFileID { get; set; }
-        public string[] DepondencyMods { get; set; }
-        public string[] DepondencyDLCs { get; set; }
+        public bool DataChanged { get; set; }
+
+        private string _projectName;
+        public string ProjectName
+        {
+            get => this._projectName;
+            set
+            {
+                this._projectName = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _modVersion;
+        public string ModVersion
+        {
+            get => this._modVersion;
+            set
+            {
+                this._modVersion = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _supportedGameVersion;
+        public string SupportedGameVersion
+        {
+            get => this._supportedGameVersion;
+            set
+            {
+                this._supportedGameVersion = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _tags;
+        public string[] Tags
+        {
+            get => this._tags;
+            set
+            {
+                this._tags = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _thumbnailPicturePath;
+        public string ThumbnailPicturePath
+        {
+            get => this._thumbnailPicturePath;
+            set
+            {
+                this._thumbnailPicturePath = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _replacePaths;
+        public string[] ReplacePaths
+        {
+            get => this._replacePaths;
+            set
+            {
+                this._replacePaths = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _modPath;
+        public string ModPath
+        {
+            get => this._modPath;
+            set
+            {
+                this._modPath = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _userDir;
+        public string UserDir
+        {
+            get => this._userDir;
+            set
+            {
+                this._userDir = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _remoteFileID;
+        public string RemoteFileID
+        {
+            get => this._remoteFileID;
+            set
+            {
+                this._remoteFileID = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _depondencyMods;
+        public string[] DepondencyMods
+        {
+            get => this._depondencyMods;
+            set
+            {
+                this._depondencyMods = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _depondencyDLCs;
+        public string[] DepondencyDLCs
+        {
+            get => this._depondencyDLCs;
+            set
+            {
+                this._depondencyDLCs = value;
+                this.DataChanged = true;
+            }
+        }
 
         public void Initialize()
         {
+            this.DataChanged = false;
             this.ProjectName = "";
             this.ModVersion = "";
             this.SupportedGameVersion = "";

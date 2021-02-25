@@ -13,32 +13,264 @@ namespace HoI4ModdingManager.ModdingProjectManager.DataHangers
             Initialize();
         }
 
-        public string Name { get; set; }
-        public string CountryTag { get; set; }
-        public int CapitalStateID { get; set; }
-        public float Stability { get; set; }
-        public float WarSupport { get; set; }
-        public int PoliticalPower { get; set; }
-        public int ResearchSlots { get; set; }
-        public int Convoys { get; set; }
-        public string UnitFileID { get; set; }
-        public string[] Technologies { get; set; }
-        public string[] Ideas { get; set; }
-        public string RulingPartyIdeology { get; set; }
-        public DateTime LastElectionAt { get; set; }
-        public bool IsAllowElection { get; set; }
-        public float[] PartySupports { get; set; }
-        public int[] RGBCountryColor { get; set; }
-        public string GraphicCulture { get; set; }
-        public List<CountryLeader> DefinedCountryLeaders { get; set; }
-        public List<ArmyCommander> DefinedArmyCommanders { get; set; }
-        public List<NavyAdmiral> DefinedNavyAdmirals { get; set; }
-        public string[] CountryNames { get; set; }
-        public string[] PartyNames { get; set; }
-        public string[] CountryFlagPaths { get; set; }
+        public bool DataChanged { get; set; }
+
+        private string _name;
+        public string Name
+        {
+            get => this._name;
+            set
+            {
+                this._name = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _countryTag;
+        public string CountryTag
+        {
+            get => this._countryTag;
+            set
+            {
+                this._countryTag = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _capitalStateID;
+        public int CapitalStateID
+        {
+            get => this._capitalStateID;
+            set
+            {
+                this._capitalStateID = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _stability;
+        public float Stability
+        {
+            get => this._stability;
+            set
+            {
+                this._stability = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float _warSupport;
+        public float WarSupport
+        {
+            get => this._warSupport;
+            set
+            {
+                this._warSupport = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _politicalPower;
+        public int PoliticalPower
+        {
+            get => this._politicalPower;
+            set
+            {
+                this._politicalPower = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _researchSlots;
+        public int ResearchSlots
+        {
+            get => this._researchSlots;
+            set
+            {
+                this._researchSlots = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int _convoys;
+        public int Convoys
+        {
+            get => this._convoys;
+            set
+            {
+                this._convoys = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _unitFileID;
+        public string UnitFileID
+        {
+            get => this._unitFileID;
+            set
+            {
+                this._unitFileID = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _technologies;
+        public string[] Technologies
+        {
+            get => this._technologies;
+            set
+            {
+                this._technologies = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _ideas;
+        public string[] Ideas
+        {
+            get => this._ideas;
+            set
+            {
+                this._ideas = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _rulingPartyIdeology;
+        public string RulingPartyIdeology
+        {
+            get => this._rulingPartyIdeology;
+            set
+            {
+                this._rulingPartyIdeology = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private DateTime _lastElectionAt;
+        public DateTime LastElectionAt
+        {
+            get => this._lastElectionAt;
+            set
+            {
+                this._lastElectionAt = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private bool _isAllowElection;
+        public bool IsAllowElection
+        {
+            get => this._isAllowElection;
+            set
+            {
+                this._isAllowElection = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private float[] _partySupports;
+        public float[] PartySupports
+        {
+            get => this._partySupports;
+            set
+            {
+                this._partySupports = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private int[] _rgbCountryColor;
+        public int[] RGBCountryColor
+        {
+            get => this._rgbCountryColor;
+            set
+            {
+                this._rgbCountryColor = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string _graphicCulture;
+        public string GraphicCulture
+        {
+            get => this._graphicCulture;
+            set
+            {
+                this._graphicCulture = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private List<CountryLeader> _definedCountryLeaders;
+        public List<CountryLeader> DefinedCountryLeaders
+        {
+            get => this._definedCountryLeaders;
+            set
+            {
+                this._definedCountryLeaders = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private List<ArmyCommander> _definedArmyCommanders;
+        public List<ArmyCommander> DefinedArmyCommanders
+        {
+            get => this._definedArmyCommanders;
+            set
+            {
+                this._definedArmyCommanders = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private List<NavyAdmiral> _definedNavyAdmirals;
+        public List<NavyAdmiral> DefinedNavyAdmirals
+        {
+            get => this._definedNavyAdmirals;
+            set
+            {
+                this._definedNavyAdmirals = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _countryNames;
+        public string[] CountryNames
+        {
+            get => this._countryNames;
+            set
+            {
+                this._countryNames = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _partyNames;
+        public string[] PartyNames
+        {
+            get => this._partyNames;
+            set
+            {
+                this._partyNames = value;
+                this.DataChanged = true;
+            }
+        }
+
+        private string[] _countryFlagPaths;
+        public string[] CountryFlagPaths
+        {
+            get => this._countryFlagPaths;
+            set
+            {
+                this._countryFlagPaths = value;
+                this.DataChanged = true;
+            }
+        }
 
         public void Initialize()
         {
+            this.DataChanged = false;
             this.Name = "";
             this.CountryTag = "";
             this.CapitalStateID = 0;

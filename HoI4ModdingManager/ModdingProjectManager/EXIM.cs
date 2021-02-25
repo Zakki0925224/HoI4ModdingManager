@@ -1,4 +1,5 @@
-﻿using HoI4ModdingManager.ModdingProjectManager.ProjectExporter;
+﻿using HoI4ModdingManager.ModdingProjectManager.DataHangers;
+using HoI4ModdingManager.ModdingProjectManager.ProjectExporter;
 using HoI4ModdingManager.ModdingProjectManager.ProjectImporter;
 
 namespace HoI4ModdingManager.ModdingProjectManager
@@ -21,6 +22,15 @@ namespace HoI4ModdingManager.ModdingProjectManager
 
             // イデオロギーデータの取得
             dc.IdeologyData = sd.GetIdeologiesData(dbFile);
+
+            // データ変更フラグをリセット
+            dc.ProjectData.DataChanged = false;
+
+            foreach (CountryDataHanger cd in dc.CountryData)
+                cd.DataChanged = false;
+
+            foreach (IdeologyDataHanger id in dc.IdeologyData)
+                id.DataChanged = false;
 
             return dc;
         }
