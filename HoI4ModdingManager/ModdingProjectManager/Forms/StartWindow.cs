@@ -54,18 +54,9 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox.Checked)
-            {
-                modDescriptionLabel.Visible = true;
-                modDescriptionTextBox.Visible = true;
-                modDescriptionButton.Visible = true;
-            }
-            else
-            {
-                modDescriptionLabel.Visible = false;
-                modDescriptionTextBox.Visible = false;
-                modDescriptionButton.Visible = false;
-            }
+            modDescriptionLabel.Visible =
+            modDescriptionTextBox.Visible =
+            modDescriptionButton.Visible = checkBox.Checked;
         }
 
         private void ReferenceButton_Click(object sender, EventArgs e)
