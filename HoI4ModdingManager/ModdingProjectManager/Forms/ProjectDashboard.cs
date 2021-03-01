@@ -315,11 +315,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 chromiumDevToolToolStripMenuItem.Checked = true;
         }
 
-        private void CountryManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveData();

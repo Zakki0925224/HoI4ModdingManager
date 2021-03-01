@@ -101,6 +101,12 @@
     <Compile Include="Common\Forms\AppSettings.Designer.cs">
       <DependentUpon>AppSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Forms\SetStringListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Forms\SetStringListWindow.Designer.cs">
+      <DependentUpon>SetStringListWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\PageLayout\ResourceLoader.cs" />
     <Compile Include="Common\Responders\AppVersionResponder.cs" />
     <Compile Include="Common\Responders\AssemblyResponder.cs" />
@@ -149,6 +155,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Common\Forms\AppSettings.resx">
       <DependentUpon>AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Forms\SetStringListWindow.resx">
+      <DependentUpon>SetStringListWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModdingProjectManager\Forms\ProjectDashboard.resx">
       <DependentUpon>ProjectDashboard.cs</DependentUpon>

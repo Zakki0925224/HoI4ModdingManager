@@ -47,12 +47,22 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modPictureInfoLabel = new System.Windows.Forms.Label();
             this.modPictureBox = new System.Windows.Forms.PictureBox();
             this.modPictureReferenceButton = new System.Windows.Forms.Button();
+            this.modVersionLabel = new System.Windows.Forms.Label();
+            this.modVersionTextBox = new System.Windows.Forms.TextBox();
+            this.depondencyModsCheckBox = new System.Windows.Forms.CheckBox();
+            this.depondencyModsButton = new System.Windows.Forms.Button();
+            this.depondencyDLCsButton = new System.Windows.Forms.Button();
+            this.depondencyDLCsCheckBox = new System.Windows.Forms.CheckBox();
+            this.exportGroupBox = new System.Windows.Forms.GroupBox();
+            this.ExportStartButton = new System.Windows.Forms.Button();
+            this.exportSettingButton = new System.Windows.Forms.Button();
             this.modTagGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMajor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMinor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionRevision)).BeginInit();
             this.modPictureGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modPictureBox)).BeginInit();
+            this.exportGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // modNameLabel
@@ -208,7 +218,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modPictureGroupBox.Size = new System.Drawing.Size(110, 167);
             this.modPictureGroupBox.TabIndex = 13;
             this.modPictureGroupBox.TabStop = false;
-            this.modPictureGroupBox.Text = "画像";
+            this.modPictureGroupBox.Text = "Modサムネイル";
             // 
             // modPictureRemoveButton
             // 
@@ -250,11 +260,106 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modPictureReferenceButton.UseVisualStyleBackColor = true;
             this.modPictureReferenceButton.Click += new System.EventHandler(this.ModPictureReferenceButton_Click);
             // 
+            // modVersionLabel
+            // 
+            this.modVersionLabel.AutoSize = true;
+            this.modVersionLabel.Location = new System.Drawing.Point(12, 73);
+            this.modVersionLabel.Name = "modVersionLabel";
+            this.modVersionLabel.Size = new System.Drawing.Size(88, 15);
+            this.modVersionLabel.TabIndex = 14;
+            this.modVersionLabel.Text = "Modバージョン：";
+            // 
+            // modVersionTextBox
+            // 
+            this.modVersionTextBox.Location = new System.Drawing.Point(120, 70);
+            this.modVersionTextBox.Name = "modVersionTextBox";
+            this.modVersionTextBox.Size = new System.Drawing.Size(46, 23);
+            this.modVersionTextBox.TabIndex = 15;
+            this.modVersionTextBox.Text = "1.0";
+            // 
+            // depondencyModsCheckBox
+            // 
+            this.depondencyModsCheckBox.AutoSize = true;
+            this.depondencyModsCheckBox.Location = new System.Drawing.Point(15, 102);
+            this.depondencyModsCheckBox.Name = "depondencyModsCheckBox";
+            this.depondencyModsCheckBox.Size = new System.Drawing.Size(75, 19);
+            this.depondencyModsCheckBox.TabIndex = 16;
+            this.depondencyModsCheckBox.Text = "前提Mod";
+            this.depondencyModsCheckBox.UseVisualStyleBackColor = true;
+            this.depondencyModsCheckBox.CheckedChanged += new System.EventHandler(this.DepondencyModsCheckBox_CheckedChanged);
+            // 
+            // depondencyModsButton
+            // 
+            this.depondencyModsButton.Enabled = false;
+            this.depondencyModsButton.Location = new System.Drawing.Point(120, 99);
+            this.depondencyModsButton.Name = "depondencyModsButton";
+            this.depondencyModsButton.Size = new System.Drawing.Size(46, 23);
+            this.depondencyModsButton.TabIndex = 17;
+            this.depondencyModsButton.Text = "設定";
+            this.depondencyModsButton.UseVisualStyleBackColor = true;
+            // 
+            // depondencyDLCsButton
+            // 
+            this.depondencyDLCsButton.Enabled = false;
+            this.depondencyDLCsButton.Location = new System.Drawing.Point(120, 128);
+            this.depondencyDLCsButton.Name = "depondencyDLCsButton";
+            this.depondencyDLCsButton.Size = new System.Drawing.Size(46, 23);
+            this.depondencyDLCsButton.TabIndex = 19;
+            this.depondencyDLCsButton.Text = "設定";
+            this.depondencyDLCsButton.UseVisualStyleBackColor = true;
+            // 
+            // depondencyDLCsCheckBox
+            // 
+            this.depondencyDLCsCheckBox.AutoSize = true;
+            this.depondencyDLCsCheckBox.Location = new System.Drawing.Point(15, 131);
+            this.depondencyDLCsCheckBox.Name = "depondencyDLCsCheckBox";
+            this.depondencyDLCsCheckBox.Size = new System.Drawing.Size(71, 19);
+            this.depondencyDLCsCheckBox.TabIndex = 18;
+            this.depondencyDLCsCheckBox.Text = "前提DLC";
+            this.depondencyDLCsCheckBox.UseVisualStyleBackColor = true;
+            this.depondencyDLCsCheckBox.CheckedChanged += new System.EventHandler(this.DepondencyDLCsCheckBox_CheckedChanged);
+            // 
+            // exportGroupBox
+            // 
+            this.exportGroupBox.Controls.Add(this.exportSettingButton);
+            this.exportGroupBox.Controls.Add(this.ExportStartButton);
+            this.exportGroupBox.Location = new System.Drawing.Point(15, 157);
+            this.exportGroupBox.Name = "exportGroupBox";
+            this.exportGroupBox.Size = new System.Drawing.Size(151, 80);
+            this.exportGroupBox.TabIndex = 20;
+            this.exportGroupBox.TabStop = false;
+            this.exportGroupBox.Text = "エクスポート";
+            // 
+            // ExportStartButton
+            // 
+            this.ExportStartButton.Location = new System.Drawing.Point(6, 48);
+            this.ExportStartButton.Name = "ExportStartButton";
+            this.ExportStartButton.Size = new System.Drawing.Size(105, 23);
+            this.ExportStartButton.TabIndex = 0;
+            this.ExportStartButton.Text = "エクスポート開始";
+            this.ExportStartButton.UseVisualStyleBackColor = true;
+            // 
+            // exportSettingButton
+            // 
+            this.exportSettingButton.Location = new System.Drawing.Point(6, 19);
+            this.exportSettingButton.Name = "exportSettingButton";
+            this.exportSettingButton.Size = new System.Drawing.Size(105, 23);
+            this.exportSettingButton.TabIndex = 1;
+            this.exportSettingButton.Text = "エクスポート設定";
+            this.exportSettingButton.UseVisualStyleBackColor = true;
+            // 
             // ProjectSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 281);
+            this.Controls.Add(this.exportGroupBox);
+            this.Controls.Add(this.depondencyDLCsButton);
+            this.Controls.Add(this.depondencyDLCsCheckBox);
+            this.Controls.Add(this.depondencyModsButton);
+            this.Controls.Add(this.depondencyModsCheckBox);
+            this.Controls.Add(this.modVersionTextBox);
+            this.Controls.Add(this.modVersionLabel);
             this.Controls.Add(this.modPictureGroupBox);
             this.Controls.Add(this.dotLabel2);
             this.Controls.Add(this.dotLabel1);
@@ -281,6 +386,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modPictureGroupBox.ResumeLayout(false);
             this.modPictureGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modPictureBox)).EndInit();
+            this.exportGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,5 +412,14 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private System.Windows.Forms.PictureBox modPictureBox;
         private System.Windows.Forms.Button modPictureReferenceButton;
         private System.Windows.Forms.Button modPictureRemoveButton;
+        private System.Windows.Forms.Label modVersionLabel;
+        private System.Windows.Forms.TextBox modVersionTextBox;
+        private System.Windows.Forms.CheckBox depondencyModsCheckBox;
+        private System.Windows.Forms.Button depondencyModsButton;
+        private System.Windows.Forms.Button depondencyDLCsButton;
+        private System.Windows.Forms.CheckBox depondencyDLCsCheckBox;
+        private System.Windows.Forms.GroupBox exportGroupBox;
+        private System.Windows.Forms.Button exportSettingButton;
+        private System.Windows.Forms.Button ExportStartButton;
     }
 }

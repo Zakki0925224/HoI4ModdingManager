@@ -58,6 +58,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
 
             for (int i = 0; i < modTagListBox.Items.Count; i++)
                 modTagListBox.SetItemChecked(i, false);
+
         }
 
         /// <summary>
@@ -132,6 +133,16 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void DepondencyModsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            depondencyModsButton.Enabled = depondencyModsCheckBox.Checked;
+        }
+
+        private void DepondencyDLCsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            depondencyDLCsButton.Enabled = depondencyDLCsCheckBox.Checked;
         }
     }
 }

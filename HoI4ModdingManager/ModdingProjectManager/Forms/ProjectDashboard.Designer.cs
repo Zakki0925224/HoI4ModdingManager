@@ -198,7 +198,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.countryManagerToolStripMenuItem.Name = "countryManagerToolStripMenuItem";
             this.countryManagerToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.countryManagerToolStripMenuItem.Text = "CountryManager(&C)...";
-            this.countryManagerToolStripMenuItem.Click += new System.EventHandler(this.CountryManagerToolStripMenuItem_Click);
             // 
             // ideologyManagerToolStripMenuItem
             // 
