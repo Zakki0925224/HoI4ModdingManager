@@ -54,8 +54,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.depondencyDLCsButton = new System.Windows.Forms.Button();
             this.depondencyDLCsCheckBox = new System.Windows.Forms.CheckBox();
             this.exportGroupBox = new System.Windows.Forms.GroupBox();
-            this.ExportStartButton = new System.Windows.Forms.Button();
             this.exportSettingButton = new System.Windows.Forms.Button();
+            this.ExportStartButton = new System.Windows.Forms.Button();
             this.modTagGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMajor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.targetGameVersionMinor)).BeginInit();
@@ -80,6 +80,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modNameTextBox.Name = "modNameTextBox";
             this.modNameTextBox.Size = new System.Drawing.Size(150, 23);
             this.modNameTextBox.TabIndex = 1;
+            this.modNameTextBox.TextChanged += new System.EventHandler(this.ModNameTextBox_TextChanged);
             // 
             // modTagGroupBox
             // 
@@ -111,6 +112,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modTagListBox.Name = "modTagListBox";
             this.modTagListBox.Size = new System.Drawing.Size(138, 203);
             this.modTagListBox.TabIndex = 0;
+            this.modTagListBox.SelectedValueChanged += new System.EventHandler(this.ModTagListBox_SelectedValueChanged);
             // 
             // OKButton
             // 
@@ -162,6 +164,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             0,
             0,
             0});
+            this.targetGameVersionMajor.ValueChanged += new System.EventHandler(this.TargetGameVersionMajor_ValueChanged);
             // 
             // targetGameVersionMinor
             // 
@@ -174,6 +177,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             0,
             0,
             0});
+            this.targetGameVersionMinor.ValueChanged += new System.EventHandler(this.TargetGameVersionMinor_ValueChanged);
             // 
             // targetGameVersionRevision
             // 
@@ -186,6 +190,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             0,
             0,
             0});
+            this.targetGameVersionRevision.ValueChanged += new System.EventHandler(this.TargetGameVersionRevision_ValueChanged);
             // 
             // dotLabel1
             // 
@@ -249,6 +254,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.modPictureBox.TabIndex = 1;
             this.modPictureBox.TabStop = false;
+            this.modPictureBox.BackgroundImageChanged += new System.EventHandler(this.ModPictureBox_BackgroundImageChanged);
             // 
             // modPictureReferenceButton
             // 
@@ -276,6 +282,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.modVersionTextBox.Size = new System.Drawing.Size(46, 23);
             this.modVersionTextBox.TabIndex = 15;
             this.modVersionTextBox.Text = "1.0";
+            this.modVersionTextBox.TextChanged += new System.EventHandler(this.ModVersionTextBox_TextChanged);
             // 
             // depondencyModsCheckBox
             // 
@@ -297,6 +304,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.depondencyModsButton.TabIndex = 17;
             this.depondencyModsButton.Text = "設定";
             this.depondencyModsButton.UseVisualStyleBackColor = true;
+            this.depondencyModsButton.Click += new System.EventHandler(this.DepondencyModsButton_Click);
             // 
             // depondencyDLCsButton
             // 
@@ -307,6 +315,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.depondencyDLCsButton.TabIndex = 19;
             this.depondencyDLCsButton.Text = "設定";
             this.depondencyDLCsButton.UseVisualStyleBackColor = true;
+            this.depondencyDLCsButton.Click += new System.EventHandler(this.DepondencyDLCsButton_Click);
             // 
             // depondencyDLCsCheckBox
             // 
@@ -330,15 +339,6 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.exportGroupBox.TabStop = false;
             this.exportGroupBox.Text = "エクスポート";
             // 
-            // ExportStartButton
-            // 
-            this.ExportStartButton.Location = new System.Drawing.Point(6, 48);
-            this.ExportStartButton.Name = "ExportStartButton";
-            this.ExportStartButton.Size = new System.Drawing.Size(105, 23);
-            this.ExportStartButton.TabIndex = 0;
-            this.ExportStartButton.Text = "エクスポート開始";
-            this.ExportStartButton.UseVisualStyleBackColor = true;
-            // 
             // exportSettingButton
             // 
             this.exportSettingButton.Location = new System.Drawing.Point(6, 19);
@@ -347,6 +347,15 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             this.exportSettingButton.TabIndex = 1;
             this.exportSettingButton.Text = "エクスポート設定";
             this.exportSettingButton.UseVisualStyleBackColor = true;
+            // 
+            // ExportStartButton
+            // 
+            this.ExportStartButton.Location = new System.Drawing.Point(6, 48);
+            this.ExportStartButton.Name = "ExportStartButton";
+            this.ExportStartButton.Size = new System.Drawing.Size(105, 23);
+            this.ExportStartButton.TabIndex = 0;
+            this.ExportStartButton.Text = "エクスポート開始";
+            this.ExportStartButton.UseVisualStyleBackColor = true;
             // 
             // ProjectSettings
             // 

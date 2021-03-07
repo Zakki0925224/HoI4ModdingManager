@@ -1,4 +1,5 @@
 ﻿using HoI4ModdingManager.Common.Providers;
+using HoI4ModdingManager.Common.Forms;
 using HoI4ModdingManager.ModdingProjectManager.DataHangers;
 using System;
 using System.Drawing;
@@ -10,6 +11,7 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
     public partial class ProjectSettings : Form
     {
         public ProjectDataHanger ProjectDataContainer { get; set; }
+        private SetStringListWindow SetStringListWindow { get; set; }
 
         public ProjectSettings(ProjectDataHanger projectData)
         {
@@ -59,6 +61,16 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
             for (int i = 0; i < modTagListBox.Items.Count; i++)
                 modTagListBox.SetItemChecked(i, false);
 
+            if (this.ProjectDataContainer.DepondencyMods.Length < 1)
+                depondencyModsCheckBox.Checked = false;
+            else
+                depondencyModsCheckBox.Checked = true;
+
+            if (this.ProjectDataContainer.DepondencyDLCs.Length < 1)
+                depondencyDLCsCheckBox.Checked = false;
+            else
+                depondencyDLCsCheckBox.Checked = true;
+
         }
 
         /// <summary>
@@ -78,6 +90,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 this.ProjectDataContainer.ThumbnailPicturePath = "";
             else
                 this.ProjectDataContainer.ThumbnailPicturePath = modPictureBox.ImageLocation;
+
+            applyButton.Enabled = false;
 
             return true;
         }
@@ -143,6 +157,97 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
         private void DepondencyDLCsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             depondencyDLCsButton.Enabled = depondencyDLCsCheckBox.Checked;
+        }
+
+        private void DepondencyModsButton_Click(object sender, EventArgs e)
+        {
+            if (this.SetStringListWindow == null || this.SetStringListWindow.IsDisposed)
+            {
+                this.SetStringListWindow = new SetStringListWindow(this.ProjectDataContainer.DepondencyMods, "前提Mod");
+                this.SetStringListWindow.FormClosed += DepondencyModsSetStringListWindow_FormClosed;
+                this.SetStringListWindow.ShowDialog();
+            }
+        }
+
+        private void DepondencyModsSetStringListWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var formSender = (SetStringListWindow)sender;
+
+            if (formSender.DialogResult == DialogResult.OK)
+            {
+                if (formSender.ResultData == null)
+                {
+                    this.ProjectDataContainer.DepondencyMods = new string[] { };
+                    depondencyModsCheckBox.Checked = false;
+                }
+                else
+                    this.ProjectDataContainer.DepondencyMods = formSender.ResultData.ToArray();
+            }
+
+            this.SetStringListWindow.Dispose();
+        }
+
+        private void DepondencyDLCsButton_Click(object sender, EventArgs e)
+        {
+            if (this.SetStringListWindow == null || this.SetStringListWindow.IsDisposed)
+            {
+                this.SetStringListWindow = new SetStringListWindow(this.ProjectDataContainer.DepondencyDLCs, "前提DLC");
+                this.SetStringListWindow.FormClosed += DepondencyDLCsSetStringListWindow_FormClosed;
+                this.SetStringListWindow.ShowDialog();
+            }
+        }
+
+        private void DepondencyDLCsSetStringListWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var formSender = (SetStringListWindow)sender;
+
+            if (formSender.DialogResult == DialogResult.OK)
+            {
+                if (formSender.ResultData == null)
+                {
+                    this.ProjectDataContainer.DepondencyDLCs = new string[] { };
+                    depondencyDLCsCheckBox.Checked = false;
+                }
+                else
+                    this.ProjectDataContainer.DepondencyDLCs = formSender.ResultData.ToArray();
+            }
+
+            this.SetStringListWindow.Dispose();
+        }
+
+        private void ModNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
+        }
+
+        private void TargetGameVersionMajor_ValueChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
+        }
+
+        private void TargetGameVersionMinor_ValueChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
+        }
+
+        private void TargetGameVersionRevision_ValueChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
+        }
+
+        private void ModVersionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
+        }
+
+        private void ModPictureBox_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
+        }
+
+        private void ModTagListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            applyButton.Enabled = true;
         }
     }
 }

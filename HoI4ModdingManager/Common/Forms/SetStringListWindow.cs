@@ -39,12 +39,15 @@ namespace HoI4ModdingManager.Common.Forms
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            this.ResultData.Clear();
-
             if (stringListBox.Items.Count > 0)
                 this.ResultData = stringListBox.Items.Cast<string>().ToList();
 
             this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

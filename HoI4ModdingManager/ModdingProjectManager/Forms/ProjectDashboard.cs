@@ -148,6 +148,8 @@ namespace HoI4ModdingManager.ModdingProjectManager.Forms
                 tabPage.Controls.Add(SetBrowser(data));
                 mainTab.TabPages.Add(tabPage);
             }
+
+            mainTab.TabPages[0].Text = "Test tab";
         }
 
         /// <summary>

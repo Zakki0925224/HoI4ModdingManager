@@ -45,6 +45,7 @@ namespace HoI4ModdingManager.Common.Forms
             this.cancelButton.TabIndex = 6;
             this.cancelButton.Text = "キャンセル";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // OKButton
             // 
